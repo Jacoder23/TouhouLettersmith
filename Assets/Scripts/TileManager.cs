@@ -8,6 +8,7 @@ public class TileManager : MonoBehaviour
 {
     public Tile tilePrefab;
     public Transform grid;
+    public Cursor cursor;
 
     [Header("Settings")]
     public int gridSize;
@@ -52,6 +53,7 @@ public class TileManager : MonoBehaviour
             {
                 var tile = Instantiate(tilePrefab);
                 tile.tileManager = this;
+                tile.cursor = cursor;
                 tile.transform.parent = grid;
                 tile.transform.localPosition = new Vector2(j * spaceBetweenTiles,((float)gridSize - i) * spaceBetweenTiles) - offset;
                 instantiatedTiles.Add(tile);
