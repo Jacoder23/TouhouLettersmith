@@ -7,8 +7,6 @@ public static class Extensions
     // TODO: figure out one with a combined QU
     const string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-    // TODO: Make a version that just scrambles an alphabet, so that we can insert valid words into the mix.
-    // And put weight on words other than XYZ and other uncommon letters, maybe base it off of a frequency list
     public static string RandomLetterOfTheAlphabet()
     {
         int random = Random.Range(0, 25);
