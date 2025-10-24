@@ -9,10 +9,17 @@ public class TileManager : MonoBehaviour
     public Tile tilePrefab;
     public Transform grid;
     public Cursor cursor;
+    public WordDatabase database;
 
     [Header("Settings")]
     public int gridSize;
     public float spaceBetweenTiles;
+    public int randomLetterQueueLength = 20;
+    public float chanceOfBonusWords = 0.1f;
+    public float chanceOfActualRandomLetter = 0.5f;
+
+    [Header("Preview")]
+    public string randomLetterQueue = "";
 
     List<Tile> instantiatedTiles;
     string[][] currentBoardState; // encode in each string extra data like what about the other things
@@ -169,13 +176,34 @@ public class TileManager : MonoBehaviour
         return boardState;
     }
 
+    string GetRandomWord()
+    {
+        if (UnityEngine.Random.Range(0, 1) < chanceOfActualRandomLetter)
+            return WeightedRandomLetterOfTheAlphabet();
+
+        if (UnityEngine.Random.Range(0, 1) < chanceOfBonusWords)
+            return database.GetRandomBonusWord();
+        else
+            return database.GetRandomValidWord();
+    }
+
+    public string QueuedRandomLetterOfTheAlphabet() // not all that random
+    {
+        while(randomLetterQueue.Length < randomLetterQueueLength)
+        {
+            randomLetterQueue += GetRandomWord();
+        }
+        string randomLetter = randomLetterQueue.Substring(0,1);
+        randomLetterQueue = randomLetterQueue.Substring(1, randomLetterQueue.Length - 2);
+        return randomLetter;
+    }
+
     // just faffed about with the wikipedia letter frequency list
-    // TODO: have a version that inserts actual words into the board state and that also gives a random word of X length when asked for so when we need to drop in a new bunch of letters we have some options
+    
     public string WeightedRandomLetterOfTheAlphabet()
     {
         return weightedRandomAlphabet.Next();
     }
-
     void InitWeightedAlphabet()
     {
         List<WeightedListItem<string>> weightedAlphabet = new()

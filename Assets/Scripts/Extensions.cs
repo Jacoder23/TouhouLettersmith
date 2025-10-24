@@ -60,7 +60,6 @@ public static class Extensions
         return sWhitespace.Replace(input, replacement);
     }
 
-    // TODO: figure out one with a combined QU
     const string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     public static string RandomLetterOfTheAlphabet()

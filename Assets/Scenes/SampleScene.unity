@@ -730,8 +730,13 @@ MonoBehaviour:
   tilePrefab: {fileID: 8657676275370921975, guid: 3786c38b88091c544ab17f2b54da31a5, type: 3}
   grid: {fileID: 1525329953}
   cursor: {fileID: 1772629304}
+  database: {fileID: 104461246}
   gridSize: 7
   spaceBetweenTiles: 110
+  randomLetterQueueLength: 20
+  chanceOfBonusWords: 0.1
+  chanceOfActualRandomLetter: 0.35
+  randomLetterQueue: 
 --- !u!4 &1406961826
 Transform:
   m_ObjectHideFlags: 0

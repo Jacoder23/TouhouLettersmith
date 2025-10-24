@@ -29,4 +29,15 @@ public class WordDatabase : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
     }
+
+
+    public string GetRandomValidWord()
+    {
+        return validWords[Random.Range(0, validWords.Count - 1)];
+    }
+    public string GetRandomBonusWord()
+    {
+        return bonusWords[Random.Range(0, bonusWords.Count - 1)];
+    }
+
 }

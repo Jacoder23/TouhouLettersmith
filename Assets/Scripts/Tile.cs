@@ -29,7 +29,8 @@ public class Tile : MonoBehaviour
 
     public void RandomizeTileValue()
     {
-        SetTileValue(tileManager.WeightedRandomLetterOfTheAlphabet());
+        //SetTileValue(tileManager.WeightedRandomLetterOfTheAlphabet());
+        SetTileValue(tileManager.QueuedRandomLetterOfTheAlphabet());
     }
 
     void Update()
