@@ -21,7 +21,11 @@ public class Tile : MonoBehaviour
     public bool selected;
     public TilePosition position;
     // store tile value on its own along with bools for if its on fire, etc.
- 
+
+    private void Start()
+    {
+        transform.localScale = Vector3.one;
+    }
 
     public void RandomizeTileValue()
     {
