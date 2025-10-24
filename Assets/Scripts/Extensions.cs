@@ -1,9 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
 public static class Extensions
 {
+    // https://stackoverflow.com/a/6219488
+    private static readonly Regex sWhitespace = new Regex(@"\s+");
+    public static string ReplaceWhitespace(string input, string replacement)
+    {
+        return sWhitespace.Replace(input, replacement);
+    }
+
     // TODO: figure out one with a combined QU
     const string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 

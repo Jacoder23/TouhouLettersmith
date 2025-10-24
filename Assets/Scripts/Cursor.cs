@@ -2,15 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using TMPro;
 
 public class Cursor : MonoBehaviour
 {
+    public TextMeshProUGUI validityIndicator;
+    public WordVerification verifier;
+    [Header("Attributes")]
     public List<Tile> wordInProgress;
     public TilePosition cursorPosition;
     // Start is called before the first frame update
     void Start()
     {
         wordInProgress = new List<Tile>();
+    }
+
+    void LateUpdate()
+    {
+        if (wordInProgress.Count == 0)
+            validityIndicator.text = "";
+        else
+            validityIndicator.text = verifier.ValidWord(string.Join("", wordInProgress.Select(x => x.value).ToArray())).ToString();
     }
 
     void UpdateCursorPosition()
@@ -20,7 +32,7 @@ public class Cursor : MonoBehaviour
         else
             cursorPosition = new TilePosition();
 
-        Debug.Log(cursorPosition.x + ", " + cursorPosition.y);
+        //Debug.Log(cursorPosition.x + ", " + cursorPosition.y);
     }
 
     public void AddTile(Tile tile)
