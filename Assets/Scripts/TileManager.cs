@@ -104,6 +104,14 @@ public class TileManager : MonoBehaviour
         }
     }
 
+    public void ScrambleAllTiles()
+    {
+        foreach (var tile in instantiatedTiles)
+        {
+            tile.RandomizeTileValue();
+        }
+    }
+
     public void DeselectAllTiles()
     {
         foreach (var tile in instantiatedTiles)
@@ -194,7 +202,17 @@ public class TileManager : MonoBehaviour
             randomLetterQueue += GetRandomWord();
         }
         string randomLetter = randomLetterQueue.Substring(0,1);
-        randomLetterQueue = randomLetterQueue.Substring(1, randomLetterQueue.Length - 2);
+        if (randomLetter == "Q" && randomLetterQueue.Substring(0, 2) == "QU")
+        {
+            randomLetter = randomLetterQueue.Substring(0, 2);
+            randomLetterQueue = randomLetterQueue.Substring(2, randomLetterQueue.Length - 3);
+        }
+        else
+        {
+            if (randomLetter == "Q")
+                randomLetter = "QU";
+            randomLetterQueue = randomLetterQueue.Substring(1, randomLetterQueue.Length - 2);
+        }
         return randomLetter;
     }
 
