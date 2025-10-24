@@ -162,8 +162,7 @@ MonoBehaviour:
   useDefaultStyleSheet: 1
   styleSheet: {fileID: 0}
   databaseActions: {fileID: 11400000, guid: 5e0a45e9841fb114891a6f5bb0728387, type: 2}
-  defaultAppearancesTags:
-  - diagexp
+  defaultAppearancesTags: []
   defaultDisappearancesTags:
   - fade
   defaultBehaviorsTags: []

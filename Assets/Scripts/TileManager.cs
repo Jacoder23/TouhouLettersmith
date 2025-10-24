@@ -14,7 +14,7 @@ public class TileManager : MonoBehaviour
     [Header("Settings")]
     public int gridSize;
     public float spaceBetweenTiles;
-    public int randomLetterQueueLength = 20;
+    public int randomLetterQueueMinLength = 20;
     public float chanceOfBonusWords = 0.1f;
     public float chanceOfActualRandomLetter = 0.5f;
 
@@ -55,6 +55,11 @@ public class TileManager : MonoBehaviour
         Extensions.DebugLog2DJaggedArray(currentBoardState);
     }
 
+    Vector2 TilePositionToLocalPosition(TilePosition pos, int gridSize)
+    {
+        return new Vector2(pos.x * spaceBetweenTiles, (float)(gridSize - pos.y) * spaceBetweenTiles) - offset;
+    }
+
     void PopulateTileGrid()
     {
         for (int i = 0; i < gridSize; i++)
@@ -65,10 +70,14 @@ public class TileManager : MonoBehaviour
                 tile.tileManager = this;
                 tile.cursor = cursor;
                 tile.transform.parent = grid;
-                tile.transform.localPosition = new Vector2(j * spaceBetweenTiles, (float)(gridSize - i) * spaceBetweenTiles) - offset;
+                var tilePosition = new TilePosition();
+                tilePosition.x = j;
+                tilePosition.y = i;
+                tile.transform.localPosition = TilePositionToLocalPosition(tilePosition, gridSize);
                 tile.position = new TilePosition();
                 tile.position.x = j;
                 tile.position.y = i;
+                tile.FallFromSky(tile.transform.localPosition);
                 tile.RandomizeTileValue();
                 instantiatedTiles.Add(tile);
             }
@@ -90,6 +99,34 @@ public class TileManager : MonoBehaviour
         return boardState;
     }
 
+    void SetTilesToBoardStateWithAnimation(string[][] boardState, int[] indexesToMakeFall, Vector2[] destinations) 
+    {
+        for (int i = 0; i < boardState.Length; i++)
+        {
+            var rowState = boardState[i];
+            for (int j = 0; j < rowState.Length; j++)
+            {
+                var tileState = rowState[j];
+                var index = Extensions.GetIndexFromTilePosition(j, i, gridSize);
+                if (indexesToMakeFall.Contains(index))
+                {
+                    var destination = destinations[Array.IndexOf(indexesToMakeFall, index)];
+                    if(index < gridSize) // means this is the top row todo: check if this actually works
+                        instantiatedTiles[index].FallFromSky(destination);
+                    else
+                        instantiatedTiles[index].Fall(destination);
+                }
+                else
+                {
+                    // do nothing? i think
+                    // ill keep this here if i think of something, i feel like im missing something
+                }
+                //instantiatedTiles[i * gridSize + j].SetTileValue(tileState);
+            }
+        }
+
+        // TODO: now sort the instantiated list by position, right to left, up to down, like reading
+    }
     void SetTilesToBoardState(string[][] boardState)
     {
         for(int i = 0; i < boardState.Length; i++)
@@ -99,7 +136,6 @@ public class TileManager : MonoBehaviour
             {
                 var tileState = rowState[j];
                 instantiatedTiles[i * gridSize + j].SetTileValue(tileState);
-                // TODO: update position of tiles as well? hm maybe not necessary
             }
         }
     }
@@ -108,6 +144,7 @@ public class TileManager : MonoBehaviour
     {
         foreach (var tile in instantiatedTiles)
         {
+                tile.FallFromSky(tile.transform.localPosition);
             tile.RandomizeTileValue();
         }
     }
@@ -123,10 +160,15 @@ public class TileManager : MonoBehaviour
     public void RemoveSelectedTiles()
     {
         var transientTiles = new List<Tile>();
+        var transientTileIndexes = new List<int>();
+        var destinationTileIndexes = new List<int>();
         for (int i = 0; i < instantiatedTiles.Count; i++) // does it matter if this is going up to down or down to up?
         {
             if (instantiatedTiles[i].selected)
+            {
                 transientTiles.Add(instantiatedTiles[i]);
+                transientTileIndexes.Add(i);
+            }
         }
 
         // randomize BEFORE the shift (and saving of the board state) because the tile location doesnt actually physically change to keep the list in order
@@ -139,18 +181,25 @@ public class TileManager : MonoBehaviour
 
         foreach (var tile in transientTiles)
         {
-            updatedBoardState = ShiftColumnAndReinsertTile(instantiatedTiles.IndexOf(tile), updatedBoardState);
+            int destinationTileIndex = -1;
+            updatedBoardState = ShiftColumnAndReinsertTile(instantiatedTiles.IndexOf(tile), updatedBoardState, out destinationTileIndex);
+            destinationTileIndexes.Add(destinationTileIndex);
         }
 
+        // get destinations
+
         // TODO: then animate this tile falling/update
+
+        //SetTilesToBoardStateWithAnimation(updatedBoardState, transientTileIndexes.ToArray(), destinationTileIndexes.Select(x => TilePositionToLocalPosition(Extensions.GetTilePositionFromIndex(x, gridSize),gridSize)).ToArray()); // then convert via select linq and get pos from destination then the usual number figuring out
 
         SetTilesToBoardState(updatedBoardState);
 
         DeselectAllTiles();
     }
 
-    public string[][] ShiftColumnAndReinsertTile(int tileIndex, string[][] boardState)
+    public string[][] ShiftColumnAndReinsertTile(int tileIndex, string[][] boardState, out int newTileIndex)
     {
+        newTileIndex = -1;
         var tilePosition = Extensions.GetTilePositionFromIndex(tileIndex, gridSize);
         var tileValue = boardState[tilePosition.y][tilePosition.x];
 
@@ -174,6 +223,7 @@ public class TileManager : MonoBehaviour
             if (index.Item2 == -1)
             {
                 boardState[0][index.Item1] = tileValue;
+                newTileIndex = Extensions.GetIndexFromTilePosition(0, index.Item1, gridSize);
             }
             else
             {
@@ -195,12 +245,14 @@ public class TileManager : MonoBehaviour
             return database.GetRandomValidWord();
     }
 
+    // todo: fix as it seems to change the entire randomletterqueue every time, though still works decently
     public string QueuedRandomLetterOfTheAlphabet() // not all that random
     {
-        while(randomLetterQueue.Length < randomLetterQueueLength)
+        while(randomLetterQueue.Length < randomLetterQueueMinLength)
         {
             randomLetterQueue += GetRandomWord();
         }
+
         string randomLetter = randomLetterQueue.Substring(0,1);
         if (randomLetter == "Q" && randomLetterQueue.Substring(0, 2) == "QU")
         {

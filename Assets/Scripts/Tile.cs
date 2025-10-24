@@ -27,6 +27,16 @@ public class Tile : MonoBehaviour
         transform.localScale = Vector3.one;
     }
 
+    public void FallFromSky(Vector2 destination)
+    {
+        transform.localPosition = new Vector2(destination.x, 1500f);
+        LeanTween.moveLocal(gameObject,destination,1f).setEaseInOutCirc(); // TODO: unhardcode this timing
+    }
+    public void Fall(Vector2 destination)
+    {
+        LeanTween.moveLocal(gameObject, destination, 1f).setEaseInOutCirc(); // TODO: unhardcode this timing
+    }
+
     public void RandomizeTileValue()
     {
         //SetTileValue(tileManager.WeightedRandomLetterOfTheAlphabet());
