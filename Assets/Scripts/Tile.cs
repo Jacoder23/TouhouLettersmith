@@ -21,9 +21,10 @@ public class Tile : MonoBehaviour
     public bool selected;
     public TilePosition position;
     // store tile value on its own along with bools for if its on fire, etc.
-    void Start()
+ 
+
+    public void RandomizeTileValue()
     {
-        // placeholder
         SetTileValue(tileManager.WeightedRandomLetterOfTheAlphabet());
     }
 
@@ -71,6 +72,7 @@ public class Tile : MonoBehaviour
 
     public void GameFeelMouseEnter()
     {
+        //Debug.Log(position.x + ", " + position.y);
         LeanTween.scale(this.gameObject, new Vector3(1.1f, 1.1f, 1.1f), 0.25f).setEaseOutQuad();
         LeanTween.rotateLocal(this.gameObject, new Vector3(0f, 0f, -6f), 0.25f).setEaseOutQuad(); // todo: don't hardcode this so it can be a player setting
     }

@@ -8,13 +8,21 @@ public class Cursor : MonoBehaviour
 {
     public TextMeshProUGUI validityIndicator;
     public WordVerification verifier;
+    public TileManager tileManager;
     [Header("Attributes")]
     public List<Tile> wordInProgress;
     public TilePosition cursorPosition;
+    public List<string> letterInProgress;
     // Start is called before the first frame update
     void Start()
     {
         wordInProgress = new List<Tile>();
+        letterInProgress = new List<string>();
+    }
+
+    WordValidity ValidateWord()
+    {
+        return verifier.ValidWord(string.Join("", wordInProgress.Select(x => x.value).ToArray()));
     }
 
     void LateUpdate()
@@ -22,7 +30,7 @@ public class Cursor : MonoBehaviour
         if (wordInProgress.Count == 0)
             validityIndicator.text = "";
         else
-            validityIndicator.text = verifier.ValidWord(string.Join("", wordInProgress.Select(x => x.value).ToArray())).ToString();
+            validityIndicator.text = ValidateWord().ToString();
     }
 
     void UpdateCursorPosition()
@@ -33,6 +41,17 @@ public class Cursor : MonoBehaviour
             cursorPosition = new TilePosition();
 
         //Debug.Log(cursorPosition.x + ", " + cursorPosition.y);
+    }
+
+    public void SubmitWord()
+    {
+        if(ValidateWord() != WordValidity.Invalid)
+        {
+            letterInProgress.Add(string.Join("", wordInProgress.Select(x => x.value).ToArray()));
+            wordInProgress.Clear();
+            tileManager.RemoveSelectedTiles();
+            UpdateCursorPosition();
+        }
     }
 
     public void AddTile(Tile tile)

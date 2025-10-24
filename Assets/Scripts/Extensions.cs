@@ -5,6 +5,54 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 public static class Extensions
 {
+
+    public static TilePosition GetTilePositionFromIndex(int index, int gridSize)
+    {
+        var tilePosition = new TilePosition();
+
+        tilePosition.y = Mathf.FloorToInt((float)index / (float)gridSize);
+        tilePosition.x = index - tilePosition.y * gridSize;
+
+        return tilePosition;
+    }
+    public static int GetIndexFromTilePosition(int x, int y, int gridSize)
+    {
+        if (y < 0)
+            y = 0;
+
+        return x + y * gridSize;
+    }
+
+    // https://stackoverflow.com/a/450250
+    public static void Move<T>(this List<T> list, int oldIndex, int newIndex)
+    {
+        var item = list[oldIndex];
+
+        list.RemoveAt(oldIndex);
+
+        if (newIndex > oldIndex) newIndex--;
+        // the actual index could have shifted due to the removal
+
+        list.Insert(newIndex, item);
+    }
+    public static void Move<T>(this List<T> list, T item, int newIndex)
+    {
+        if (item != null)
+        {
+            var oldIndex = list.IndexOf(item);
+            if (oldIndex > -1)
+            {
+                list.RemoveAt(oldIndex);
+
+                if (newIndex > oldIndex) newIndex--;
+                // the actual index could have shifted due to the removal
+
+                list.Insert(newIndex, item);
+            }
+        }
+
+    }
+
     // https://stackoverflow.com/a/6219488
     private static readonly Regex sWhitespace = new Regex(@"\s+");
     public static string ReplaceWhitespace(string input, string replacement)
@@ -29,6 +77,7 @@ public static class Extensions
             string[] row = array[i];
             output += string.Join(' ', row) + "\n";
         }
+        Debug.Log(output);
     }
 
     //https://stackoverflow.com/q/4670720

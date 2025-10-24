@@ -20,8 +20,12 @@ public class TileManager : MonoBehaviour
     
     string[][] blankBoardState;
     WeightedList<string> weightedRandomAlphabet;
+
+    Vector2 offset;
     void Start()
     {
+        offset = new Vector2((gridSize - 1) * spaceBetweenTiles / 2f, (gridSize + 1) * spaceBetweenTiles / 2f);
+
         InitWeightedAlphabet();
 
         instantiatedTiles = new List<Tile>();
@@ -33,7 +37,7 @@ public class TileManager : MonoBehaviour
             blankBoardState[i] = new string[gridSize];
             for(int j = 0; j < blankBoardState[i].Length; j++)
             {
-                blankBoardState[i][j] = "A";
+                blankBoardState[i][j] = j % 2 == 0 ? "A" : "B";
             }
         }
 
@@ -41,12 +45,11 @@ public class TileManager : MonoBehaviour
 
         currentBoardState = GetBoardStateFromTiles();
 
-        SetTilesToBoardState(currentBoardState);
+        Extensions.DebugLog2DJaggedArray(currentBoardState);
     }
 
     void PopulateTileGrid()
     {
-        Vector2 offset = new Vector2((gridSize - 1) * spaceBetweenTiles / 2f, (gridSize + 1) * spaceBetweenTiles / 2f);
         for (int i = 0; i < gridSize; i++)
         {
             for (int j = 0; j < gridSize; j++)
@@ -58,7 +61,8 @@ public class TileManager : MonoBehaviour
                 tile.transform.localPosition = new Vector2(j * spaceBetweenTiles, (float)(gridSize - i) * spaceBetweenTiles) - offset;
                 tile.position = new TilePosition();
                 tile.position.x = j;
-                tile.position.y = gridSize - i;
+                tile.position.y = i;
+                tile.RandomizeTileValue();
                 instantiatedTiles.Add(tile);
             }
         }
@@ -81,7 +85,6 @@ public class TileManager : MonoBehaviour
 
     void SetTilesToBoardState(string[][] boardState)
     {
-        Extensions.DebugLog2DJaggedArray(boardState);
         for(int i = 0; i < boardState.Length; i++)
         {
             var rowState = boardState[i];
@@ -89,8 +92,81 @@ public class TileManager : MonoBehaviour
             {
                 var tileState = rowState[j];
                 instantiatedTiles[i * gridSize + j].SetTileValue(tileState);
+                // TODO: update position of tiles as well? hm maybe not necessary
             }
         }
+    }
+
+    public void DeselectAllTiles()
+    {
+        foreach (var tile in instantiatedTiles)
+        {
+            tile.selected = false;
+        }
+    }
+
+    public void RemoveSelectedTiles()
+    {
+        var transientTiles = new List<Tile>();
+        for (int i = 0; i < instantiatedTiles.Count; i++) // does it matter if this is going up to down or down to up?
+        {
+            if (instantiatedTiles[i].selected)
+                transientTiles.Add(instantiatedTiles[i]);
+        }
+
+        // randomize BEFORE the shift (and saving of the board state) because the tile location doesnt actually physically change to keep the list in order
+        foreach (var tile in transientTiles)
+        {
+            tile.RandomizeTileValue();
+        }
+
+        var updatedBoardState = GetBoardStateFromTiles();
+
+        foreach (var tile in transientTiles)
+        {
+            updatedBoardState = ShiftColumnAndReinsertTile(instantiatedTiles.IndexOf(tile), updatedBoardState);
+        }
+
+        // TODO: then animate this tile falling/update
+
+        SetTilesToBoardState(updatedBoardState);
+
+        DeselectAllTiles();
+    }
+
+    public string[][] ShiftColumnAndReinsertTile(int tileIndex, string[][] boardState)
+    {
+        var tilePosition = Extensions.GetTilePositionFromIndex(tileIndex, gridSize);
+        var tileValue = boardState[tilePosition.y][tilePosition.x];
+
+        var indexesToShift = new List<(int,int)>();
+
+        for (int i = boardState.Length - 1; i >= 0; i--) // go backwards so as to move the bottom ones first by putting them at the top of the list
+        {
+            for (int j = boardState.Length - 1; j >= 0; j--)
+            {
+                if(j == tilePosition.x && i < tilePosition.y)
+                {
+                    indexesToShift.Add((j,i));
+                }
+            }
+        }
+
+        indexesToShift.Add((tilePosition.x, -1)); // add og to the top
+
+        foreach (var index in indexesToShift)
+        {
+            if (index.Item2 == -1)
+            {
+                boardState[0][index.Item1] = tileValue;
+            }
+            else
+            {
+                boardState[index.Item2 + 1][index.Item1] = boardState[index.Item2][index.Item1];
+            }
+        }
+
+        return boardState;
     }
 
     // just faffed about with the wikipedia letter frequency list
@@ -104,11 +180,11 @@ public class TileManager : MonoBehaviour
     {
         List<WeightedListItem<string>> weightedAlphabet = new()
         {
-            new WeightedListItem<string>("A", 10),
+            new WeightedListItem<string>("A", 12),
             new WeightedListItem<string>("B", 5),
             new WeightedListItem<string>("C", 5),
             new WeightedListItem<string>("D", 6),
-            new WeightedListItem<string>("E", 10),
+            new WeightedListItem<string>("E", 12),
             new WeightedListItem<string>("F", 5),
             new WeightedListItem<string>("G", 5),
             new WeightedListItem<string>("H", 7),
@@ -120,7 +196,7 @@ public class TileManager : MonoBehaviour
             new WeightedListItem<string>("N", 5),
             new WeightedListItem<string>("O", 10),
             new WeightedListItem<string>("P", 7),
-            new WeightedListItem<string>("Q", 2),
+            new WeightedListItem<string>("QU", 2),
             new WeightedListItem<string>("R", 7),
             new WeightedListItem<string>("S", 7),
             new WeightedListItem<string>("T", 9),

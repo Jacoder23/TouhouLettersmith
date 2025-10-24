@@ -15,8 +15,6 @@ public class WordVerification : MonoBehaviour
 
     public WordValidity ValidWord(string word)
     {
-        Debug.Log(database.bonusWords[1]);
-        Debug.Log("Length: " + database.bonusWords[1].Length);
         if (database.bonusWords.Contains(word))
             return WordValidity.Bonus;
         else if (database.validWords.Contains(word))
