@@ -55,7 +55,10 @@ public class TileManager : MonoBehaviour
                 tile.tileManager = this;
                 tile.cursor = cursor;
                 tile.transform.parent = grid;
-                tile.transform.localPosition = new Vector2(j * spaceBetweenTiles,((float)gridSize - i) * spaceBetweenTiles) - offset;
+                tile.transform.localPosition = new Vector2(j * spaceBetweenTiles, (float)(gridSize - i) * spaceBetweenTiles) - offset;
+                tile.position = new TilePosition();
+                tile.position.x = j;
+                tile.position.y = gridSize - i;
                 instantiatedTiles.Add(tile);
             }
         }

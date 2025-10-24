@@ -40,4 +40,38 @@ public static class Extensions
         }
         return destination;
     }
+
+    public static bool ValidTileDestination(TilePosition origin, TilePosition destination, int gridSize)
+    {
+        // TODO: allow for yukari umbrella and okina door upgrades
+
+        // bitboards? nah just figure it out
+
+        if (origin == null)
+            return true;
+
+        if (origin.x == -1 || origin.y == -1)
+            return true;
+
+        if (origin.x == 0 && (destination.x != 0 && destination.x != 1))
+            return false;
+
+        if (origin.x == gridSize && (destination.x != gridSize && destination.x != gridSize - 1))
+            return false;
+
+        if (origin.y == 0 && (destination.y != 0 && destination.y != 1))
+            return false;
+
+        if (origin.y == gridSize && (destination.y != gridSize && destination.y != gridSize - 1))
+            return false;
+
+        if (Mathf.Abs(origin.x - destination.x) > 1)
+            return false;
+
+        if (Mathf.Abs(origin.y - destination.y) > 1)
+            return false;
+
+        // otherwise
+        return true;
+    }
 }

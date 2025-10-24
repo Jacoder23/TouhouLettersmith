@@ -3,17 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-
+public class TilePosition
+{
+    public int x = -1;
+    public int y = -1; // when negative you can start anywhere
+}
 public class Tile : MonoBehaviour
 {
     public TextMeshProUGUI textMeshPro;
     public Image image;
 
-    public string value;
-    bool selected;
-
     public TileManager tileManager;
     public Cursor cursor;
+
+    [Header("Attributes")]
+    public string value;
+    public bool selected;
+    public TilePosition position;
     // store tile value on its own along with bools for if its on fire, etc.
     void Start()
     {
@@ -39,13 +45,28 @@ public class Tile : MonoBehaviour
 
     public void Toggle()
     {
-        selected = cursor.ToggleTile(this);
+        selected = cursor.ToggleTileWithoutIslands(this);
     }
 
     public void ToggleIfMouseHeld()
     {
         if (Input.GetMouseButton(0))
-            Toggle(); // todo: stop the flicker
+            Toggle();
+    }
+    public void ToggleIfValidTile()
+    {
+        if (Extensions.ValidTileDestination(cursor.cursorPosition, position, tileManager.gridSize))
+        {
+            Toggle();
+        }
+    }
+    public void ToggleIfMouseHeldAndValidTile()
+    {
+        if (Extensions.ValidTileDestination(cursor.cursorPosition, position, tileManager.gridSize))
+        {
+            if (Input.GetMouseButton(0))
+                Toggle();
+        }
     }
 
     public void GameFeelMouseEnter()

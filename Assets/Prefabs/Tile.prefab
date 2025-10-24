@@ -230,9 +230,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMeshPro: {fileID: 8510024524478409237}
   image: {fileID: 8510024524625065056}
-  value: 
   tileManager: {fileID: 0}
   cursor: {fileID: 0}
+  value: 
+  selected: 0
 --- !u!61 &6189828205005663059
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -311,7 +312,7 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 8657676275370921975}
           m_TargetAssemblyTypeName: Tile, Assembly-CSharp
-          m_MethodName: ToggleIfMouseHeld
+          m_MethodName: ToggleIfMouseHeldAndValidTile
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -343,7 +344,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8657676275370921975}
           m_TargetAssemblyTypeName: Tile, Assembly-CSharp
-          m_MethodName: Toggle
+          m_MethodName: ToggleIfValidTile
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
