@@ -5,7 +5,6 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 public static class Extensions
 {
-
     public static TilePosition GetTilePositionFromIndex(int index, int gridSize)
     {
         var tilePosition = new TilePosition();

@@ -3,10 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Sirenix.OdinInspector;
+using System;
+
+[Serializable]
 public class TilePosition
 {
+    [ShowInInspector]
     public int x = -1;
+    [ShowInInspector]
     public int y = -1; // when negative you can start anywhere
+
+    // i know this is stupid
+    public override bool Equals(object obj)
+    {
+        return obj is TilePosition position &&
+               x == position.x &&
+               y == position.y;
+    }
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(x, y);
+    }
 }
 public class Tile : MonoBehaviour
 {
@@ -20,21 +38,15 @@ public class Tile : MonoBehaviour
     public string value;
     public bool selected;
     public TilePosition position;
-    // store tile value on its own along with bools for if its on fire, etc.
+    public bool newTile = false;
 
     private void Start()
     {
         transform.localScale = Vector3.one;
     }
-
-    public void FallFromSky(Vector2 destination)
-    {
-        transform.localPosition = new Vector2(destination.x, 1500f);
-        LeanTween.moveLocal(gameObject,destination,1f).setEaseInOutCirc(); // TODO: unhardcode this timing
-    }
     public void Fall(Vector2 destination)
     {
-        LeanTween.moveLocal(gameObject, destination, 1f).setEaseInOutCirc(); // TODO: unhardcode this timing
+        LeanTween.moveLocal(gameObject, destination, 1f).setEaseOutQuint(); // TODO: unhardcode this timing
     }
 
     public void RandomizeTileValue()
