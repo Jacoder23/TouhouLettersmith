@@ -12,6 +12,7 @@ public class TileManager : MonoBehaviour
     public WordDatabase database;
 
     [Header("Settings")]
+    public bool titleScreen = false;
     public int gridSize;
     public float spaceBetweenTiles;
     public int randomLetterQueueMinLength = 20;
@@ -32,6 +33,9 @@ public class TileManager : MonoBehaviour
     Vector2 offset;
     void Start()
     {
+        if (titleScreen)
+            return;
+
         offset = new Vector2((gridSize - 1) * spaceBetweenTiles / 2f, (gridSize + 1) * spaceBetweenTiles / 2f);
 
         InitWeightedAlphabet();
@@ -168,6 +172,7 @@ public class TileManager : MonoBehaviour
 
         foreach (var tile in transientTiles)
         {
+            // todo: i don't think tile positions includes the position of the original selected tile
             List<TilePosition> tilePositions = new List<TilePosition>(); // no need to record origin and destination, we only work one tile at a time so the origin is always one row above (unless its at the top so we use the other fall)
             updatedBoardState = ShiftColumnAndReinsertTile(instantiatedTiles.IndexOf(tile), updatedBoardState, out tilePositions);
             // if this particular column has been shifted 0 times before this shift then only label y 0 as new, shifted 1 before then up to y 1, etc.
@@ -188,6 +193,13 @@ public class TileManager : MonoBehaviour
             }
             timesColumnsHaveBeenShifted[tile.position.x] += 1; // order is important, dont put before the check
         }
+
+        // solution creates a different worse error by turning a visual bug into a gameplay bug AND a different visual bug
+        //foreach(var tile in transientTiles)
+        //{
+        //    tile.Fall(TilePositionToLocalPosition(tile.position, gridSize));
+        //    tile.transform.localPosition = TilePositionToLocalPosition(ShiftTilePositionDown(tile.position, -1), gridSize);
+        //}
 
         // todo: add back in randomization
 

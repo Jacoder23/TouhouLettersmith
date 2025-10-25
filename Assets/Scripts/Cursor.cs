@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Linq;
 using TMPro;
 using UnityEngine.UI.Extensions;
+using UnityEngine.SceneManagement;
 
 public class Cursor : MonoBehaviour
 {
@@ -11,11 +12,19 @@ public class Cursor : MonoBehaviour
     public WordVerification verifier;
     public TileManager tileManager;
     public UILineTextureRenderer line;
+    [Header("Settings")]
+    public bool titleScreen = false;
     [Header("Attributes")]
     public List<Tile> wordInProgress;
     public TilePosition cursorPosition;
     public List<string> letterInProgress;
     // Start is called before the first frame update
+
+    public void TitleScreenStart()
+    {
+        if (titleScreen && CurrentWord() == "LETTERSMITH")
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); // todo: use scene transitions
+    }
     void Start()
     {
         wordInProgress = new List<Tile>();
