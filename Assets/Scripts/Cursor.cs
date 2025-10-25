@@ -22,13 +22,18 @@ public class Cursor : MonoBehaviour
 
     public void TitleScreenStart()
     {
-        if (titleScreen && CurrentWord() == "LETTERSMITH")
+        if (titleScreen && (CurrentWord() == "LETTERSMITH"))
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); // todo: use scene transitions
     }
     void Start()
     {
         wordInProgress = new List<Tile>();
         letterInProgress = new List<string>();
+    }
+    void Update()
+    {
+        if (verifier == null)
+            verifier = FindFirstObjectByType<WordVerification>(); // strangely doesn't work in Start
     }
 
     WordValidity ValidateWord()

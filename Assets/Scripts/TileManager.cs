@@ -60,6 +60,12 @@ public class TileManager : MonoBehaviour
         Extensions.DebugLog2DJaggedArray(currentBoardState);
     }
 
+    void Update()
+    {
+        if (database == null)
+            database = FindFirstObjectByType<WordDatabase>(); // strangely doesn't work in Start
+    }
+
     Vector2 TilePositionToLocalPosition(TilePosition pos, int gridSize)
     {
         return new Vector2(pos.x * spaceBetweenTiles, (float)(gridSize - pos.y) * spaceBetweenTiles) - offset;

@@ -1161,7 +1161,7 @@ MonoBehaviour:
   spaceBetweenTiles: 110
   randomLetterQueueMinLength: 20
   chanceOfBonusWords: 0.25
-  chanceOfActualRandomLetter: 0.15
+  chanceOfActualRandomLetter: 0.07
   chanceOfCurrentGoalWord: 0.7
   randomLetterQueue: 
 --- !u!4 &1406961826
