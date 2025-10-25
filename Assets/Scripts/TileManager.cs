@@ -17,6 +17,7 @@ public class TileManager : MonoBehaviour
     public int randomLetterQueueMinLength = 20;
     public float chanceOfBonusWords = 0.1f;
     public float chanceOfActualRandomLetter = 0.5f;
+    public float chanceOfCurrentGoalWord = 0.5f;
 
     [Header("Preview")]
     public string randomLetterQueue = "";
@@ -244,11 +245,9 @@ public class TileManager : MonoBehaviour
         else
             return database.GetRandomValidWord();
     }
-
-    // todo: fix as it seems to change the entire randomletterqueue every time, though still works decently
     public string QueuedRandomLetterOfTheAlphabet() // not all that random
     {
-        while(randomLetterQueue.Length < randomLetterQueueMinLength)
+        while (randomLetterQueue.Length < randomLetterQueueMinLength)
         {
             randomLetterQueue += GetRandomWord();
         }
@@ -294,7 +293,7 @@ public class TileManager : MonoBehaviour
             new WeightedListItem<string>("N", 5),
             new WeightedListItem<string>("O", 10),
             new WeightedListItem<string>("P", 7),
-            new WeightedListItem<string>("QU", 2),
+            new WeightedListItem<string>("QU", 1),
             new WeightedListItem<string>("R", 7),
             new WeightedListItem<string>("S", 7),
             new WeightedListItem<string>("T", 9),
@@ -303,7 +302,7 @@ public class TileManager : MonoBehaviour
             new WeightedListItem<string>("W", 5),
             new WeightedListItem<string>("X", 2),
             new WeightedListItem<string>("Y", 3),
-            new WeightedListItem<string>("Z", 2),
+            new WeightedListItem<string>("Z", 1),
         };
         weightedRandomAlphabet = new(weightedAlphabet);
     }
