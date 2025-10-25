@@ -19,6 +19,8 @@ MonoBehaviour:
   Sounds: []
   Music:
   - {fileID: 11400000, guid: 144a165ec25d3824c91f41a2d17f82e2, type: 2}
+  - {fileID: 11400000, guid: d591a2e52bc252d4280ef9af8b5595d5, type: 2}
+  - {fileID: 11400000, guid: a1bcfbcaaaabd3f4ea62555b445b6f68, type: 2}
   useCustomNames: 0
   generatedName: Music
   musicEnum: 
@@ -37,4 +39,6 @@ MonoBehaviour:
   - name: 
     files:
     - {fileID: 11400000, guid: 144a165ec25d3824c91f41a2d17f82e2, type: 2}
+    - {fileID: 11400000, guid: d591a2e52bc252d4280ef9af8b5595d5, type: 2}
+    - {fileID: 11400000, guid: a1bcfbcaaaabd3f4ea62555b445b6f68, type: 2}
     foldout: 1

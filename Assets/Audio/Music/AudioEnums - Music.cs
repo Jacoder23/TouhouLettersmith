@@ -1,5 +1,7 @@
     public enum MusicSounds {
     }
     public enum MusicMusic {
-        KogasaTheme
+        KogasaTheme,
+        TitleTheme,
+        DialogueTheme
     }
