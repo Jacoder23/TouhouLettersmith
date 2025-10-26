@@ -1285,7 +1285,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2522117086994339161, guid: 8212cd22b8f0b0b4c8de977bb218b876, type: 3}
       propertyPath: m_text
-      value: SUBMIT
+      value: SMITH
       objectReference: {fileID: 0}
     - target: {fileID: 2522117086994339161, guid: 8212cd22b8f0b0b4c8de977bb218b876, type: 3}
       propertyPath: m_fontSize

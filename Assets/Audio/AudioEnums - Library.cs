@@ -3,7 +3,10 @@
         Lose,
         DialogueBleep,
         DialogueClick,
-        OrchestraHit
+        OrchestraHit,
+        InvalidWord,
+        ValidWord,
+        RainbowWord
     }
     public enum LibraryMusic {
         KogasaTheme,

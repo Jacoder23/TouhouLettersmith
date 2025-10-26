@@ -5,7 +5,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine.UI.Extensions;
 using UnityEngine.SceneManagement;
-
+using JSAM;
 public class Cursor : MonoBehaviour
 {
     public TextMeshProUGUI validityIndicator;
@@ -26,10 +26,14 @@ public class Cursor : MonoBehaviour
 
     public void TitleScreenStart()
     {
-        if (titleScreen && (CurrentWord() == "LETTERSMITH"))
+        if (titleScreen)
         {
-            PlayerPrefs.SetString("NextScene", "VNScene");
-            transition.NextScene();
+            PlayWordSound();
+            if (CurrentWord() == "LETTERSMITH")
+            {
+                PlayerPrefs.SetString("NextScene", "VNScene");
+                transition.NextScene();
+            }
         }
     }
     void Start()
@@ -45,6 +49,12 @@ public class Cursor : MonoBehaviour
 
     WordValidity ValidateWord()
     {
+        if (wordInProgress == null)
+            return WordValidity.Invalid;
+
+        if (wordInProgress.Count == 0)
+            return WordValidity.Invalid;
+
         return verifier.ValidWord(string.Join("", wordInProgress.Select(x => x.value).ToArray()));
     }
 
@@ -73,11 +83,28 @@ public class Cursor : MonoBehaviour
     {
         if(ValidateWord() != WordValidity.Invalid)
         {
+            PlayWordSound();
             letterInProgress.Add(CurrentWord());
             // todo: change animation depending on what's going on
             kogasaAnimation.Play("KogasaHit");
             playingSubmitAnimation = true;
             Invoke("ClearBoard", 1.5f); // todo: unhardcode this? idk how useful itd be to expose to editor since the animation isnt gonna get longer or shorter
+        }
+    }
+
+    void PlayWordSound()
+    {
+        switch (ValidateWord())
+        {
+            case WordValidity.Invalid:
+                AudioManager.PlaySound(LibrarySounds.InvalidWord);
+                break;
+            case WordValidity.Valid:
+                AudioManager.PlaySound(LibrarySounds.ValidWord);
+                break;
+            case WordValidity.Bonus:
+                AudioManager.PlaySound(LibrarySounds.RainbowWord);
+                break;
         }
     }
 
