@@ -78,11 +78,17 @@ public class Tile : MonoBehaviour
 
     public void ToggleIfMouseHeld()
     {
+        if (cursor.playingSubmitAnimation)
+            return;
+
         if (Input.GetMouseButton(0))
             Toggle();
     }
     public void ToggleIfValidTile()
     {
+        if (cursor.playingSubmitAnimation)
+            return;
+
         if (Extensions.ValidTileDestination(cursor.cursorPosition, position, tileManager.gridSize))
         {
             Toggle();
@@ -90,6 +96,9 @@ public class Tile : MonoBehaviour
     }
     public void ToggleIfMouseHeldAndValidTile()
     {
+        if (cursor.playingSubmitAnimation)
+            return;
+
         if (Extensions.ValidTileDestination(cursor.cursorPosition, position, tileManager.gridSize))
         {
             if (Input.GetMouseButton(0))

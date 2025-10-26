@@ -128,6 +128,7 @@ public class TileManager : MonoBehaviour
         {
             tile.RandomizeTileValue();
         }
+        DeselectAllTiles();
     }
 
     public void DeselectAllTiles()

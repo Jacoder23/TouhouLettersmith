@@ -13,12 +13,15 @@ public class Cursor : MonoBehaviour
     public TileManager tileManager;
     public UILineTextureRenderer line;
     public SceneTransition transition;
+    public Animator kogasaAnimation;
+    public ShakeObjects kogasaShake;
     [Header("Settings")]
     public bool titleScreen = false;
     [Header("Attributes")]
     public List<Tile> wordInProgress;
     public TilePosition cursorPosition;
     public List<string> letterInProgress;
+    public bool playingSubmitAnimation = false;
     // Start is called before the first frame update
 
     public void TitleScreenStart()
@@ -71,11 +74,20 @@ public class Cursor : MonoBehaviour
         if(ValidateWord() != WordValidity.Invalid)
         {
             letterInProgress.Add(CurrentWord());
-            wordInProgress.Clear();
-            tileManager.RemoveSelectedTiles();
-            UpdateCursorPosition();
-            UpdateLineRenderer();
+            // todo: change animation depending on what's going on
+            kogasaAnimation.Play("KogasaHit");
+            playingSubmitAnimation = true;
+            Invoke("ClearBoard", 1.5f); // todo: unhardcode this? idk how useful itd be to expose to editor since the animation isnt gonna get longer or shorter
         }
+    }
+
+    public void ClearBoard()
+    {
+        wordInProgress.Clear();
+        tileManager.RemoveSelectedTiles();
+        UpdateCursorPosition();
+        UpdateLineRenderer();
+        playingSubmitAnimation = false;
     }
 
     void UpdateLineRenderer()
