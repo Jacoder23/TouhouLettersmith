@@ -1,6 +1,9 @@
     public enum LibrarySounds {
         Fanfare,
-        Lose
+        Lose,
+        DialogueBleep,
+        DialogueClick,
+        OrchestraHit
     }
     public enum LibraryMusic {
         KogasaTheme,

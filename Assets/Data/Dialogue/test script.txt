@@ -1,0 +1,26 @@
+﻿<hide textbox>
+
+<indicator right>
+
+<music>Dialogue Theme</music>
+
+// do the puppet stuff later
+
+<pause>0.5</pause>
+
+<sound>Orchestra Hit</sound>
+
+KOGASA:	<wave>BOO!</wave>
+		Did I getcha?
+
+<show textbox>
+
+<indicator left>
+
+NUE:	...sure. Let's say you did.
+
+<indicator right>
+
+KOGASA:	Yaaaaay!
+
+END SCENE.
