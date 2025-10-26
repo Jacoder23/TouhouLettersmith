@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 3203348962665134968}
   - component: {fileID: 3203348962665134971}
   - component: {fileID: 3203348962665134975}
+  - component: {fileID: 2175261628123780943}
   m_Layer: 5
   m_Name: ScreenTransitionCanvas
   m_TagString: Untagged
@@ -196,3 +197,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2175261628123780943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3203348962665134970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeff1fa83cbda1743a8a1b8ff6bc5863, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transition: {fileID: 3203348962665134975}

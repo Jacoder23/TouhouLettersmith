@@ -40,7 +40,9 @@ public enum DialogueType
     StopMusic,
     ChangeSpeakerIndicator,
     HideTextbox,
-    ShowTextbox
+    ShowTextbox,
+    ShowProp,
+    HideAllProps
 }
 
 public struct BoolString
@@ -107,8 +109,10 @@ public class DialogueManager : SerializedMonoBehaviour
         {@"<music stop>", DialogueType.StopMusic },
         {@"<indicator .+>", DialogueType.ChangeSpeakerIndicator },
         {@"<hide textbox>", DialogueType.HideTextbox },
-        {@"<show textbox>", DialogueType.ShowTextbox }
-    };
+        {@"<show textbox>", DialogueType.ShowTextbox },
+        {@"<show prop .+>", DialogueType.ShowProp },
+        {@"<hide all>", DialogueType.HideAllProps }
+    }; // i aint even gonna bother with puppets imma just made it toggle on or off preset parents with the chars in em since they dont need to move - 2025
 
     bool dialoguePaused = false;
     int lengthOfConvo;
@@ -330,7 +334,7 @@ public class DialogueManager : SerializedMonoBehaviour
     public Animator transition;
     SceneTransition sceneTransition;
     bool transitioned = false;
-    //public LevelDatabase levels;
+    public LevelDatabase levels;
 
     [ReadOnly]
     public List<Tuple<string, List<DialogueToken>>> definitions = new List<Tuple<string, List<DialogueToken>>>();
@@ -424,10 +428,12 @@ public class DialogueManager : SerializedMonoBehaviour
                             }
                             break;
                         case DialogueType.Level:
-                                // todo: read level data
+                            // todo: read level data
 
-                                //PlayerPrefs.SetString("levelScene", level); // for the UI
-                                //PlayerPrefs.SetString("LevelData", LevelData.ToString());
+                            //PlayerPrefs.SetString("levelScene", level); // for the UI
+                            //PlayerPrefs.SetString("LevelData", LevelData.ToString());
+                            PlayerPrefs.SetString("CurrentLevel", lineData[0].value.Replace("<level>", "").Replace("</level>", "").Trim());
+                            StartLevel();
                             break;
                         case DialogueType.Music:
                             if(!ignoreDelayedContinues) DelayedContinue(0);
@@ -522,6 +528,14 @@ public class DialogueManager : SerializedMonoBehaviour
                             ShowTextbox();
                             if (!ignoreDelayedContinues) DelayedContinue(0);
                             break;
+                        case DialogueType.ShowProp:
+                            ShowProp(lineData[i].value.Replace("<show prop", "").Replace(">", "").Trim());
+                            if (!ignoreDelayedContinues) DelayedContinue(0);
+                            break;
+                        case DialogueType.HideAllProps:
+                            HideAllProps();
+                            if (!ignoreDelayedContinues) DelayedContinue(0);
+                            break;
                     }
                 }
             }
@@ -555,6 +569,20 @@ public class DialogueManager : SerializedMonoBehaviour
         }
     }
 
+    public Dictionary<string, CanvasGroup> props;
+
+    void HideAllProps()
+    {
+        foreach (var prop in props)
+        {
+            prop.Value.alpha = 0f;
+        }
+    }
+
+    void ShowProp(string name)
+    {
+        props[name].alpha = 1;
+    }
     void HideTextbox()
     {
         textBoxCanvasGroup.alpha = 0;
@@ -660,7 +688,7 @@ public class DialogueManager : SerializedMonoBehaviour
     public void StartLevel()
     {
         PlayerPrefs.SetInt("CurrentLine", currentLine - 1);
-        PlayerPrefs.SetString("NextScene", "LevelScene");
+        PlayerPrefs.SetString("NextScene", "SampleScene");
         sceneTransition.NextScene();
         Debug.Log("StartLevel");
     }
@@ -734,12 +762,6 @@ public class DialogueManager : SerializedMonoBehaviour
         convoLineToIndex = new Dictionary<int, int>();
 
         UpdateConvoLineToIndex();
-
-        if (PlayerPrefs.GetInt("CurrentLine") != 0)
-        {
-            Debug.Log("Load last save line...");
-            startingLine = PlayerPrefs.GetInt("CurrentLine");
-        }
 
         SetDialogue(startingLine, true);
         currentLine = startingLine;

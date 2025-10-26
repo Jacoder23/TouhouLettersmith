@@ -22,13 +22,13 @@ public class SceneTransition : MonoBehaviour
 
     public void Start()
     {
-        transition.Play("start");
+        transition.Play("ScreenTransitionEnter");
     }
 
     IEnumerator LoadNextScene()
     {
-        transition.Play("end");
-        yield return new WaitForSeconds(1f);
+        transition.Play("ScreenTransitionExit");
+        yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene(PlayerPrefs.GetString("NextScene"));
     }
 }

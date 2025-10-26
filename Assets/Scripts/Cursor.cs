@@ -12,6 +12,7 @@ public class Cursor : MonoBehaviour
     public WordVerification verifier;
     public TileManager tileManager;
     public UILineTextureRenderer line;
+    public SceneTransition transition;
     [Header("Settings")]
     public bool titleScreen = false;
     [Header("Attributes")]
@@ -23,7 +24,10 @@ public class Cursor : MonoBehaviour
     public void TitleScreenStart()
     {
         if (titleScreen && (CurrentWord() == "LETTERSMITH"))
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); // todo: use scene transitions
+        {
+            PlayerPrefs.SetString("NextScene", "VNScene");
+            transition.NextScene();
+        }
     }
     void Start()
     {

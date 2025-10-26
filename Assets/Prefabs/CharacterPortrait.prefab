@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 4202861112504278585}
   - component: {fileID: 987992041359742566}
   - component: {fileID: 5522530344575240365}
-  - component: {fileID: 4694022821269715267}
+  - component: {fileID: 2249380858772794347}
   m_Layer: 5
   m_Name: CharacterPortrait
   m_TagString: Untagged
@@ -231,117 +231,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterImage: {fileID: 8261770245971754592}
   DropShadow: {fileID: 8261770246555490947}
---- !u!114 &4694022821269715267
-MonoBehaviour:
+--- !u!225 &2249380858772794347
+CanvasGroup:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8345096618490319524}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ba0ceab8dc36445bfce28c752003d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 21300000, guid: 42bf5a4dd10602e4da7f43b2f931e108, type: 3}
-    - {fileID: 21300000, guid: 929ba3afd29121a4d8058c47e3707f63, type: 3}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: expressions
-      Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[UnityEngine.Sprite,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
-        mscorlib]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 2
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 1
-      Data: kogasa
-    - Name: $v
-      Entry: 10
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 1
-      Data: nue
-    - Name: $v
-      Entry: 10
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: backs
-      Entry: 7
-      Data: 2|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[UnityEngine.Sprite,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: comparer
-      Entry: 9
-      Data: 1
-    - Name: 
-      Entry: 12
-      Data: 2
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 1
-      Data: kogasa
-    - Name: $v
-      Entry: 10
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 1
-      Data: nue
-    - Name: $v
-      Entry: 10
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  baseScale: 1
-  spriteOffset: {x: 0, y: 0}
-  currentExpression: kogasa
-  currentBack: kogasa
-  currentLocation: {x: 0, y: 0}
-  back: {fileID: 8261770246555490947}
-  expression: {fileID: 8261770245971754592}
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0

@@ -1,19 +1,27 @@
 ﻿<hide textbox>
 
-<indicator right>
+// do not put hide all on the first line or it won't work
+
+<hide all>
+
+<show prop nue>
+
+<show prop kogasa>
+
+<pause>0.35</pause>
 
 <music>Dialogue Theme</music>
 
 // do the puppet stuff later
 
-<pause>0.5</pause>
-
 <sound>Orchestra Hit</sound>
+
+<show textbox>
+
+<indicator right>
 
 KOGASA:	<wave>BOO!</wave>
 		Did I getcha?
-
-<show textbox>
 
 <indicator left>
 
@@ -22,5 +30,9 @@ NUE:	...sure. Let's say you did.
 <indicator right>
 
 KOGASA:	Yaaaaay!
+
+<music stop>
+
+<level>test</level>
 
 END SCENE.
