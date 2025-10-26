@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8261770245971754593}
   - component: {fileID: 8261770245971754592}
   m_Layer: 5
-  m_Name: DropShadow
+  m_Name: CharacterImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 8261770246555490947}
   - component: {fileID: 8261770246555490946}
   m_Layer: 5
-  m_Name: CharacterImage
+  m_Name: DropShadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -228,5 +228,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0706f5ba23e3ce41b855f41f5013ee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharacterImage: {fileID: 8261770246555490947}
-  DropShadow: {fileID: 8261770245971754592}
+  CharacterImage: {fileID: 8261770245971754592}
+  DropShadow: {fileID: 8261770246555490947}
