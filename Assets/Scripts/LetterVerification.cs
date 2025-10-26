@@ -14,7 +14,7 @@ public class LetterVerification : MonoBehaviour
     {
         if (PlayerPrefs.GetString("CurrentLevel").Length != 0)
         {
-            letterFile = database.nameToLevelData[PlayerPrefs.GetString("CurrentLevel")].letterFile;
+            letterFile = database.GetCurrentLevel().letterFile;
             letter = letterFile.text.ToUpper().Split(',').ToList();
             nextWord = letter[0];
         }

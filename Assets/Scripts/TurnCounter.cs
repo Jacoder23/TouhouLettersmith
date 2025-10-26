@@ -1,0 +1,28 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using JSAM;
+public class TurnCounter : MonoBehaviour
+{
+    public LevelDatabase database;
+    [SerializeField] private int maxTurns = 999;
+    public int turns = 1;
+    public void Start()
+    {
+        if (PlayerPrefs.GetString("CurrentLevel").Length != 0)
+        {
+            maxTurns = database.GetCurrentLevel().maxTurns;
+        }
+        turns = 1;
+    }
+
+    public void Turn()
+    {
+        turns++;
+
+        if(turns > maxTurns)
+        {
+            // todo: lose
+        }
+    }
+}

@@ -10,10 +10,17 @@ public struct LevelData
 {
     //public int turnLimit; // todo: add this after the jam for "endless" mode?
     public TextAsset letterFile;
+    public TextAsset winDialogue;
+    public int maxTurns;
 }
 public class LevelDatabase : SerializedMonoBehaviour
 {
     public Dictionary<string, LevelData> nameToLevelData;
 
     // load data
+
+    public LevelData GetCurrentLevel()
+    {
+        return nameToLevelData[PlayerPrefs.GetString("CurrentLevel")];
+    }
 }

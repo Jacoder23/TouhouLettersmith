@@ -166,6 +166,8 @@ public class TileManager : MonoBehaviour
             {
                 transientTiles.Add(instantiatedTiles[i]);
                 transientTileIndexes.Add(i);
+                instantiatedTiles[i].Fall(instantiatedTiles[i].transform.localPosition);
+                instantiatedTiles[i].transform.localPosition = new Vector2(instantiatedTiles[i].transform.localPosition.x, instantiatedTiles[i].transform.localPosition.y + spaceBetweenTiles);
             }
         }
 

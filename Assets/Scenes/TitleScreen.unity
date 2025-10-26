@@ -3185,15 +3185,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: START
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: eb48d788cf3893d4e8e6a67ac9e9ebfa, type: 2}
-  m_sharedMaterial: {fileID: 672892139684345833, guid: eb48d788cf3893d4e8e6a67ac9e9ebfa, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 941228877a9d4e9428ebf26a4fb09198, type: 2}
+  m_sharedMaterial: {fileID: -3039760097137866235, guid: 941228877a9d4e9428ebf26a4fb09198, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4290879397
-  m_fontColor: {r: 0.64705884, g: 0.62352943, b: 0.75686276, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
