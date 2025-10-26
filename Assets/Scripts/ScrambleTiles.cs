@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
+using JSAM;
 public class ScrambleTiles : MonoBehaviour
 {
     public TileManager tileManager;
@@ -13,5 +13,7 @@ public class ScrambleTiles : MonoBehaviour
         tileManager.ScrambleAllTiles();
         tileManager.DeselectAllTiles();
         cursor.ClearBoard();
+
+        JSAM.AudioManager.PlaySound(LibrarySounds.Scramble);
     }
 }

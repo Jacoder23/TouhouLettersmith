@@ -375,8 +375,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Hold CTRL to skip
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f7eaa61d217aa9941989c4f9a546ae0c, type: 2}
-  m_sharedMaterial: {fileID: 4597526872940473943, guid: f7eaa61d217aa9941989c4f9a546ae0c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: eb48d788cf3893d4e8e6a67ac9e9ebfa, type: 2}
+  m_sharedMaterial: {fileID: 672892139684345833, guid: eb48d788cf3893d4e8e6a67ac9e9ebfa, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1614,6 +1614,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 766926760672749695}
     m_Modifications:
+    - target: {fileID: 7334401908005743948, guid: 5caae6b4baefd6c4d978cfba632be52b, type: 3}
+      propertyPath: m_fontSize
+      value: 54.25
+      objectReference: {fileID: 0}
     - target: {fileID: 7334401909426626592, guid: 5caae6b4baefd6c4d978cfba632be52b, type: 3}
       propertyPath: m_Name
       value: TextBox

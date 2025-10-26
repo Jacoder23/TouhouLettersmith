@@ -9,7 +9,8 @@
         RainbowWord,
         Impact,
         PrepareSwing,
-        Whoosh
+        Whoosh,
+        Scramble
     }
     public enum LibraryMusic {
         KogasaTheme,
