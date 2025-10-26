@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: L
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 047438413bb649e479e0f37d8ec7c0d2, type: 2}
-  m_sharedMaterial: {fileID: 7586623819350628783, guid: 047438413bb649e479e0f37d8ec7c0d2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f7eaa61d217aa9941989c4f9a546ae0c, type: 2}
+  m_sharedMaterial: {fileID: 4597526872940473943, guid: f7eaa61d217aa9941989c4f9a546ae0c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -203,8 +203,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: L
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 047438413bb649e479e0f37d8ec7c0d2, type: 2}
-  m_sharedMaterial: {fileID: 7586623819350628783, guid: 047438413bb649e479e0f37d8ec7c0d2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f7eaa61d217aa9941989c4f9a546ae0c, type: 2}
+  m_sharedMaterial: {fileID: 4597526872940473943, guid: f7eaa61d217aa9941989c4f9a546ae0c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -338,8 +338,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: L
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 047438413bb649e479e0f37d8ec7c0d2, type: 2}
-  m_sharedMaterial: {fileID: 7586623819350628783, guid: 047438413bb649e479e0f37d8ec7c0d2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f7eaa61d217aa9941989c4f9a546ae0c, type: 2}
+  m_sharedMaterial: {fileID: 4597526872940473943, guid: f7eaa61d217aa9941989c4f9a546ae0c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -473,8 +473,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: L
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 047438413bb649e479e0f37d8ec7c0d2, type: 2}
-  m_sharedMaterial: {fileID: 7586623819350628783, guid: 047438413bb649e479e0f37d8ec7c0d2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f7eaa61d217aa9941989c4f9a546ae0c, type: 2}
+  m_sharedMaterial: {fileID: 4597526872940473943, guid: f7eaa61d217aa9941989c4f9a546ae0c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -567,7 +567,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3444919770241159144}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

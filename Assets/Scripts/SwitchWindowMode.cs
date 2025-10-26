@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class SwitchWindowMode : MonoBehaviour
 {
     public void ToggleFullscreen()
