@@ -127,8 +127,9 @@ public class Cursor : MonoBehaviour
 
     public void AddTile(Tile tile)
     {
-        if (wordInProgress.Count == 0)
+        if (wordInProgress.Count == 0 && !titleScreen)
             kogasaAnimation.Play("KogasaPrepare");
+
         wordInProgress.Add(tile);
         UpdateCursorPosition();
         UpdateLineRenderer();
@@ -138,8 +139,9 @@ public class Cursor : MonoBehaviour
 
     public void RemoveTile(Tile tile)
     {
-        if (wordInProgress.Count == 1)
+        if (wordInProgress.Count == 1 && !titleScreen)
             kogasaAnimation.Play("KogasaDoNothing");
+
         wordInProgress.Remove(tile);
         UpdateCursorPosition();
         UpdateLineRenderer();

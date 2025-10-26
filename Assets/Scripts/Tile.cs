@@ -46,7 +46,7 @@ public class Tile : MonoBehaviour
     }
     public void Fall(Vector2 destination)
     {
-        LeanTween.moveLocal(gameObject, destination, 1f).setEaseOutQuint().setDelay(UnityEngine.Random.Range(0f, 0.15f)); // TODO: unhardcode this timing
+        LeanTween.moveLocal(gameObject, destination, 1f).setEaseOutQuint().setDelay(UnityEngine.Random.Range(0f, 0.05f)); // TODO: unhardcode this timing
         // random so its not too orderly
     }
 
