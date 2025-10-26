@@ -81,9 +81,9 @@ public class Cursor : MonoBehaviour
 
     public void SubmitWord()
     {
-        if(ValidateWord() != WordValidity.Invalid)
+        PlayWordSound();
+        if (ValidateWord() != WordValidity.Invalid)
         {
-            PlayWordSound();
             letterInProgress.Add(CurrentWord());
             // todo: change animation depending on what's going on
             kogasaAnimation.Play("KogasaHit");
@@ -127,6 +127,8 @@ public class Cursor : MonoBehaviour
 
     public void AddTile(Tile tile)
     {
+        if (wordInProgress.Count == 0)
+            kogasaAnimation.Play("KogasaPrepare");
         wordInProgress.Add(tile);
         UpdateCursorPosition();
         UpdateLineRenderer();
@@ -136,6 +138,8 @@ public class Cursor : MonoBehaviour
 
     public void RemoveTile(Tile tile)
     {
+        if (wordInProgress.Count == 1)
+            kogasaAnimation.Play("KogasaDoNothing");
         wordInProgress.Remove(tile);
         UpdateCursorPosition();
         UpdateLineRenderer();

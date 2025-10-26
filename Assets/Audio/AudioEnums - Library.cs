@@ -6,7 +6,10 @@
         OrchestraHit,
         InvalidWord,
         ValidWord,
-        RainbowWord
+        RainbowWord,
+        Impact,
+        PrepareSwing,
+        Whoosh
     }
     public enum LibraryMusic {
         KogasaTheme,

@@ -28,7 +28,7 @@ public class ToggleFont : MonoBehaviour
         UpdateFonts();
     }
 
-    void UpdateFonts()
+    public void UpdateFonts()
     {
         if (PlayerPrefs.GetInt("useAlternateFont") == 1)
         {

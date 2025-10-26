@@ -10,6 +10,7 @@ public class TileManager : MonoBehaviour
     public Transform grid;
     public Cursor cursor;
     public WordDatabase database;
+    public ToggleFont fontSettings;
 
     [Header("Settings")]
     public bool titleScreen = false;
@@ -92,6 +93,7 @@ public class TileManager : MonoBehaviour
                 instantiatedTiles.Add(tile);
             }
         }
+        fontSettings.UpdateFonts();
     }
 
     string[][] GetBoardStateFromTiles()

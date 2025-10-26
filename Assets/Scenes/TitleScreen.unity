@@ -1794,6 +1794,7 @@ MonoBehaviour:
   grid: {fileID: 1402797970}
   cursor: {fileID: 896578765}
   database: {fileID: 1477988384}
+  fontSettings: {fileID: 9081404030006101066}
   titleScreen: 1
   gridSize: 7
   spaceBetweenTiles: 110
@@ -2888,7 +2889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34bcae4c70691c149903b0200764434f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wordList: {fileID: 4900000, guid: b11a8f6941eb3e7419bed3263180232d, type: 3}
+  wordList: {fileID: 4900000, guid: aa205a43d35e1ed46a6a1075f6236426, type: 3}
   bonusWordList: {fileID: 4900000, guid: cc63cc72c3a96c34ea40fa1a8199934d, type: 3}
   validWords: []
   bonusWords: []
@@ -3796,3 +3797,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47ebc1dcec3551b4583f4bdd41c075bd, type: 3}
+--- !u!114 &9081404030006101066 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2429111129485248413, guid: 47ebc1dcec3551b4583f4bdd41c075bd, type: 3}
+  m_PrefabInstance: {fileID: 9081404030006101065}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ba9385c16a4995458de0983e09df6a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
