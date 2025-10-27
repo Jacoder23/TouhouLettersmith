@@ -6,14 +6,15 @@ using UnityEngine.UI;
 using Sirenix.OdinInspector;
 using System;
 
-public enum TileTypes
+public enum TileType
 {
     Normal,
     Rainbow,
     Fire,
     Bomb,
     Stone,
-    Drunken
+    Drunken,
+    SnowballRainbow // temporary for a turn
 }
 
 [Serializable]
@@ -44,11 +45,14 @@ public class Tile : MonoBehaviour
     public TileManager tileManager;
     public Cursor cursor;
 
+    public Animator animator;
+
     [Header("Attributes")]
     public string value;
     public bool selected;
     public TilePosition position;
     public bool newTile = false;
+    public TileType type;
 
     private void Start()
     {
@@ -74,6 +78,36 @@ public class Tile : MonoBehaviour
             image.color = Color.gray;
         else
             image.color = Color.white;
+    }
+
+    [Button]
+    public void ChangeTileType(TileType newType)
+    {
+        type = newType;
+        switch (type)
+        {
+            case TileType.Normal:
+                animator.Play("Normal");
+                break;
+            case TileType.Rainbow:
+                animator.Play("Rainbow");
+                break;
+            case TileType.Fire:
+                animator.Play("Fire");
+                break;
+            case TileType.Bomb:
+                animator.Play("Bomb");
+                break;
+            case TileType.Stone:
+                animator.Play("Stone");
+                break;
+            case TileType.Drunken:
+                animator.Play("Drunken");
+                break;
+            case TileType.SnowballRainbow:
+                animator.Play("Rainbow");
+                break;
+        }
     }
 
     public void SetTileValue(string text)

@@ -27,7 +27,7 @@ public class TileManager : MonoBehaviour
     [Header("Preview")]
     public string randomLetterQueue = "";
 
-    List<Tile> instantiatedTiles;
+    public List<Tile> instantiatedTiles;
     string[][] currentBoardState; // encode in each string extra data like what about the other things
     // format: X010101 with each 0/1 showing if it's a special tile type or not, theoretically allows combinations of tile types but that's out of scope
     
@@ -105,6 +105,8 @@ public class TileManager : MonoBehaviour
                 tile.position.x = j;
                 tile.position.y = i;
                 tile.RandomizeTileValue();
+                // todo: logic for tile type selection
+                tile.type = TileType.Normal;
                 instantiatedTiles.Add(tile);
             }
         }
@@ -153,6 +155,31 @@ public class TileManager : MonoBehaviour
         foreach (var tile in instantiatedTiles)
         {
             tile.selected = false;
+        }
+    }
+
+    public void UpdateSpecialTiles()
+    {
+        foreach(var tile in instantiatedTiles)
+        {
+            switch (tile.type)
+            {
+                case TileType.Normal:
+                    break;
+                case TileType.Rainbow:
+                    break;
+                case TileType.Fire:
+                    break;
+                case TileType.Bomb:
+                    break;
+                case TileType.Stone:
+                    break;
+                case TileType.Drunken:
+                    break;
+                case TileType.SnowballRainbow:
+                    tile.ChangeTileType(TileType.Normal);
+                    break;
+            }
         }
     }
 

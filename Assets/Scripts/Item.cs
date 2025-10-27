@@ -1,0 +1,27 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Item : MonoBehaviour
+{
+    public TileManager tileManager;
+    public CanvasGroup itemCanvas;
+
+    // TODO: add other items later
+
+    public void Snowball()
+    {
+        // Cirno's snowball: Turn all the fire tiles on the board into rainbow tiles. After a turn, they thaw into normal tiles.
+        foreach(var tile in tileManager.instantiatedTiles)
+        {
+            if(tile.type == TileType.Fire)
+            {
+                tile.ChangeTileType(TileType.SnowballRainbow);
+            }
+            // used up
+            itemCanvas.alpha = 0f;
+            itemCanvas.interactable = false;
+            itemCanvas.blocksRaycasts = false;
+        }
+    }
+}

@@ -133,6 +133,7 @@ public class Cursor : MonoBehaviour
             turnCounter.Turn();
         wordInProgress.Clear();
         tileManager.RemoveSelectedTiles();
+        tileManager.UpdateSpecialTiles();
         UpdateCursorPosition();
         UpdateLineRenderer();
         playingSubmitAnimation = false;
