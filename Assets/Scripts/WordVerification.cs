@@ -15,6 +15,9 @@ public class WordVerification : MonoBehaviour
 
     public WordValidity ValidWord(string word)
     {
+        if(word == null)
+            return WordValidity.Invalid;
+
         if (database.bonusWords.Contains(word))
             return WordValidity.Bonus;
         else if (database.validWords.Contains(word))

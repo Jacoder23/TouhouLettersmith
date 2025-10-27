@@ -28,6 +28,11 @@ public class WordDatabase : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    public List<string> CombinedList()
+    {
+        return validWords.Concat(bonusWords).ToList();
+    }
+
     void InitializeWordList()
     {
         validWords = wordList.text.ToUpper().Split(',').ToList();

@@ -72,8 +72,12 @@ public class Tile : MonoBehaviour
 
     void Update()
     {
-        //if(selected)
-        // todo: add effect
+        //tile value is the same but displayed differently
+        if (type == TileType.Rainbow)
+            textMeshPro.text = "?";
+        else
+            textMeshPro.text = value;
+
         if(selected)
             image.color = Color.gray;
         else

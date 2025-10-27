@@ -5,6 +5,11 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 public static class Extensions
 {
+    public static string CharArrayToString(char[] chars)
+    {
+        string str = new string(chars);
+        return str;
+    }
     public static TilePosition GetTilePositionFromIndex(int index, int gridSize)
     {
         var tilePosition = new TilePosition();
@@ -59,7 +64,7 @@ public static class Extensions
         return sWhitespace.Replace(input, replacement);
     }
 
-    const string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    public const string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     public static string RandomLetterOfTheAlphabet()
     {

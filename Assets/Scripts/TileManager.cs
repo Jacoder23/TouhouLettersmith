@@ -35,6 +35,7 @@ public class TileManager : MonoBehaviour
     WeightedList<string> weightedRandomAlphabet;
 
     Vector2 offset;
+    bool nextTileRainbow;
     void Start()
     {
         if (titleScreen)
@@ -198,6 +199,14 @@ public class TileManager : MonoBehaviour
         return position;
     }
 
+
+    public void TileTypeSelection()
+    {
+        // on randomization, new tiles
+        // starts off blank on the tile populate
+        // probably shuffle position on shuffle but keep amount
+    }
+
     public void RemoveSelectedTiles()
     {
         var transientTiles = new List<Tile>();
@@ -206,6 +215,8 @@ public class TileManager : MonoBehaviour
         {
             if (instantiatedTiles[i].selected)
             {
+                // todo: remove their special typing
+                instantiatedTiles[i].type = TileType.Normal;
                 transientTiles.Add(instantiatedTiles[i]);
                 transientTileIndexes.Add(i);
                 instantiatedTiles[i].Fall(instantiatedTiles[i].transform.localPosition);

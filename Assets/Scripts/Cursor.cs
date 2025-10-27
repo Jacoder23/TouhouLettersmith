@@ -6,10 +6,13 @@ using TMPro;
 using UnityEngine.UI.Extensions;
 using UnityEngine.SceneManagement;
 using JSAM;
+using System.Text.RegularExpressions;
+
 public class Cursor : MonoBehaviour
 {
     public TextMeshProUGUI validityIndicator;
     public WordVerification verifier;
+    WordDatabase database;
     public TileManager tileManager;
     public UILineTextureRenderer line;
     public SceneTransition transition;
@@ -42,6 +45,7 @@ public class Cursor : MonoBehaviour
     }
     void Start()
     {
+        database = verifier.GetComponent<WordDatabase>();
         wordInProgress = new List<Tile>();
         letterInProgress = new List<string>();
     }
@@ -53,18 +57,128 @@ public class Cursor : MonoBehaviour
 
     WordValidity ValidateWord()
     {
+        // todo: rainbow
+        // just loop for each rainbow, go through 26 letters and nest/recurse to try every combination
+        // this may wreck computers with enough rainbow tiles
         if (wordInProgress == null)
             return WordValidity.Invalid;
 
         if (wordInProgress.Count == 0)
             return WordValidity.Invalid;
 
-        return verifier.ValidWord(string.Join("", wordInProgress.Select(x => x.value).ToArray()));
+        if (wordInProgress.Any(x => x.type == TileType.Rainbow))
+        {
+            var word = new List<string>();
+            int numOfWildcards = 0;
+            foreach (var tile in wordInProgress)
+            {
+                if (tile.type == TileType.Rainbow)
+                {
+                    word.Add("?");
+                    numOfWildcards++;
+                }
+                else
+                {
+                    word.Add(tile.value);
+                }
+            }
+
+            var wildcards = new List<int>();
+            var validity = verifier.ValidWord(SearchForValidWord(string.Join(string.Empty, word), out wildcards));
+
+            int i = 0;
+
+            foreach (var tile in wordInProgress)
+            {
+                if (tile.type == TileType.Rainbow)
+                {
+                    tile.SetTileValue(Extensions.alphabet[wildcards[i]].ToString());
+                    i++;
+                }
+            }
+            return validity;
+        }
+        else
+        {
+            return verifier.ValidWord(string.Join("", wordInProgress.Select(x => x.value).ToArray()));
+        }
+    }
+
+    // todo: if its the same length as the goal word then try to manually calc if its possible, get the difference between the two strings and if the only difference is the ? then its a match
+    string SearchForValidWord(string originalWord, out List<int> wildcardValues, char[] candidateWord = null)
+    {
+        if(candidateWord == null)
+        {
+            candidateWord = originalWord.Replace('?', 'A').ToCharArray();
+        }
+
+        wildcardValues = new List<int>();
+
+        for (int i = 0; i < originalWord.Length; i++)
+        {
+            if (originalWord[i] == '?')
+                wildcardValues.Add(Extensions.alphabet.IndexOf(candidateWord[i]));
+        }
+
+        // increment, carry if over 26
+
+        wildcardValues[0]++;
+
+        for (int i = 0; i < wildcardValues.Count; i++)
+        {
+            // means we tried everything and got nothing
+            if (wildcardValues.Last() > 25)
+            {
+                wildcardValues[wildcardValues.Count - 1] = 25;
+                return null;
+            }
+
+            if (wildcardValues[i] > 25)
+            {
+                wildcardValues[i] = 0;
+                wildcardValues[i + 1]++;
+            }
+        }
+
+        // convert back to string then call again if not valid
+
+        int j = 0;
+
+        for (int i = 0; i < originalWord.Length; i++)
+        {
+            if (originalWord[i] == '?') {
+                candidateWord[i] = Extensions.alphabet[wildcardValues[j]];
+                j++;
+            }
+        }
+
+        if (verifier.ValidWord(Extensions.CharArrayToString(candidateWord)) != WordValidity.Invalid)
+        {
+            // edit the tile value
+            return Extensions.CharArrayToString(candidateWord);
+        }
+        else
+        {
+            return SearchForValidWord(originalWord, out wildcardValues, candidateWord);
+        }
+
+        // base 26 its a base 26 number
+        // an int[]
+        // if all the tiles are rainbow then just select one word of that length
+        // break upon finding one should cut down on that 8 trillion
     }
 
     string CurrentWord()
     {
-        return string.Join("", wordInProgress.Select(x => x.value).ToArray());
+        // display with ?
+        if (wordInProgress.Any(x => x.type == TileType.Rainbow))
+        {
+            return string.Join("", wordInProgress.Select(x => x.value).ToArray());
+        }
+        else
+        {
+            return string.Join("", wordInProgress.Select(x => x.value).ToArray());
+        }
     }
 
     void LateUpdate()
@@ -205,8 +319,8 @@ public class Cursor : MonoBehaviour
 
     void UpdateIndicator()
     {
+        var validity = ValidateWord(); // must come before the text is updated due to rainbow tiles
         validityIndicator.text = CurrentWord();
-        var validity = ValidateWord();
 
         if (validity == WordValidity.Invalid)
         {
