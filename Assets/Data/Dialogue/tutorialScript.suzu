@@ -1,0 +1,92 @@
+// pretty sure the first line is always ignored unless its like a pause or dialogue
+// something to fix sometime
+// using tab before a line does not work
+
+<indicator hide>
+
+<indicator hide>
+
+<hide textbox>
+
+<hide all>
+
+<pause>1.5</pause>
+
+<show textbox>
+
+<show prop kogasa>
+
+<show prop daiyousei>
+
+<indicator right>
+KOGASA: Here we are. This is <b>THE FORGE</b>.
+
+<indicator left>
+DAIYOUSEI: Woah.
+
+<indicator right>
+KOGASA: Let me show you how to use it!
+
+<indicator hide>
+ : <i>Click or drag over tiles to connect them.</i>
+ 
+ : <i>Hit SMITH to complete them.</i>
+
+<disable until next turn> // jank but if it works
+ 
+ : <i>Before you run out of turns, complete Daiyousei's request by spelling out the next word in her letter.</i>
+ 
+<disable until next turn> 
+
+ : <i>Valid words will turn white while bonus words will turn rainbow.</i>
+ 
+ : <i>Bonus words includes words like REIMU, MARISA, and GENSOKYO.</i>
+  
+ : <i>These words award you with rainbow tiles.</i>
+
+ : <i>Rainbow tiles can be used in place of any other letter.</i>
+
+<indicator left>
+DAIYOUSEI: But how do you put a rainbow in a metal tile?
+
+<indicator right>
+KOGASA: That's the power of this super-duper special forge! It can do so many special things.
+It's also why it keeps spitting out so many super-duper special mistakes...
+
+<indicator hide>
+ : <i>Other special tiles are usually much more of a hindrance than a help. Find out on your own what they do.
+
+<indicator right>
+KOGASA: Or read the guide. I wrote one for anyone visiting.
+
+<indicator left>
+DAIYOUSEI: Maybe...
+ 
+<disable until next turn> 
+
+<indicator right>
+KOGASA: I think that's it for the explanations.
+There's other stuff. Sometimes, I get to use special items to improve what I'm forging.
+But that stuff isn't exactly easy to come by...
+
+<indicator left>
+DAIYOUSEI: Well, if I ever find any special items I'll be sure to give you some!
+
+<indicator right>
+KOGASA: Aw, you shouldn't!
+
+<indicator left>
+DAIYOUSEI: Oh, I guess I won't then.
+
+<indicator right>
+KOGASA: ...darn.
+
+<indicator hide>
+ 
+ : <i>If you ever get stuck, hit SCRAMBLE. This uses up a turn but can get you out of a sticky situation.</i>
+
+ : <i>You can handle the rest. Complete Daiyousei's letter.</i>
+
+<disable self>
+
+END SCENE.

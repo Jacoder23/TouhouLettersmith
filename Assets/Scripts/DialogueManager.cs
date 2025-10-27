@@ -42,7 +42,9 @@ public enum DialogueType
     HideTextbox,
     ShowTextbox,
     ShowProp,
-    HideAllProps
+    HideAllProps,
+    DisableSelf,
+    DisableUntilNextTurn
 }
 
 public struct BoolString
@@ -111,7 +113,9 @@ public class DialogueManager : SerializedMonoBehaviour
         {@"<hide textbox>", DialogueType.HideTextbox },
         {@"<show textbox>", DialogueType.ShowTextbox },
         {@"<show prop .+>", DialogueType.ShowProp },
-        {@"<hide all>", DialogueType.HideAllProps }
+        {@"<hide all>", DialogueType.HideAllProps },
+        {@"<disable self>", DialogueType.DisableSelf },
+        {@"<disable until next turn>", DialogueType.DisableUntilNextTurn }
     }; // i aint even gonna bother with puppets imma just made it toggle on or off preset parents with the chars in em since they dont need to move - 2025
 
     bool dialoguePaused = false;
@@ -131,8 +135,26 @@ public class DialogueManager : SerializedMonoBehaviour
 
     public List<IsTouchingMouse> blockers;
 
+    public bool inGameplayScene = false;
+    public LevelDatabase database;
+    public TextAsset tutorialScript;
+    public CanvasGroup dialogueCanvasGroup;
+
     void Start()
     {
+        if (inGameplayScene)
+        {
+            if (!database.GetCurrentLevel().playTutorial)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            mainStory = tutorialScript;
+
+            Debug.Log(mainStory.text); // one of those "i swear to god it doesnt work without this" sigh, idk anymore
+        }
+
         textBoxAnimator = textBox.GetComponent<TextAnimator_TMP>();
 
         sceneTransition = transition.GetComponent<SceneTransition>();
@@ -148,6 +170,17 @@ public class DialogueManager : SerializedMonoBehaviour
     public void Toggle()
     {
         dialoguePaused = !dialoguePaused;
+    }
+    public void Unpause()
+    {
+        // hack way to do this but oh well
+        Invoke("ContinueDialogue", 1f);
+    }
+    public void ContinueDialogue()
+    {
+        dialoguePaused = false;
+        dialogueCanvasGroup.alpha = 1.0f;
+        dialogueCanvasGroup.blocksRaycasts = true;
     }
 
     // Update is called once per frame
@@ -346,6 +379,8 @@ public class DialogueManager : SerializedMonoBehaviour
     Tuple<string, List<DialogueToken>> currentDefinition;
     [SerializeField, ReadOnly]
     bool creatingDefinition;
+
+    [HideInInspector] public bool unpauseOnNextTurn;
     public void SetDialogue(int line, bool firstTimeLoading = false)
     {
         if (line > lengthOfConvo)
@@ -539,6 +574,16 @@ public class DialogueManager : SerializedMonoBehaviour
                             break;
                         case DialogueType.HideAllProps:
                             HideAllProps();
+                            if (!ignoreDelayedContinues) DelayedContinue(0);
+                            break;
+                        case DialogueType.DisableSelf:
+                            Destroy(gameObject); // todo: do this in a smarter way
+                            break;
+                        case DialogueType.DisableUntilNextTurn:
+                            dialoguePaused = true;
+                            unpauseOnNextTurn = true;
+                            dialogueCanvasGroup.alpha = 0f;
+                            dialogueCanvasGroup.blocksRaycasts = false;
                             if (!ignoreDelayedContinues) DelayedContinue(0);
                             break;
                     }

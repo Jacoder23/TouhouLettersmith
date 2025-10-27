@@ -104,6 +104,9 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: playTutorial
+      Entry: 5
+      Data: false
     - Name: 
       Entry: 8
       Data: 
@@ -146,6 +149,9 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: playTutorial
+      Entry: 5
+      Data: true
     - Name: 
       Entry: 8
       Data: 

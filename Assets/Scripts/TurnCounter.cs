@@ -9,6 +9,8 @@ public class TurnCounter : MonoBehaviour
     [SerializeField] private int maxTurns = 999;
     public int turns = 1;
     public TextMeshProUGUI indicator;
+    public DialogueManager dialogueManager;
+    public bool tutorial;
     public void Start()
     {
         if (PlayerPrefs.GetString("CurrentLevel").Length != 0)
@@ -29,5 +31,13 @@ public class TurnCounter : MonoBehaviour
         }
 
         indicator.text = (maxTurns - turns) + " TURNS LEFT";
+        if (tutorial)
+        {
+            if (dialogueManager.unpauseOnNextTurn)
+            {
+                dialogueManager.unpauseOnNextTurn = false;
+                dialogueManager.Unpause();
+            }
+        }
     }
 }
