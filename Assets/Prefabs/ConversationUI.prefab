@@ -2392,6 +2392,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 766926760672749695}
     m_Modifications:
+    - target: {fileID: 2803168019079197448, guid: 5caae6b4baefd6c4d978cfba632be52b, type: 3}
+      propertyPath: m_IgnoreParentGroups
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848953625680330448, guid: 5caae6b4baefd6c4d978cfba632be52b, type: 3}
+      propertyPath: m_IgnoreParentGroups
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7334401908005743948, guid: 5caae6b4baefd6c4d978cfba632be52b, type: 3}
       propertyPath: m_fontSize
       value: 39.45

@@ -129,6 +129,8 @@ public class DialogueManager : SerializedMonoBehaviour
     string tempString;
     public SoundPlayer dialogueClick;
 
+    public List<IsTouchingMouse> blockers;
+
     void Start()
     {
         textBoxAnimator = textBox.GetComponent<TextAnimator_TMP>();
@@ -163,18 +165,21 @@ public class DialogueManager : SerializedMonoBehaviour
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.Z) || (Input.GetMouseButtonDown(0)))
+            if (blockers.All(x => !x.IsTouching))
             {
-                if (textBoxAnimator.allLettersShown && currentLine != -1)
+                if (Input.GetKeyDown(KeyCode.Z) || (Input.GetMouseButtonDown(0)))
                 {
-                    currentLine += 1;
-                    SetDialogue(currentLine);
-                    dialogueClick.PlaySound();
-                }
-                else
-                {
-                    textBoxAnimator.ShowAllCharacters(true);
-                    dialogueClick.PlaySound();
+                    if (textBoxAnimator.allLettersShown && currentLine != -1)
+                    {
+                        currentLine += 1;
+                        SetDialogue(currentLine);
+                        dialogueClick.PlaySound();
+                    }
+                    else
+                    {
+                        textBoxAnimator.ShowAllCharacters(true);
+                        dialogueClick.PlaySound();
+                    }
                 }
             }
             
@@ -611,7 +616,8 @@ public class DialogueManager : SerializedMonoBehaviour
         }
         else
         {
-            Debug.LogError(side + " is not a valid speaker indicator side!");
+            rightSpeakerIndicator.alpha = 0;
+            leftSpeakerIndicator.alpha = 0;
         }
     }
 

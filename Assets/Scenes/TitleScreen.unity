@@ -366,6 +366,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 896578765}
     - target: {fileID: 8657676275370921975, guid: 3786c38b88091c544ab17f2b54da31a5, type: 3}
+      propertyPath: position.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8657676275370921975, guid: 3786c38b88091c544ab17f2b54da31a5, type: 3}
+      propertyPath: position.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8657676275370921975, guid: 3786c38b88091c544ab17f2b54da31a5, type: 3}
       propertyPath: tileManager
       value: 
       objectReference: {fileID: 1019921502}
@@ -681,6 +689,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 896578765}
     - target: {fileID: 8657676275370921975, guid: 3786c38b88091c544ab17f2b54da31a5, type: 3}
+      propertyPath: position.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8657676275370921975, guid: 3786c38b88091c544ab17f2b54da31a5, type: 3}
+      propertyPath: position.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8657676275370921975, guid: 3786c38b88091c544ab17f2b54da31a5, type: 3}
       propertyPath: tileManager
       value: 
       objectReference: {fileID: 1019921502}
@@ -934,6 +950,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 896578765}
     - target: {fileID: 8657676275370921975, guid: 3786c38b88091c544ab17f2b54da31a5, type: 3}
+      propertyPath: position.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8657676275370921975, guid: 3786c38b88091c544ab17f2b54da31a5, type: 3}
+      propertyPath: position.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8657676275370921975, guid: 3786c38b88091c544ab17f2b54da31a5, type: 3}
       propertyPath: tileManager
       value: 
       objectReference: {fileID: 1019921502}
@@ -1127,6 +1151,14 @@ PrefabInstance:
       propertyPath: cursor
       value: 
       objectReference: {fileID: 896578765}
+    - target: {fileID: 8657676275370921975, guid: 3786c38b88091c544ab17f2b54da31a5, type: 3}
+      propertyPath: position.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8657676275370921975, guid: 3786c38b88091c544ab17f2b54da31a5, type: 3}
+      propertyPath: position.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8657676275370921975, guid: 3786c38b88091c544ab17f2b54da31a5, type: 3}
       propertyPath: tileManager
       value: 
@@ -1449,6 +1481,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 896578765}
     - target: {fileID: 8657676275370921975, guid: 3786c38b88091c544ab17f2b54da31a5, type: 3}
+      propertyPath: position.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8657676275370921975, guid: 3786c38b88091c544ab17f2b54da31a5, type: 3}
+      propertyPath: position.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8657676275370921975, guid: 3786c38b88091c544ab17f2b54da31a5, type: 3}
       propertyPath: tileManager
       value: 
       objectReference: {fileID: 1019921502}
@@ -1751,6 +1791,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 896578765}
     - target: {fileID: 8657676275370921975, guid: 3786c38b88091c544ab17f2b54da31a5, type: 3}
+      propertyPath: position.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8657676275370921975, guid: 3786c38b88091c544ab17f2b54da31a5, type: 3}
+      propertyPath: position.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8657676275370921975, guid: 3786c38b88091c544ab17f2b54da31a5, type: 3}
       propertyPath: tileManager
       value: 
       objectReference: {fileID: 1019921502}
@@ -1796,7 +1844,7 @@ MonoBehaviour:
   database: {fileID: 1477988384}
   fontSettings: {fileID: 9081404030006101066}
   titleScreen: 1
-  gridSize: 7
+  gridSize: 11
   spaceBetweenTiles: 110
   randomLetterQueueMinLength: 20
   chanceOfBonusWords: 0.25
@@ -1828,8 +1876,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1086164327}
   - component: {fileID: 1086164326}
+  - component: {fileID: 1086164328}
   m_Layer: 0
-  m_Name: Music
+  m_Name: MainMenuMusic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1852,7 +1901,7 @@ MonoBehaviour:
   keepPlaybackPosition: 1
   restartOnReplay: 0
   stopInstantly: 0
-  onStart: 1
+  onStart: 0
   onEnable: 0
   onDisable: 0
   onDestroy: 2
@@ -1865,7 +1914,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1086164325}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1873,6 +1922,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1086164328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086164325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cdef53092020224c8345890b57abceb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  music: {fileID: 1086164326}
 --- !u!1 &1131221912
 GameObject:
   m_ObjectHideFlags: 0
@@ -2348,6 +2410,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 896578765}
     - target: {fileID: 8657676275370921975, guid: 3786c38b88091c544ab17f2b54da31a5, type: 3}
+      propertyPath: position.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8657676275370921975, guid: 3786c38b88091c544ab17f2b54da31a5, type: 3}
+      propertyPath: position.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8657676275370921975, guid: 3786c38b88091c544ab17f2b54da31a5, type: 3}
       propertyPath: tileManager
       value: 
       objectReference: {fileID: 1019921502}
@@ -2511,6 +2581,14 @@ PrefabInstance:
       propertyPath: cursor
       value: 
       objectReference: {fileID: 896578765}
+    - target: {fileID: 8657676275370921975, guid: 3786c38b88091c544ab17f2b54da31a5, type: 3}
+      propertyPath: position.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8657676275370921975, guid: 3786c38b88091c544ab17f2b54da31a5, type: 3}
+      propertyPath: position.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8657676275370921975, guid: 3786c38b88091c544ab17f2b54da31a5, type: 3}
       propertyPath: tileManager
       value: 
@@ -2849,6 +2927,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 896578765}
     - target: {fileID: 8657676275370921975, guid: 3786c38b88091c544ab17f2b54da31a5, type: 3}
+      propertyPath: position.x
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8657676275370921975, guid: 3786c38b88091c544ab17f2b54da31a5, type: 3}
+      propertyPath: position.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8657676275370921975, guid: 3786c38b88091c544ab17f2b54da31a5, type: 3}
       propertyPath: tileManager
       value: 
       objectReference: {fileID: 1019921502}
@@ -3114,6 +3200,14 @@ PrefabInstance:
       propertyPath: cursor
       value: 
       objectReference: {fileID: 896578765}
+    - target: {fileID: 8657676275370921975, guid: 3786c38b88091c544ab17f2b54da31a5, type: 3}
+      propertyPath: position.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8657676275370921975, guid: 3786c38b88091c544ab17f2b54da31a5, type: 3}
+      propertyPath: position.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8657676275370921975, guid: 3786c38b88091c544ab17f2b54da31a5, type: 3}
       propertyPath: tileManager
       value: 
@@ -3383,6 +3477,14 @@ PrefabInstance:
       propertyPath: cursor
       value: 
       objectReference: {fileID: 896578765}
+    - target: {fileID: 8657676275370921975, guid: 3786c38b88091c544ab17f2b54da31a5, type: 3}
+      propertyPath: position.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8657676275370921975, guid: 3786c38b88091c544ab17f2b54da31a5, type: 3}
+      propertyPath: position.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8657676275370921975, guid: 3786c38b88091c544ab17f2b54da31a5, type: 3}
       propertyPath: tileManager
       value: 

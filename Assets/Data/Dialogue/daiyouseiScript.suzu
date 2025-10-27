@@ -1,0 +1,114 @@
+// pretty sure the first line is always ignored unless its like a pause or dialogue
+// something to fix sometime
+// using tab before a line does not work
+
+<indicator hide>
+
+<indicator hide>
+
+<hide textbox>
+
+<hide all>
+
+<pause>1.5</pause>
+
+<show textbox>
+
+ : Love letters.
+When love fills you up, you gotta let it out.
+Let someone know.
+There's no better way than through words.
+But I didn't think something like love letters would come up for me anytime soon.
+Until a little fairy came strolling into my forge one day.
+
+<hide textbox>
+
+<pause>2</pause>
+
+<show prop daiyousei>
+
+<show prop kogasa>
+
+<show textbox>
+
+<music stop>
+
+<sound>Orchestra Hit</sound>
+
+<indicator right>
+KOGASA: <wave>BOO!</wave>
+Did I scare ya? Hehe.
+
+<indicator left>
+DAIYOUSEI: Oh uhm, a little?
+I'm here for the blacksmith.
+
+<music>Dialogue Theme</music>
+
+<indicator right>
+KOGASA: Present and speaking! I'm Kogasa.
+
+<indicator left>
+DAIYOUSEI: Oh, hi! I'm Daiyousei and I want to make a request.
+I want to give this friend something to make her happy.
+She's been so down lately...
+
+<indicator right>
+KOGASA: So you want to get her a gift?
+
+<indicator left>
+DAIYOUSEI: That's right. An extra-special one.
+            
+<indicator right>
+KOGASA: Sounds great, we smith all sorts of things here.
+That's obvious isn't it, I probably didn't have to say that...
+Ignore me. What did you have in mind?
+
+<indicator left>
+DAIYOUSEI: I, uh, wrote this letter. Here.
+
+<sound>Paper</sound>
+// todo: draw daiyousei's letter and then put it on screen via show prop
+// sfx of paper crumple
+
+<indicator hide>
+
+LETTER : <i>You and me are strongest together!</i>
+
+<pause>0.5</pause>
+
+<sound>Paper Close</sound>
+
+<indicator right>
+KOGASA: This is cute! You're going to give this with the gift?
+
+<indicator left>
+DAIYOUSEI: Actually, I wanted to turn this into the gift.
+
+<indicator left>
+DAIYOUSEI: What's the word for when you put words on other things?
+Not on paper but other stuff. Like wood, metal...?
+
+<indicator right>
+KOGASA: Oh, you want it engraved?
+
+<indicator left>
+DAIYOUSEI: That's it! I want to give Cirno an ice cube so strong it never melts.
+And a reminder that her friends will be here even when it gets hot.
+Sounds a bit silly out loud...
+
+<indicator right>
+KOGASA: No, no, that's great!
+You wanted an ice cube that'll never melt right?
+Let me give it a try. You can watch me work.
+
+// tutorial includes daiyousei dialogue commenting on the work while kogasa explains to daiyousei how it works, making it a diagetic tutorial
+
+// in the after part kogasa offers the cube free of charge then we see cirno's brief reaction
+// in the script after we get a gift from cirno with a snowball with unintelligible scribblings into the snowball, probably her attempts to replicate the cube and give back to kogasa
+
+<music stop>
+
+<level>DaiyouseiLevel</level>
+
+END SCENE.

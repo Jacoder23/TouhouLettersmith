@@ -44,12 +44,12 @@ public class Tile : MonoBehaviour
     {
         transform.localScale = Vector3.one;
     }
-    public void Fall(Vector2 destination)
+    public void Fall(Vector2 destination, float delay = 0f)
     {
-        LeanTween.moveLocal(gameObject, destination, 1f).setEaseOutQuint().setDelay(UnityEngine.Random.Range(0f, 0.05f)); // TODO: unhardcode this timing
+        var d = UnityEngine.Random.Range(0f, 0.08f) + delay;
+        LeanTween.moveLocal(gameObject, destination, 1f).setEaseOutQuint().setDelay(d); // TODO: unhardcode this timing
         // random so its not too orderly
     }
-
     public void RandomizeTileValue()
     {
         //SetTileValue(tileManager.WeightedRandomLetterOfTheAlphabet());

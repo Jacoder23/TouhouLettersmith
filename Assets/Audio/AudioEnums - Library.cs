@@ -10,7 +10,9 @@
         Impact,
         PrepareSwing,
         Whoosh,
-        Scramble
+        Scramble,
+        Paper,
+        PaperClose
     }
     public enum LibraryMusic {
         KogasaTheme,
