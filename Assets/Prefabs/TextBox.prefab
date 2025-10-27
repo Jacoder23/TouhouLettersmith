@@ -454,6 +454,7 @@ GameObject:
   - component: {fileID: 7334401908511858095}
   - component: {fileID: 7334401908511858093}
   - component: {fileID: 7334401908511858092}
+  - component: {fileID: 691670289005401239}
   m_Layer: 5
   m_Name: SpeakerBG
   m_TagString: Untagged
@@ -520,6 +521,18 @@ MonoBehaviour:
   delta: 5
   quality: 0.1
   radius: 1000
+--- !u!225 &691670289005401239
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7334401908511858094}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &7334401908549065176
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,7 +633,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 71.35
   m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -632,7 +645,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: -50
+  m_lineSpacing: -35
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -656,7 +669,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 53.56732, y: 3.825344, z: 39.36438, w: 0}
+  m_margin: {x: 53.56732, y: 16.782139, z: 39.36438, w: 10.96637}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

@@ -434,11 +434,11 @@ public class DialogueManager : SerializedMonoBehaviour
                     {
                         case DialogueType.Speaker:
                             //if(screenUpdate) 
-                                newSpeaker = new BoolString(true, lineData[i].value.Replace(":", ""));
+                                newSpeaker = new BoolString(true, lineData[i].value.Replace(": ", "").Replace(":", ""));
                             break;
                         case DialogueType.Statement:
                             //if (screenUpdate) 
-                                newStatement = new BoolString(true, lineData[i].value.Replace(":", ""));
+                                newStatement = new BoolString(true, lineData[i].value.Replace(": ", "").Replace(":", ""));
                             break;
                         //case DialogueType.Title:
                         //    if (!screenUpdate) continue;
@@ -592,7 +592,7 @@ public class DialogueManager : SerializedMonoBehaviour
 
             if (newStatement.update && newSpeaker.update)
             {
-                textBox.text = newStatement.value;
+                textBox.text = newStatement.value.TrimStart();
                 nameBox.text = newSpeaker.value.ToTitleCase();
             }
             else if (newStatement.update && !newSpeaker.update)
@@ -647,22 +647,26 @@ public class DialogueManager : SerializedMonoBehaviour
 
     public CanvasGroup leftSpeakerIndicator;
     public CanvasGroup rightSpeakerIndicator;
+    public CanvasGroup speakerBackground;
     void ChangeSpeakerIndicator(string side)
     {
         if(side == "right")
         {
             rightSpeakerIndicator.alpha = 1;
             leftSpeakerIndicator.alpha = 0;
+            speakerBackground.alpha = 1;
         }
         else if (side == "left")
         {
             leftSpeakerIndicator.alpha = 1;
             rightSpeakerIndicator.alpha = 0;
+            speakerBackground.alpha = 1;
         }
         else
         {
             rightSpeakerIndicator.alpha = 0;
             leftSpeakerIndicator.alpha = 0;
+            speakerBackground.alpha = 0;
         }
     }
 
