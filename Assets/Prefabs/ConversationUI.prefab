@@ -365,6 +365,7 @@ MonoBehaviour:
   unpauseOnNextTurn: 0
   leftSpeakerIndicator: {fileID: 4487278662940522857}
   rightSpeakerIndicator: {fileID: 5299459163806086321}
+  speakerBackground: {fileID: 7418803012647326510}
   stage: {fileID: 766926760672749695}
   nextLineContinue: 0
   mainStory: {fileID: 0}
@@ -2560,6 +2561,11 @@ CanvasGroup:
 --- !u!225 &5299459163806086321 stripped
 CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 2803168019079197448, guid: 5caae6b4baefd6c4d978cfba632be52b, type: 3}
+  m_PrefabInstance: {fileID: 8029263367949174713}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &7418803012647326510 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 691670289005401239, guid: 5caae6b4baefd6c4d978cfba632be52b, type: 3}
   m_PrefabInstance: {fileID: 8029263367949174713}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8102548986998021414
