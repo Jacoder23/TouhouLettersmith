@@ -9,6 +9,11 @@ public class SceneTransition : MonoBehaviour
     public Animator transition;
 
     [Button]
+    public void RestartScene()
+    {
+        StartCoroutine(RestartCurrentScene());
+    }
+    [Button]
     public void NextScene()
     {
         StartCoroutine(LoadNextScene());
@@ -30,5 +35,11 @@ public class SceneTransition : MonoBehaviour
         transition.Play("ScreenTransitionExit");
         yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene(PlayerPrefs.GetString("NextScene"));
+    }
+    IEnumerator RestartCurrentScene()
+    {
+        transition.Play("ScreenTransitionExit");
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

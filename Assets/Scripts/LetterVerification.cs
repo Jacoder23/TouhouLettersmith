@@ -12,6 +12,7 @@ public class LetterVerification : MonoBehaviour
     public string nextWord;
     public bool inGameplayScene;
     public TextMeshProUGUI nextWordIndicator;
+    public OnWin win;
     // todo: load specific text asset in player prefs
     void Awake()
     {
@@ -26,7 +27,7 @@ public class LetterVerification : MonoBehaviour
         }
     }
 
-    public void ContinueToNextWord()
+    public bool ContinueToNextWord()
     {
         wordIndex++;
         if (wordIndex < letter.Count)
@@ -36,11 +37,16 @@ public class LetterVerification : MonoBehaviour
 
             if (inGameplayScene)
                 nextWordIndicator.text = nextWord;
+
+            return false;
         }
         else
         {
+            win.Win();
+            PlayerPrefs.SetString("NextScene", "VNScene");
             Debug.Log("win");
-            // todo: win
+
+            return true;
         }
     }
     public string GetNextGoalWord()

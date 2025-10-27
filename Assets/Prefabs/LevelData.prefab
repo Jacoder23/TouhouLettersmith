@@ -129,7 +129,7 @@ MonoBehaviour:
       Data: 
     - Name: maxTurns
       Entry: 3
-      Data: 50
+      Data: 100
     - Name: tileTypesAvailable
       Entry: 7
       Data: 3|System.Collections.Generic.List`1[[TileTypes, Assembly-CSharp]], mscorlib
@@ -181,3 +181,4 @@ MonoBehaviour:
   nextWord: 
   inGameplayScene: 0
   nextWordIndicator: {fileID: 0}
+  win: {fileID: 0}

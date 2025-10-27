@@ -23,11 +23,15 @@ public class WordDatabase : MonoBehaviour
             return;
         }
 
-        //replace whitespace and/pr removing \n didn't work?? keeps saying aardvark is 9 characters?? just using substring now i give up
-        validWords = wordList.text.ToUpper().Split(',').ToList();
-        bonusWords = bonusWordList.text.ToUpper().Split(',').ToList();
+        InitializeWordList();
 
         DontDestroyOnLoad(gameObject);
+    }
+
+    void InitializeWordList()
+    {
+        validWords = wordList.text.ToUpper().Split(',').ToList();
+        bonusWords = bonusWordList.text.ToUpper().Split(',').ToList();
     }
 
 

@@ -83,6 +83,8 @@ public class Cursor : MonoBehaviour
         //Debug.Log(cursorPosition.x + ", " + cursorPosition.y);
     }
 
+    bool win = false;
+
     public void SubmitWord()
     {
         PlayWordSound();
@@ -90,7 +92,7 @@ public class Cursor : MonoBehaviour
         if (validity != WordValidity.Invalid)
         {
             if (CurrentWord() == letterVerification.nextWord)
-                letterVerification.ContinueToNextWord();
+                win = letterVerification.ContinueToNextWord();
 
             letterInProgress.Add(CurrentWord());
             // todo: change animation depending on what's going on
@@ -127,7 +129,8 @@ public class Cursor : MonoBehaviour
 
     public void ClearBoard()
     {
-        turnCounter.Turn();
+        if(!win)
+            turnCounter.Turn();
         wordInProgress.Clear();
         tileManager.RemoveSelectedTiles();
         UpdateCursorPosition();

@@ -6,11 +6,12 @@ using TMPro;
 public class TurnCounter : MonoBehaviour
 {
     public LevelDatabase database;
-    [SerializeField] private int maxTurns = 999;
+    public int maxTurns = 999;
     public int turns = 1;
     public TextMeshProUGUI indicator;
     public DialogueManager dialogueManager;
     public bool tutorial;
+    public OnLoss loss;
     public void Start()
     {
         if (PlayerPrefs.GetString("CurrentLevel").Length != 0)
@@ -27,8 +28,8 @@ public class TurnCounter : MonoBehaviour
 
         if(turns >= maxTurns)
         {
+            loss.Lose();
             Debug.Log("Lose");
-            // todo: lose
         }
 
         indicator.text = (maxTurns - turns) + " TURNS LEFT";
