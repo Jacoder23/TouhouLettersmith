@@ -50,7 +50,6 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 4900000, guid: de9a42f62435def4bb70c84e651d980f, type: 3}
-    - {fileID: 2811297602134710623, guid: bbe8e9652ec8f5f47b2f5d3dc2401f25, type: 3}
     - {fileID: 4900000, guid: 8b3d28c5c6366454995957a1f3e8731b, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
@@ -126,11 +125,11 @@ MonoBehaviour:
       Entry: 10
       Data: 1
     - Name: winDialogue
-      Entry: 10
-      Data: 2
+      Entry: 6
+      Data: 
     - Name: maxTurns
       Entry: 3
-      Data: 20
+      Data: 50
     - Name: tileTypesAvailable
       Entry: 7
       Data: 3|System.Collections.Generic.List`1[[TileTypes, Assembly-CSharp]], mscorlib
@@ -180,3 +179,5 @@ MonoBehaviour:
   letterFile: {fileID: 4900000, guid: 8b3d28c5c6366454995957a1f3e8731b, type: 3}
   letter: []
   nextWord: 
+  inGameplayScene: 0
+  nextWordIndicator: {fileID: 0}

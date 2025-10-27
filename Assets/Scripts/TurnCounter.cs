@@ -27,6 +27,7 @@ public class TurnCounter : MonoBehaviour
 
         if(turns >= maxTurns)
         {
+            Debug.Log("Lose");
             // todo: lose
         }
 

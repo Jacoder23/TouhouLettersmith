@@ -34,6 +34,8 @@ KOGASA: Let me show you how to use it!
 
 <disable until next turn> // jank but if it works
  
+ : <i>You can spell any word but Kogasa wants to follow the next word in Daiyousei's letter.</i>
+
  : <i>Before you run out of turns, complete Daiyousei's request by spelling out the next word in her letter.</i>
  
 <disable until next turn> 
@@ -45,6 +47,8 @@ KOGASA: Let me show you how to use it!
  : <i>These words award you with rainbow tiles.</i>
 
  : <i>Rainbow tiles can be used in place of any other letter.</i>
+ 
+ : <i>They can also be obtained by spelling a word that is at least 6 letters long.</i>
 
 <indicator left>
 DAIYOUSEI: But how do you put a rainbow in a metal tile?

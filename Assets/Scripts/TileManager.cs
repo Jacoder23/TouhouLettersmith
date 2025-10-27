@@ -11,15 +11,18 @@ public class TileManager : MonoBehaviour
     public Cursor cursor;
     public WordDatabase database;
     public ToggleFont fontSettings;
+    public LetterVerification letter;
 
     [Header("Settings")]
     public bool titleScreen = false;
     public int gridSize;
     public float spaceBetweenTiles;
     public int randomLetterQueueMinLength = 20;
+    public float chanceOfAnyGoalWord = 0.2f;
     public float chanceOfBonusWords = 0.1f;
-    public float chanceOfActualRandomLetter = 0.5f;
     public float chanceOfCurrentGoalWord = 0.5f;
+    public float chanceOfNextGoalWord = 0.5f;
+    public float chanceOfActualRandomLetter = 0.5f;
 
     [Header("Preview")]
     public string randomLetterQueue = "";
@@ -266,13 +269,17 @@ public class TileManager : MonoBehaviour
         return boardState;
     }
 
+    // todo: this would be much improved if we could evaluate from a board if a word is possible to form but that'd require a lot of work
     string GetRandomWord()
     {
-        if (UnityEngine.Random.Range(0, 1) < chanceOfActualRandomLetter)
-            return WeightedRandomLetterOfTheAlphabet();
-
-        if (UnityEngine.Random.Range(0, 1) < chanceOfBonusWords)
+        if (UnityEngine.Random.Range(0f, 1f) < chanceOfAnyGoalWord * (1f - (letter.nextWord.Length * 3f) / 100f)) // reduced by N*3 % where N is the length of the current goal word because ts gets impossible at long goal words
+            return letter.letter[UnityEngine.Random.Range(0,letter.letter.Count)];
+        else if(UnityEngine.Random.Range(0f, 1f) < chanceOfBonusWords * (1f - (letter.nextWord.Length) * 4f / 100f)) // reduced by N*4 % where N is the length of the current goal word because ts gets impossible at long goal words
             return database.GetRandomBonusWord();
+        else if(UnityEngine.Random.Range(0f, 1f) < chanceOfCurrentGoalWord * (1f + (letter.nextWord.Length * 10f) / 100f)) // increased by N*10 % where N is the length of the current goal word because ts gets impossible at long goal words
+            return letter.nextWord;
+        else if (UnityEngine.Random.Range(0f, 1f) < chanceOfNextGoalWord * (1f + (letter.nextWord.Length * 4f) / 100f)) // increased by N*4 % where N is the length of the current goal word because ts gets impossible at long goal words
+            return letter.GetNextGoalWord();
         else
             return database.GetRandomValidWord();
     }
@@ -283,17 +290,20 @@ public class TileManager : MonoBehaviour
             randomLetterQueue += GetRandomWord();
         }
 
+        if (UnityEngine.Random.Range(0f, 1f) < chanceOfActualRandomLetter * (1f - (letter.nextWord.Length * 12f)/100f)) // reduced by N*12% where N is the length of the current goal word because ts gets impossible at long goal words
+            return WeightedRandomLetterOfTheAlphabet(); // moved here so it can show up inside of words instead of just inbetween them
+
         string randomLetter = randomLetterQueue.Substring(0,1);
         if (randomLetter == "Q" && randomLetterQueue.Substring(0, 2) == "QU")
         {
             randomLetter = randomLetterQueue.Substring(0, 2);
-            randomLetterQueue = randomLetterQueue.Substring(2, randomLetterQueue.Length - 3);
+            randomLetterQueue = randomLetterQueue.Substring(2, randomLetterQueue.Length - 2);
         }
         else
         {
             if (randomLetter == "Q")
                 randomLetter = "QU";
-            randomLetterQueue = randomLetterQueue.Substring(1, randomLetterQueue.Length - 2);
+            randomLetterQueue = randomLetterQueue.Substring(1, randomLetterQueue.Length - 1);
         }
         return randomLetter;
     }

@@ -16,6 +16,7 @@ public class Cursor : MonoBehaviour
     public Animator kogasaAnimation;
     public ShakeObjects kogasaShake;
     public TurnCounter turnCounter;
+    public LetterVerification letterVerification;
     [Header("Settings")]
     public bool titleScreen = false;
     [Header("Attributes")]
@@ -88,6 +89,9 @@ public class Cursor : MonoBehaviour
         var validity = ValidateWord();
         if (validity != WordValidity.Invalid)
         {
+            if (CurrentWord() == letterVerification.nextWord)
+                letterVerification.ContinueToNextWord();
+
             letterInProgress.Add(CurrentWord());
             // todo: change animation depending on what's going on
             if (validity == WordValidity.Valid)
