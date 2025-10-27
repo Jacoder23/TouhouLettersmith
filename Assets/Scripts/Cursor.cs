@@ -15,6 +15,7 @@ public class Cursor : MonoBehaviour
     public SceneTransition transition;
     public Animator kogasaAnimation;
     public ShakeObjects kogasaShake;
+    public TurnCounter turnCounter;
     [Header("Settings")]
     public bool titleScreen = false;
     [Header("Attributes")]
@@ -28,6 +29,8 @@ public class Cursor : MonoBehaviour
     {
         if (titleScreen)
         {
+            // todo: add a continue button later on and a clear progress, for now we'll erase
+            PlayerPrefs.DeleteKey("CurrentLevel");
             PlayWordSound();
             if (CurrentWord() == "LETTERSMITH")
             {
@@ -82,13 +85,23 @@ public class Cursor : MonoBehaviour
     public void SubmitWord()
     {
         PlayWordSound();
-        if (ValidateWord() != WordValidity.Invalid)
+        var validity = ValidateWord();
+        if (validity != WordValidity.Invalid)
         {
             letterInProgress.Add(CurrentWord());
             // todo: change animation depending on what's going on
-            kogasaAnimation.Play("KogasaHit");
+            if (validity == WordValidity.Valid)
+            {
+                kogasaAnimation.Play("KogasaHit");
+                Invoke("ClearBoard", 1.5f); // todo: unhardcode this? idk how useful itd be to expose to editor since the animation isnt gonna get longer or shorter
+            }
+            else if (validity == WordValidity.Bonus)
+            {
+                kogasaAnimation.Play("KogasaSpecialHit");
+                Invoke("ClearBoard", 3f);
+            }
             playingSubmitAnimation = true;
-            Invoke("ClearBoard", 1.5f); // todo: unhardcode this? idk how useful itd be to expose to editor since the animation isnt gonna get longer or shorter
+
         }
     }
 
@@ -110,6 +123,7 @@ public class Cursor : MonoBehaviour
 
     public void ClearBoard()
     {
+        turnCounter.Turn();
         wordInProgress.Clear();
         tileManager.RemoveSelectedTiles();
         UpdateCursorPosition();

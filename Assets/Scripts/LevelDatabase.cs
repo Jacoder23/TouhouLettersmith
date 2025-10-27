@@ -12,6 +12,7 @@ public struct LevelData
     public TextAsset letterFile;
     public TextAsset winDialogue;
     public int maxTurns;
+    public List<TileTypes> tileTypesAvailable;
 }
 public class LevelDatabase : SerializedMonoBehaviour
 {

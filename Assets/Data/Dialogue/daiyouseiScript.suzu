@@ -61,7 +61,7 @@ DAIYOUSEI: That's right. An extra-special one.
             
 <indicator right>
 KOGASA: Sounds great, we smith all sorts of things here.
-That's obvious isn't it, I probably didn't have to say that...
+That's obvious isn't it? I probably didn't have to say that...
 Ignore me. What did you have in mind?
 
 <indicator left>
@@ -109,6 +109,6 @@ Let me give it a try. You can watch me work.
 
 <music stop>
 
-<level>DaiyouseiLevel</level>
+<level>level_one</level>
 
 END SCENE.

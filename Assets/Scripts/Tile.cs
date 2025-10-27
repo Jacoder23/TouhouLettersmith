@@ -6,6 +6,16 @@ using UnityEngine.UI;
 using Sirenix.OdinInspector;
 using System;
 
+public enum TileTypes
+{
+    Normal,
+    Rainbow,
+    Fire,
+    Bomb,
+    Stone,
+    Drunken
+}
+
 [Serializable]
 public class TilePosition
 {
