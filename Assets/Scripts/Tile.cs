@@ -91,8 +91,8 @@ public class Tile : MonoBehaviour
     [Button]
     public void ChangeTileType(TileType newType)
     {
-        if (type == TileType.Rainbow && newType == TileType.Normal)
-            Debug.Log("rainbow to normal");
+        //if (type == TileType.Rainbow && newType == TileType.Normal)
+        //    Debug.Log("rainbow to normal");
         type = newType;
         switch (type)
         {

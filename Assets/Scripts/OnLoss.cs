@@ -11,6 +11,11 @@ public class OnLoss : MonoBehaviour
     public void Lose()
     {
         AudioManager.StopAllMusic();
+        Invoke("Loss", 3.0f); // unhardcode and match depending on what kind of hit kogasa is doing
+    }
+
+    void Loss()
+    {
         AudioManager.PlaySound(LibrarySounds.Lose);
 
         showOnLoss.alpha = 1;

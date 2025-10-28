@@ -20,6 +20,7 @@ public class Cursor : MonoBehaviour
     public ShakeObjects kogasaShake;
     public TurnCounter turnCounter;
     public LetterVerification letterVerification;
+    public ScrambleTiles scrambleTiles;
     [Header("Settings")]
     public bool titleScreen = false;
     [Header("Attributes")]
@@ -28,6 +29,7 @@ public class Cursor : MonoBehaviour
     public List<string> letterInProgress;
     public bool playingSubmitAnimation = false;
     // Start is called before the first frame update
+    public bool canScramble = true;
 
     public void TitleScreenStart()
     {
@@ -243,20 +245,31 @@ public class Cursor : MonoBehaviour
         var validity = ValidateWord();
         if (validity != WordValidity.Invalid)
         {
+            canScramble = false;
             if (CurrentWord() == letterVerification.nextWord)
                 win = letterVerification.ContinueToNextWord();
 
             letterInProgress.Add(CurrentWord());
+
+            if (CurrentWord().Length >= 6)
+            { // length of 6 tiles for a free rainbow tile, todo: unhardcode since there'd be an item that can reduce the req to 5
+                tileManager.rainbowTileSpawnQueue++;
+            }
             // todo: change animation depending on what's going on
             if (validity == WordValidity.Valid)
             {
                 kogasaAnimation.Play("KogasaHit");
                 Invoke("ClearBoard", 1.5f); // todo: unhardcode this? idk how useful itd be to expose to editor since the animation isnt gonna get longer or shorter
+                if (wordInProgress.Any(x => x.type == TileType.Drunken))
+                    scrambleTiles.DelayedScrambleAllTiles(1.5f + 0.05f);
             }
             else if (validity == WordValidity.Bonus)
             {
+                tileManager.rainbowTileSpawnQueue++;
                 kogasaAnimation.Play("KogasaSpecialHit");
                 Invoke("ClearBoard", 3f);
+                if (wordInProgress.Any(x => x.type == TileType.Drunken))
+                    scrambleTiles.DelayedScrambleAllTiles(3f + 0.05f);
             }
             playingSubmitAnimation = true;
 
@@ -281,11 +294,11 @@ public class Cursor : MonoBehaviour
 
     public void ClearBoard()
     {
-        if(!win)
+        canScramble = true;
+        if (!win)
             turnCounter.Turn();
         wordInProgress.Clear();
         tileManager.RemoveSelectedTiles();
-        tileManager.UpdateSpecialTiles();
         UpdateCursorPosition();
         UpdateLineRenderer();
         playingSubmitAnimation = false;

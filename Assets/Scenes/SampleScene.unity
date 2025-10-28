@@ -2140,6 +2140,7 @@ MonoBehaviour:
   database: {fileID: 104461246}
   fontSettings: {fileID: 40919615}
   letter: {fileID: 6930149549917818451}
+  level: {fileID: 6930149549917818450}
   titleScreen: 0
   gridSize: 7
   spaceBetweenTiles: 110
@@ -2149,8 +2150,10 @@ MonoBehaviour:
   chanceOfCurrentGoalWord: 0.25
   chanceOfNextGoalWord: 0.12
   chanceOfActualRandomLetter: 0.3
+  maxRainbowTiles: 2
   randomLetterQueue: 
   instantiatedTiles: []
+  rainbowTileSpawnQueue: 0
 --- !u!4 &1406961826
 Transform:
   m_ObjectHideFlags: 0
@@ -2700,6 +2703,7 @@ MonoBehaviour:
   kogasaShake: {fileID: 2131939894}
   turnCounter: {fileID: 1890484182496053943}
   letterVerification: {fileID: 6930149549917818451}
+  scrambleTiles: {fileID: 1406961827}
   titleScreen: 0
   wordInProgress: []
   cursorPosition:
@@ -2707,6 +2711,7 @@ MonoBehaviour:
     y: -1
   letterInProgress: []
   playingSubmitAnimation: 0
+  canScramble: 1
 --- !u!1 &1926473506
 GameObject:
   m_ObjectHideFlags: 0

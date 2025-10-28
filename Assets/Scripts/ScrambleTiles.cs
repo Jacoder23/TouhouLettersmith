@@ -10,10 +10,17 @@ public class ScrambleTiles : MonoBehaviour
 
     public void ScrambleAllTiles()
     {
-        tileManager.ScrambleAllTiles();
-        tileManager.DeselectAllTiles();
-        cursor.ClearBoard();
+        if (cursor.canScramble)
+        {
+            tileManager.ScrambleAllTiles();
+            tileManager.DeselectAllTiles();
+            cursor.ClearBoard();
 
-        JSAM.AudioManager.PlaySound(LibrarySounds.Scramble);
+            JSAM.AudioManager.PlaySound(LibrarySounds.Scramble);
+        }
+    }
+    public void DelayedScrambleAllTiles(float delay)
+    {
+        Invoke("ScrambleAllTiles", delay);
     }
 }

@@ -17,6 +17,11 @@ public class OnWin : MonoBehaviour
     public void Win()
     {
         AudioManager.StopAllMusic();
+        Invoke("Victory", 3.0f); // unhardcode and match to if its a kogasa big win or not
+    }
+
+    void Victory()
+    {
         AudioManager.PlaySound(LibrarySounds.Fanfare);
 
         showOnWin.alpha = 1;
@@ -34,7 +39,7 @@ public class OnWin : MonoBehaviour
         string shortestWord = cursor.letterInProgress.OrderByDescending(x => x.Length).Last();
         int shortestWordScore = cursor.letterInProgress.OrderByDescending(x => x.Length).Last().Length * 10;
         int turnsLeft = turnCounter.maxTurns - turnCounter.turns;
-        if(turnsLeft == 0)
+        if (turnsLeft == 0)
             turnsLeft = 1;
 
         int score = (wordsSmithed + tilesUsed + longestWordScore + shortestWordScore) * turnsLeft;

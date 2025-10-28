@@ -12,6 +12,7 @@ public class TileManager : MonoBehaviour
     public WordDatabase database;
     public ToggleFont fontSettings;
     public LetterVerification letter;
+    public LevelDatabase level;
 
     [Header("Settings")]
     public bool titleScreen = false;
@@ -23,11 +24,13 @@ public class TileManager : MonoBehaviour
     public float chanceOfCurrentGoalWord = 0.5f;
     public float chanceOfNextGoalWord = 0.5f;
     public float chanceOfActualRandomLetter = 0.5f;
+    public int maxRainbowTiles = 2;
 
     [Header("Preview")]
     public string randomLetterQueue = "";
 
     public List<Tile> instantiatedTiles;
+    public int rainbowTileSpawnQueue;
     string[][] currentBoardState; // encode in each string extra data like what about the other things
     // format: X010101 with each 0/1 showing if it's a special tile type or not, theoretically allows combinations of tile types but that's out of scope
     
@@ -169,8 +172,7 @@ public class TileManager : MonoBehaviour
                 case TileType.Normal:
                     break;
                 case TileType.Rainbow:
-                    // todo: add back in after finishing shifting test
-                    //tile.ChangeTileType(TileType.Normal);
+                    tile.ChangeTileType(TileType.Normal);
                     break;
                 case TileType.Fire:
                     break;
@@ -209,6 +211,7 @@ public class TileManager : MonoBehaviour
 
     public void RemoveSelectedTiles()
     {
+
         var transientTiles = new List<Tile>();
         var transientTileIndexes = new List<int>();
         for (int i = 0; i < instantiatedTiles.Count; i++) // does it matter if this is going up to down or down to up?
@@ -262,10 +265,22 @@ public class TileManager : MonoBehaviour
 
         DeselectAllTiles();
 
-        foreach(Tile tile in instantiatedTiles)
+        UpdateSpecialTiles();
+
+        var newTiles = instantiatedTiles.Where(x => x.newTile).ToList();
+
+        for(int i = 0; i < newTiles.Count(); i++)
+        {
+            // random order for the spawning
+            newTiles[UnityEngine.Random.Range(0, newTiles.Count() - 1)].ChangeTileType(GetNextRandomTileType());
+        }
+
+        foreach (Tile tile in instantiatedTiles)
         {
             tile.newTile = false;
         }
+
+        rainbowTileSpawnQueue = 0;
     }
 
     public string[][] ShiftColumnAndReinsertTile(int tileIndex, string[][] boardState, out List<TilePosition> tilePositions)
@@ -305,8 +320,6 @@ public class TileManager : MonoBehaviour
             TilePosition tempPos = new TilePosition();
             if (index.Item2 == -1)
             {
-                // todo: spawn in new special tiles here
-                //instantiatedTiles[Extensions.GetIndexFromTilePosition(index.Item1, 0, gridSize)].ChangeTileType(TileType.Normal);
                 boardState[0][index.Item1] = tileValue;
                 tempPos.x = index.Item1;
                 tempPos.y = 0;
@@ -334,6 +347,7 @@ public class TileManager : MonoBehaviour
                   // BECAUSE IT WAS SELECTED FUCK, it must be on the second go around
                   // valdidated the second go around theory
                   // we need to deselect tiles inbetween shifts
+                  // works now
                     currentTile.ChangeTileType(instantiatedTiles[Extensions.GetIndexFromTilePosition(index.Item1, index.Item2 - 1, gridSize)].type);
                 }
 
@@ -349,6 +363,21 @@ public class TileManager : MonoBehaviour
             instantiatedTiles[tileIndex].ChangeTileType(TileType.Normal);
 
         return boardState;
+    }
+
+    // todo: add sounds when a tile type appears
+    TileType GetNextRandomTileType()
+    {
+        if (level.GetCurrentLevel().tileTypesAvailable.Contains(TileType.Rainbow))
+        {
+            if (rainbowTileSpawnQueue > 0 && instantiatedTiles.Count(x => x.type == TileType.Rainbow) < maxRainbowTiles)
+            {
+                rainbowTileSpawnQueue--;
+                return TileType.Rainbow;
+            }
+        }
+
+        return TileType.Normal;
     }
 
     // todo: this would be much improved if we could evaluate from a board if a word is possible to form but that'd require a lot of work
