@@ -480,6 +480,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6698906210892205541, guid: bdec9550b2eeb6e4bb4a77b9c67d3e4d, type: 3}
+      propertyPath: levels
+      value: 
+      objectReference: {fileID: 6930149549917818450}
+    - target: {fileID: 6698906210892205541, guid: bdec9550b2eeb6e4bb4a77b9c67d3e4d, type: 3}
       propertyPath: database
       value: 
       objectReference: {fileID: 6930149549917818450}
@@ -510,7 +514,7 @@ PrefabInstance:
     - target: {fileID: 6698906210892205541, guid: bdec9550b2eeb6e4bb4a77b9c67d3e4d, type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 6698906210892205541, guid: bdec9550b2eeb6e4bb4a77b9c67d3e4d, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 6698906210892205541, guid: bdec9550b2eeb6e4bb4a77b9c67d3e4d, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.size
       value: 11
@@ -3477,13 +3481,13 @@ PrefabInstance:
       objectReference: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
     - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[0]
       value: '"path":"nameToLevelData.{\"level_one\"}","value":{"$id":0,"$type":"LevelData,
         Assembly-CSharp","letterFile":$eref:0,"winDialogue":null,"maxTurns":100,"tileTypesAvailable":{"$id":1,"$type":"System.Collections.Generic.List`1[[TileType,
-        Assembly-CSharp]], mscorlib","$rlength":2,"$rcontent":[0,1]},"playTutorial":true,"chanceOfFireTile":0,"chanceOfBombTile":1,"chanceOfStoneTile":0,"chanceOfDrunkenTile":0}'
+        Assembly-CSharp]], mscorlib","$rlength":2,"$rcontent":[0,1]},"playTutorial":true,"notALevel":false,"chanceOfFireTile":0,"chanceOfBombTile":1,"chanceOfStoneTile":0,"chanceOfDrunkenTile":0}'
       objectReference: {fileID: 0}
     - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[1]
@@ -3512,13 +3516,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[6]
+      value: '"path":"nameToLevelData.{\"level_one\"}.winDialogue","value":$eref:1'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[7]
       value: '"path":"nameToLevelData.{\"test\"}","value":{"$id":0,"$type":"LevelData,
-        Assembly-CSharp","letterFile":$eref:1,"winDialogue":null,"maxTurns":999,"tileTypesAvailable":{"$id":1,"$type":"System.Collections.Generic.List`1[[TileType,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[0]},"playTutorial":false,"chanceOfFireTile":0,"chanceOfBombTile":0,"chanceOfStoneTile":0,"chanceOfDrunkenTile":0}'
+        Assembly-CSharp","letterFile":$eref:2,"winDialogue":null,"maxTurns":999,"tileTypesAvailable":{"$id":1,"$type":"System.Collections.Generic.List`1[[TileType,
+        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[0]},"playTutorial":false,"notALevel":false,"chanceOfFireTile":0,"chanceOfBombTile":0,"chanceOfStoneTile":0,"chanceOfDrunkenTile":0}'
       objectReference: {fileID: 0}
     - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[0]
@@ -3526,6 +3534,10 @@ PrefabInstance:
       objectReference: {fileID: 4900000, guid: 8b3d28c5c6366454995957a1f3e8731b, type: 3}
     - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 2811297602134710623, guid: 6d5cc3aba9e4cfa42b6916dbb1c7d11e, type: 3}
+    - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[2]
       value: 
       objectReference: {fileID: 4900000, guid: de9a42f62435def4bb70c84e651d980f, type: 3}
     - target: {fileID: 6930149549296912213, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}

@@ -1,0 +1,122 @@
+// first the daiyousei result and cirno part
+// DAIYOUSEI AND KOGASA
+
+<indicator hide>
+
+<indicator hide>
+
+<hide textbox>
+
+<hide all>
+
+<pause>1.5</pause>
+
+<show textbox>
+
+<show prop daiyousei>
+
+<show prop kogasa>
+
+<indicator right>
+KOGASA: That should be it!
+Isn't she a beaut?
+
+<indicator hide>
+
+ : <i>KOGASA pulls out completed metal ice cube, the size of a fist.</i>
+
+ : <i>It shines. Engraved in it is DAIYOUSEI's letter.</i>
+
+<indicator left>
+DAIYOUSEI: Wow, it looks beautiful...
+W-wait, do I have enough to pay for this?
+
+<indicator right>
+KOGASA: Pay? No, no! Don't worry about that.
+You just gave me an idea for a new service.
+Take your gift. She's on the house.
+
+<indicator left>
+DAIYOUSEI: Are you sure? I thought you needed special tiles.
+
+<indicator right>
+KOGASA: And food, water, and fear to live.
+But I'll manage. Just make sure your friend takes good care of her, yeah?
+It was tough work with all those words, after all!
+
+<indicator left>
+DAIYOUSEI: Hehe, you're right.
+I'll find some way to repay you, I promise!
+
+<hide prop daiyousei>
+
+<indicator hide>
+
+ : <i>DAIYOUSEI leaves with the cube.</i>
+ 
+<indicator right>
+KOGASA: Guess I'm not eating out for a few days.
+Hopefully Daiyousei's friend cheers up.
+Time to close up shop!
+
+<indicator hide>
+
+<hide textbox>
+
+<hide all>
+
+<transition>
+
+<show textbox>
+
+ : <i>The next day...</i>
+
+<show prop daiyousei>
+
+<show prop cirno>
+
+// DAIYOUSEI AND CIRNO
+
+DAIYOUSEI: Cirno, how are you feeling?
+
+CIRNO: Hooooot...
+
+CIRNO: I suck... everything sucks...
+
+DAIYOUSEI: W-well, I don't know about that.
+// the metal's cool to the touch since dai kept it in a cool place that they turn into a hangout spot
+
+<transition>
+<pause>3</pause>
+
+<show prop kogasa>
+
+<pause>2</pause>
+
+KOGASA: Good morning everyone!
+
+<indicator hide>
+
+ : <i>KOGASA announces to the room.</i>
+ : <i>Only her tools and creations are there to hear it.</i>
+
+KOGASA: Still giving me the silent treatment, aw.
+...it is a bit lonely.
+But that's preferable than to them becoming like me.
+
+<indicator hide>
+
+ : <i>Tsukomogami are youkai, monsters, created from tools, clothes, and objects.</i>
+
+ : <i>They usually form out of a sense of vengeance after being neglected by humans.</i>
+
+KOGASA: Doesn't really make me feel better...
+No, wait, I think I'm just hungry.
+Maybe, I could eat that snowball on my windowsill...
+Hold on,
+
+// KOGASA
+// discovers cirno's Present
+
+// NUE AND KOGASA
+// nue comes by and asks about a hairpin to make up for some long old favor she needs to pay mamizou back for, debts they lost track of

@@ -14,6 +14,7 @@ public struct LevelData
     public int maxTurns;
     public List<TileType> tileTypesAvailable;
     public bool playTutorial;
+    public bool notALevel; // equiv to null
     [Header("Spawn Rates")]
     public float chanceOfFireTile;
     public float chanceOfBombTile;
@@ -24,11 +25,21 @@ public struct LevelData
 public class LevelDatabase : SerializedMonoBehaviour
 {
     public Dictionary<string, LevelData> nameToLevelData;
+    public LevelData defaultLevel;
 
     // load data
 
     public LevelData GetCurrentLevel()
     {
-        return nameToLevelData[PlayerPrefs.GetString("CurrentLevel")];
+        if (!nameToLevelData.ContainsKey(PlayerPrefs.GetString("CurrentLevel")))
+        {
+            LevelData levelData = defaultLevel;
+            levelData.notALevel = true;
+            return levelData;
+        }
+        else
+        {
+            return nameToLevelData[PlayerPrefs.GetString("CurrentLevel")];
+        }
     }
 }

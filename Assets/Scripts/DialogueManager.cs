@@ -42,9 +42,11 @@ public enum DialogueType
     HideTextbox,
     ShowTextbox,
     ShowProp,
+    HideProp,
     HideAllProps,
     DisableSelf,
-    DisableUntilNextTurn
+    DisableUntilNextTurn,
+    FakeSceneChange
 }
 
 public struct BoolString
@@ -113,9 +115,12 @@ public class DialogueManager : SerializedMonoBehaviour
         {@"<hide textbox>", DialogueType.HideTextbox },
         {@"<show textbox>", DialogueType.ShowTextbox },
         {@"<show prop .+>", DialogueType.ShowProp },
+        {@"<hide prop .+>", DialogueType.HideProp },
         {@"<hide all>", DialogueType.HideAllProps },
         {@"<disable self>", DialogueType.DisableSelf },
-        {@"<disable until next turn>", DialogueType.DisableUntilNextTurn }
+        {@"<disable until next turn>", DialogueType.DisableUntilNextTurn },
+        {@"<transition>", DialogueType.FakeSceneChange }
+
     }; // i aint even gonna bother with puppets imma just made it toggle on or off preset parents with the chars in em since they dont need to move - 2025
 
     bool dialoguePaused = false;
@@ -140,8 +145,16 @@ public class DialogueManager : SerializedMonoBehaviour
     public TextAsset tutorialScript;
     public CanvasGroup dialogueCanvasGroup;
 
+    public LevelDatabase level;
+
     void Start()
     {
+        if (level == null) // what the fuck is going on edit: oh singletons fuck
+            level = FindObjectOfType<LevelDatabase>();
+
+        if(!level.GetCurrentLevel().notALevel)
+            mainStory = level.GetCurrentLevel().winDialogue;
+
         if (inGameplayScene)
         {
             if (!database.GetCurrentLevel().playTutorial)
@@ -572,6 +585,10 @@ public class DialogueManager : SerializedMonoBehaviour
                             ShowProp(lineData[i].value.Replace("<show prop", "").Replace(">", "").Trim());
                             if (!ignoreDelayedContinues) DelayedContinue(0);
                             break;
+                        case DialogueType.HideProp:
+                            HideProp(lineData[i].value.Replace("<hide prop", "").Replace(">", "").Trim());
+                            if (!ignoreDelayedContinues) DelayedContinue(0);
+                            break;
                         case DialogueType.HideAllProps:
                             HideAllProps();
                             if (!ignoreDelayedContinues) DelayedContinue(0);
@@ -584,6 +601,12 @@ public class DialogueManager : SerializedMonoBehaviour
                             unpauseOnNextTurn = true;
                             dialogueCanvasGroup.alpha = 0f;
                             dialogueCanvasGroup.blocksRaycasts = false;
+                            if (!ignoreDelayedContinues) DelayedContinue(0);
+                            break;
+                        case DialogueType.FakeSceneChange:
+                            transition.Play("ScreenFakeTransition");
+                            dialoguePaused = true;
+                            Invoke("ContinueDialogue", 3.5f); // unhardcode
                             if (!ignoreDelayedContinues) DelayedContinue(0);
                             break;
                     }
@@ -627,6 +650,10 @@ public class DialogueManager : SerializedMonoBehaviour
         {
             prop.Value.alpha = 0f;
         }
+    }
+    void HideProp(string name)
+    {
+        LeanTween.alphaCanvas(props[name], 0, 1f); // todo: add option into parsing on if to fade out or not
     }
 
     void ShowProp(string name)

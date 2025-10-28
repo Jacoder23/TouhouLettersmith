@@ -93,14 +93,20 @@ Not on paper but other stuff. Like wood, metal...?
 KOGASA: Oh, you want it engraved?
 
 <indicator left>
-DAIYOUSEI: That's it! I want to give Cirno an ice cube so strong it never melts.
+DAIYOUSEI: That's it! I want to make sure she doesn't just forget what I wrote.
+
+<indicator right>
+KOGASA: What do you want it engraved on?
+
+<indicator left>
+DAIYOUSEI: I want to give her an ice cube so strong it never melts.
 And a reminder that her friends will be here even when it gets hot.
 Sounds a bit silly out loud...
 
 <indicator right>
 KOGASA: No, no, that's great!
-You wanted an ice cube that'll never melt right?
-Let me give it a try. You can watch me work.
+You wanted an ice cube that'll never melt?
+Let me give it a try. You can watch me while I work.
 
 // tutorial includes daiyousei dialogue commenting on the work while kogasa explains to daiyousei how it works, making it a diagetic tutorial
 

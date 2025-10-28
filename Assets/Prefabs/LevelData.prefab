@@ -90,7 +90,7 @@ MonoBehaviour:
       Data: 999
     - Name: tileTypesAvailable
       Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[TileTypes, Assembly-CSharp]], mscorlib
+      Data: 2|System.Collections.Generic.List`1[[TileType, Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
       Data: 1
@@ -106,6 +106,21 @@ MonoBehaviour:
     - Name: playTutorial
       Entry: 5
       Data: false
+    - Name: notALevel
+      Entry: 5
+      Data: false
+    - Name: chanceOfFireTile
+      Entry: 4
+      Data: 0
+    - Name: chanceOfBombTile
+      Entry: 4
+      Data: 0
+    - Name: chanceOfStoneTile
+      Entry: 4
+      Data: 0
+    - Name: chanceOfDrunkenTile
+      Entry: 4
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -132,7 +147,7 @@ MonoBehaviour:
       Data: 100
     - Name: tileTypesAvailable
       Entry: 7
-      Data: 3|System.Collections.Generic.List`1[[TileTypes, Assembly-CSharp]], mscorlib
+      Data: 3|System.Collections.Generic.List`1[[TileType, Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
       Data: 2
@@ -151,6 +166,21 @@ MonoBehaviour:
     - Name: playTutorial
       Entry: 5
       Data: true
+    - Name: notALevel
+      Entry: 5
+      Data: false
+    - Name: chanceOfFireTile
+      Entry: 4
+      Data: 0
+    - Name: chanceOfBombTile
+      Entry: 4
+      Data: 0
+    - Name: chanceOfStoneTile
+      Entry: 4
+      Data: 0
+    - Name: chanceOfDrunkenTile
+      Entry: 4
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -163,6 +193,17 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+  defaultLevel:
+    letterFile: {fileID: 4900000, guid: 8b3d28c5c6366454995957a1f3e8731b, type: 3}
+    winDialogue: {fileID: 2811297602134710623, guid: bbe8e9652ec8f5f47b2f5d3dc2401f25, type: 3}
+    maxTurns: 1111
+    tileTypesAvailable: 0000000001000000
+    playTutorial: 0
+    notALevel: 1
+    chanceOfFireTile: 0
+    chanceOfBombTile: 0
+    chanceOfStoneTile: 0
+    chanceOfDrunkenTile: 0
 --- !u!114 &6930149549296912210
 MonoBehaviour:
   m_ObjectHideFlags: 0

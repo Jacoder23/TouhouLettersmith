@@ -36,7 +36,7 @@ public class Cursor : MonoBehaviour
         if (titleScreen)
         {
             // todo: add a continue button later on and a clear progress, for now we'll erase
-            PlayerPrefs.DeleteKey("CurrentLevel");
+            PlayerPrefs.SetString("CurrentLevel", "NONE");
             PlayWordSound();
             if (CurrentWord() == "LETTERSMITH")
             {

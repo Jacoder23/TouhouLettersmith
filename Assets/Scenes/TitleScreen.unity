@@ -1208,6 +1208,7 @@ MonoBehaviour:
   kogasaShake: {fileID: 0}
   turnCounter: {fileID: 0}
   letterVerification: {fileID: 909200357}
+  scrambleTiles: {fileID: 0}
   titleScreen: 1
   wordInProgress: []
   cursorPosition:
@@ -1215,6 +1216,7 @@ MonoBehaviour:
     y: -1
   letterInProgress: []
   playingSubmitAnimation: 0
+  canScramble: 1
 --- !u!4 &896578766
 Transform:
   m_ObjectHideFlags: 0
@@ -1247,19 +1249,24 @@ PrefabInstance:
       objectReference: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
     - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[0]
       value: '"path":"nameToLevelData.{\"level_one\"}","value":{"$id":0,"$type":"LevelData,
-        Assembly-CSharp","letterFile":$eref:0,"winDialogue":null,"maxTurns":20,"tileTypesAvailable":{"$id":1,"$type":"System.Collections.Generic.List`1[[TileTypes,
-        Assembly-CSharp]], mscorlib","$rlength":2,"$rcontent":[0,1]},"playTutorial":true}'
+        Assembly-CSharp","letterFile":$eref:0,"winDialogue":null,"maxTurns":20,"tileTypesAvailable":{"$id":1,"$type":"System.Collections.Generic.List`1[[TileType,
+        Assembly-CSharp]], mscorlib","$rlength":2,"$rcontent":[0,1]},"playTutorial":true,"notALevel":false,"chanceOfFireTile":0,"chanceOfBombTile":0,"chanceOfStoneTile":0,"chanceOfDrunkenTile":0}'
       objectReference: {fileID: 0}
     - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[1]
+      value: '"path":"nameToLevelData.{\"level_one\"}.maxTurns","value":{"$id":0,"$type":"System.Int32,
+        mscorlib",100}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[2]
       value: '"path":"nameToLevelData.{\"test\"}","value":{"$id":0,"$type":"LevelData,
-        Assembly-CSharp","letterFile":$eref:1,"winDialogue":null,"maxTurns":999,"tileTypesAvailable":{"$id":1,"$type":"System.Collections.Generic.List`1[[TileTypes,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[0]},"playTutorial":false}'
+        Assembly-CSharp","letterFile":$eref:1,"winDialogue":null,"maxTurns":999,"tileTypesAvailable":{"$id":1,"$type":"System.Collections.Generic.List`1[[TileType,
+        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[0]},"playTutorial":false,"notALevel":false,"chanceOfFireTile":0,"chanceOfBombTile":0,"chanceOfStoneTile":0,"chanceOfDrunkenTile":0}'
       objectReference: {fileID: 0}
     - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
@@ -1885,14 +1892,25 @@ MonoBehaviour:
   database: {fileID: 1477988384}
   fontSettings: {fileID: 9081404030006101066}
   letter: {fileID: 909200357}
+  level: {fileID: 0}
+  loss: {fileID: 0}
   titleScreen: 1
   gridSize: 11
   spaceBetweenTiles: 110
   randomLetterQueueMinLength: 20
+  chanceOfAnyGoalWord: 0.2
   chanceOfBonusWords: 0.25
-  chanceOfActualRandomLetter: 0.15
   chanceOfCurrentGoalWord: 0.7
+  chanceOfNextGoalWord: 0.5
+  chanceOfActualRandomLetter: 0.15
+  maxRainbowTiles: 2
+  chanceOfFireTile: 0.03
+  chanceOfBombTile: 0.01
+  chanceOfStoneTile: 0.01
+  chanceOfDrunkenTile: 0.02
   randomLetterQueue: 
+  instantiatedTiles: []
+  rainbowTileSpawnQueue: 0
 --- !u!4 &1019921503
 Transform:
   m_ObjectHideFlags: 0

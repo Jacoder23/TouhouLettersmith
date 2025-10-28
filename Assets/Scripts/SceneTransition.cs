@@ -30,6 +30,11 @@ public class SceneTransition : MonoBehaviour
         transition.Play("ScreenTransitionEnter");
     }
 
+    public void FakeTransition()
+    {
+        transition.Play("ScreenTransitionEnter");
+    }
+
     IEnumerator LoadNextScene()
     {
         transition.Play("ScreenTransitionExit");
