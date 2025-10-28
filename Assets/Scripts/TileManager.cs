@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using KaimiraGames;
+using jcdr;
 public class TileManager : MonoBehaviour
 {
     public Tile tilePrefab;
@@ -39,10 +40,13 @@ public class TileManager : MonoBehaviour
 
     Vector2 offset;
     bool nextTileRainbow;
+    System.Random rnd;
     void Start()
     {
         if (titleScreen)
             return;
+
+        rnd = new System.Random();
 
         offset = new Vector2((gridSize - 1) * spaceBetweenTiles / 2f, (gridSize + 1) * spaceBetweenTiles / 2f);
 
@@ -268,11 +272,19 @@ public class TileManager : MonoBehaviour
         UpdateSpecialTiles();
 
         var newTiles = instantiatedTiles.Where(x => x.newTile).ToList();
+        var tileOrder = new int[newTiles.Count()];
 
-        for(int i = 0; i < newTiles.Count(); i++)
+        rnd.Shuffle(tileOrder);
+
+        for (int i = 0; i < newTiles.Count(); i++)
+        {
+            tileOrder[i] = i;
+        }
+
+        for (int i = 0; i < newTiles.Count(); i++)
         {
             // random order for the spawning
-            newTiles[UnityEngine.Random.Range(0, newTiles.Count() - 1)].ChangeTileType(GetNextRandomTileType());
+            newTiles[tileOrder[i]].ChangeTileType(GetNextRandomTileType());
         }
 
         foreach (Tile tile in instantiatedTiles)
