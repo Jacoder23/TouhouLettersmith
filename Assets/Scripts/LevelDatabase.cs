@@ -14,6 +14,12 @@ public struct LevelData
     public int maxTurns;
     public List<TileType> tileTypesAvailable;
     public bool playTutorial;
+    [Header("Spawn Rates")]
+    public float chanceOfFireTile;
+    public float chanceOfBombTile;
+    public float chanceOfStoneTile;
+    public float chanceOfDrunkenTile;
+    public bool spawnSpecialTilesOnFirstScreen;
 }
 public class LevelDatabase : SerializedMonoBehaviour
 {
