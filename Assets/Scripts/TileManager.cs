@@ -195,7 +195,7 @@ public class TileManager : MonoBehaviour
     {
         // only change the type to fire AFTER we've selected them 
         var newFireTiles = new List<Tile>();
-        foreach (var tile in instantiatedTiles)
+        foreach (var tile in instantiatedTiles.Where(x => !x.newTile))
         {
             if (tile.type == TileType.Fire)
             {
@@ -217,7 +217,7 @@ public class TileManager : MonoBehaviour
 
         foreach(var tile in newFireTiles)
         {
-            tile.ChangeTileType(TileType.Fire);
+            tile.ChangeTileType(TileType.Fire); // a delay would help w the effect here
         }
     }
     public void UpdateSpecialTiles()
@@ -269,8 +269,11 @@ public class TileManager : MonoBehaviour
                 var destination = new TilePosition();
                 destination.y = j;
                 destination.x = i;
+                bool withinRangeX = Mathf.Abs(destination.x - origin.x) < 2;
+                bool withinRangeY = Mathf.Abs(destination.y - origin.y) < 2;
+                bool diagonal = (destination.x + 1 == origin.x && destination.y + 1 == origin.y) || (destination.x - 1 == origin.x && destination.y + 1 == origin.y) || (destination.x + 1 == origin.x && destination.y - 1 == origin.y) || (destination.x - 1 == origin.x && destination.y - 1 == origin.y);
 
-                if(Mathf.Abs(destination.x - origin.x) < 2 && Mathf.Abs(destination.y - origin.y) < 2)
+                if (withinRangeX && withinRangeY && !diagonal)
                 {
                     destinations.Add(destination);
                 }
@@ -296,6 +299,10 @@ public class TileManager : MonoBehaviour
 
     public void RemoveSelectedTiles()
     {
+        foreach (Tile tile in instantiatedTiles)
+        {
+            tile.newTile = false;
+        }
 
         var transientTiles = new List<Tile>();
         var transientTileIndexes = new List<int>();
@@ -370,10 +377,11 @@ public class TileManager : MonoBehaviour
             newTiles[tileOrder[i]].ChangeTileType(GetNextRandomTileType());
         }
 
-        foreach (Tile tile in instantiatedTiles)
-        {
-            tile.newTile = false;
-        }
+        // moved up so we could use the new tile setting to stop new fire tiles from immediately spreading
+        //foreach (Tile tile in instantiatedTiles)
+        //{
+        //    tile.newTile = false;
+        //}
 
         rainbowTileSpawnQueue = 0;
     }
