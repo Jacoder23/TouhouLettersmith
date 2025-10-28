@@ -19,7 +19,7 @@ public struct LevelData
     public float chanceOfBombTile;
     public float chanceOfStoneTile;
     public float chanceOfDrunkenTile;
-    public bool spawnSpecialTilesOnFirstScreen;
+    //public bool spawnSpecialTilesOnFirstScreen; // todo: bring this back, but JSAM gets weird and glitches out so turn off sounds there
 }
 public class LevelDatabase : SerializedMonoBehaviour
 {

@@ -55,18 +55,10 @@ public class TileManager : MonoBehaviour
         if (titleScreen)
             return;
 
-        chanceOfFireTile = 0f;
-        chanceOfBombTile = 0f;
-        chanceOfStoneTile = 0f;
-        chanceOfDrunkenTile = 0f;
-
-        if (level.GetCurrentLevel().spawnSpecialTilesOnFirstScreen)
-        {
-            chanceOfFireTile = level.GetCurrentLevel().chanceOfFireTile;
-            chanceOfBombTile = level.GetCurrentLevel().chanceOfBombTile;
-            chanceOfStoneTile = level.GetCurrentLevel().chanceOfStoneTile;
-            chanceOfDrunkenTile = level.GetCurrentLevel().chanceOfDrunkenTile;
-        }
+        chanceOfFireTile = level.GetCurrentLevel().chanceOfFireTile;
+        chanceOfBombTile = level.GetCurrentLevel().chanceOfBombTile;
+        chanceOfStoneTile = level.GetCurrentLevel().chanceOfStoneTile;
+        chanceOfDrunkenTile = level.GetCurrentLevel().chanceOfDrunkenTile;
 
         rnd = new System.Random();
 
@@ -88,11 +80,6 @@ public class TileManager : MonoBehaviour
         }
 
         InitialBoardState();
-
-        chanceOfFireTile = level.GetCurrentLevel().chanceOfFireTile;
-        chanceOfBombTile = level.GetCurrentLevel().chanceOfBombTile;
-        chanceOfStoneTile = level.GetCurrentLevel().chanceOfStoneTile;
-        chanceOfDrunkenTile = level.GetCurrentLevel().chanceOfDrunkenTile;
     }
 
     void InitialBoardState()
@@ -259,6 +246,7 @@ public class TileManager : MonoBehaviour
 
     void ActivateBomb(TilePosition origin)
     {
+        Debug.Log("BOOM");
         // play bomb sound
         AudioManager.PlaySound(LibrarySounds.Explosion);
         var tilesToBurn = FirePattern(origin);
@@ -333,7 +321,7 @@ public class TileManager : MonoBehaviour
         foreach (Tile tile in instantiatedTiles)
         {
             tile.newTile = false;
-            if (tile.type == TileType.Bomb)
+            if (tile.type == TileType.Bomb && tile.selected)
                 ActivateBomb(tile.position);
         }
 
@@ -521,6 +509,9 @@ public class TileManager : MonoBehaviour
 
         if (UnityEngine.Random.Range(0.0f, 1.0f) < chanceOfBombTile && level.GetCurrentLevel().tileTypesAvailable.Contains(TileType.Bomb))
             return TileType.Bomb;
+
+        if (UnityEngine.Random.Range(0.0f, 1.0f) < chanceOfStoneTile && level.GetCurrentLevel().tileTypesAvailable.Contains(TileType.Stone))
+            return TileType.Stone;
 
         if (UnityEngine.Random.Range(0.0f, 1.0f) < chanceOfDrunkenTile && level.GetCurrentLevel().tileTypesAvailable.Contains(TileType.Drunken))
             return TileType.Drunken;

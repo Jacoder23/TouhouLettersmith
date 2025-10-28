@@ -3477,13 +3477,13 @@ PrefabInstance:
       objectReference: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
     - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.size
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[0]
       value: '"path":"nameToLevelData.{\"level_one\"}","value":{"$id":0,"$type":"LevelData,
         Assembly-CSharp","letterFile":$eref:0,"winDialogue":null,"maxTurns":100,"tileTypesAvailable":{"$id":1,"$type":"System.Collections.Generic.List`1[[TileType,
-        Assembly-CSharp]], mscorlib","$rlength":2,"$rcontent":[0,1]},"playTutorial":true,"chanceOfFireTile":0,"chanceOfBombTile":1,"chanceOfStoneTile":0,"chanceOfDrunkenTile":0,"spawnSpecialTilesOnFirstScreen":false}'
+        Assembly-CSharp]], mscorlib","$rlength":2,"$rcontent":[0,1]},"playTutorial":true,"chanceOfFireTile":0,"chanceOfBombTile":1,"chanceOfStoneTile":0,"chanceOfDrunkenTile":0}'
       objectReference: {fileID: 0}
     - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[1]
@@ -3492,19 +3492,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[2]
-      value: '"path":"nameToLevelData.{\"level_one\"}.chanceOfFireTile","value":{"$id":0,"$type":"System.Single,
+      value: '"path":"nameToLevelData.{\"level_one\"}.chanceOfDrunkenTile","value":{"$id":0,"$type":"System.Single,
         mscorlib",0}'
       objectReference: {fileID: 0}
     - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[3]
+      value: '"path":"nameToLevelData.{\"level_one\"}.chanceOfFireTile","value":{"$id":0,"$type":"System.Single,
+        mscorlib",0}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[4]
+      value: '"path":"nameToLevelData.{\"level_one\"}.chanceOfStoneTile","value":{"$id":0,"$type":"System.Single,
+        mscorlib",0}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[5]
       value: '"path":"nameToLevelData.{\"level_one\"}.tileTypesAvailable","value":{"$id":0,"$type":"System.Collections.Generic.List`1[[TileType,
         Assembly-CSharp]], mscorlib","$rlength":2,"$rcontent":[0,1]}'
       objectReference: {fileID: 0}
     - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[4]
+      propertyPath: serializationData.PrefabModifications.Array.data[6]
       value: '"path":"nameToLevelData.{\"test\"}","value":{"$id":0,"$type":"LevelData,
         Assembly-CSharp","letterFile":$eref:1,"winDialogue":null,"maxTurns":999,"tileTypesAvailable":{"$id":1,"$type":"System.Collections.Generic.List`1[[TileType,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[0]},"playTutorial":false,"chanceOfFireTile":0,"chanceOfBombTile":0,"chanceOfStoneTile":0,"chanceOfDrunkenTile":0,"spawnSpecialTilesOnFirstScreen":false}'
+        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[0]},"playTutorial":false,"chanceOfFireTile":0,"chanceOfBombTile":0,"chanceOfStoneTile":0,"chanceOfDrunkenTile":0}'
       objectReference: {fileID: 0}
     - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size

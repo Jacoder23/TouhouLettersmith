@@ -73,9 +73,26 @@ public class Tile : MonoBehaviour
 
     void Update()
     {
-        if (type == TileType.Normal)
-        {
-            animator.Play("Normal"); // shouldn't be needed but changetiletype acts weird sometimes?
+        switch (type)
+        { // shouldn't be needed but change tile type acts weird
+            case TileType.Normal:
+                animator.Play("Normal");
+                break;
+            //case TileType.Rainbow:
+            //    animator.Play("Rainbow");
+            //    break;
+            case TileType.Fire:
+                animator.Play("Fire");
+                break;
+            case TileType.Bomb:
+                animator.Play("Bomb");
+                break;
+            case TileType.Stone:
+                animator.Play("Stone");
+                break;
+            case TileType.Drunken:
+                animator.Play("Drunken");
+                break;
         }
         //tile value is the same but displayed differently
         if (type == TileType.Rainbow)
@@ -90,7 +107,7 @@ public class Tile : MonoBehaviour
     }
 
     [Button]
-    public void ChangeTileType(TileType newType)
+    public void ChangeTileType(TileType newType) // the visual really is not reliably updating its crazy
     {
         if (type == TileType.Rainbow && newType == TileType.Normal)
             Debug.Log("rainbow to normal");
