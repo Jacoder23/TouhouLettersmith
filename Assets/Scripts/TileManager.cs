@@ -191,6 +191,35 @@ public class TileManager : MonoBehaviour
         }
     }
 
+    void UpdateFireTiles()
+    {
+        // only change the type to fire AFTER we've selected them 
+        var newFireTiles = new List<Tile>();
+        foreach (var tile in instantiatedTiles)
+        {
+            if (tile.type == TileType.Fire)
+            {
+                var tilesToBurn = FirePattern(tile.position);
+                if (tilesToBurn != null)
+                {
+                    foreach (var t in tilesToBurn)
+                    {
+                        var tileToBurn = instantiatedTiles[Extensions.GetIndexFromTilePosition(t.x, t.y, gridSize)];
+
+                        if (tileToBurn.type == TileType.Bomb)
+                            ActivateBomb(tileToBurn.position);
+                        else
+                            newFireTiles.Add(tileToBurn);
+                    }
+                }
+            }
+        }
+
+        foreach(var tile in newFireTiles)
+        {
+            tile.ChangeTileType(TileType.Fire);
+        }
+    }
     public void UpdateSpecialTiles()
     {
         foreach(var tile in instantiatedTiles)
@@ -214,6 +243,42 @@ public class TileManager : MonoBehaviour
         }
     }
 
+    void ActivateBomb(TilePosition origin)
+    {
+
+    }
+
+    List<TilePosition> BombPattern()
+    {
+        return null;
+    }
+
+    List<TilePosition> FirePattern(TilePosition origin)
+    { // i miss bitboards
+
+        if (origin == null)
+            return null;
+        else if (origin.x == -1 || origin.y == -1)
+            return null;
+
+        var destinations = new List<TilePosition>();
+        for (int i = 0; i < gridSize; i++)
+        {
+            for (int j = 0; j < gridSize; j++)
+            {
+                var destination = new TilePosition();
+                destination.y = j;
+                destination.x = i;
+
+                if(Mathf.Abs(destination.x - origin.x) < 2 && Mathf.Abs(destination.y - origin.y) < 2)
+                {
+                    destinations.Add(destination);
+                }
+            }
+        }
+        Debug.Log(destinations.Count());
+        return destinations;
+    }
     public Tile GetTileInstanceFromPosition(TilePosition position)
     {
         var instance = instantiatedTiles.Find(tile => tile.position.Equals(position));
@@ -286,6 +351,8 @@ public class TileManager : MonoBehaviour
         DeselectAllTiles();
 
         UpdateSpecialTiles();
+
+        Invoke("UpdateFireTiles", 1.5f); // unhardcode this
 
         var newTiles = instantiatedTiles.Where(x => x.newTile).ToList();
         var tileOrder = new int[newTiles.Count()];
