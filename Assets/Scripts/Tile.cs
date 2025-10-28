@@ -125,7 +125,10 @@ public class Tile : MonoBehaviour
 
     public void Toggle()
     {
-        selected = cursor.ToggleTileWithoutIslands(this);
+        if (type == TileType.Stone)
+            selected = false;
+        else
+            selected = cursor.ToggleTileWithoutIslands(this);
     }
 
     public void ToggleIfMouseHeld()

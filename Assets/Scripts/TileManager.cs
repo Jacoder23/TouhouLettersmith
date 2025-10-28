@@ -27,6 +27,12 @@ public class TileManager : MonoBehaviour
     public float chanceOfActualRandomLetter = 0.5f;
     public int maxRainbowTiles = 2;
 
+    [Header("Tile Spawn Rates")] // changes per level
+    public float chanceOfFireTile = 0.03f;
+    public float chanceOfBombTile = 0.01f;
+    public float chanceOfStoneTile = 0.01f;
+    public float chanceOfDrunkenTile = 0.02f;
+
     [Header("Preview")]
     public string randomLetterQueue = "";
 
