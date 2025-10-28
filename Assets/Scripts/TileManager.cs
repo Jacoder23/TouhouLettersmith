@@ -245,13 +245,29 @@ public class TileManager : MonoBehaviour
 
     void ActivateBomb(TilePosition origin)
     {
+        // play bomb sound
+        var tilesToBurn = FirePattern(origin);
+        instantiatedTiles[Extensions.GetIndexFromTilePosition(origin.x, origin.y, gridSize)].ChangeTileType(TileType.Normal);
+        if (tilesToBurn != null)
+        {
+            foreach (var t in tilesToBurn)
+            {
+                var tileToBurn = instantiatedTiles[Extensions.GetIndexFromTilePosition(t.x, t.y, gridSize)];
 
+                if (tileToBurn.type == TileType.Stone)
+                    tileToBurn.ChangeTileType(TileType.Normal);
+                else if (tileToBurn.type == TileType.Bomb)
+                    ActivateBomb(t);
+                else
+                    tileToBurn.ChangeTileType(TileType.Fire);
+            }
+        }
     }
 
-    List<TilePosition> BombPattern()
-    {
-        return null;
-    }
+    //List<TilePosition> BombPattern(TilePosition origin)
+    //{
+    //    return null;
+    //}
 
     List<TilePosition> FirePattern(TilePosition origin)
     { // i miss bitboards
@@ -302,6 +318,8 @@ public class TileManager : MonoBehaviour
         foreach (Tile tile in instantiatedTiles)
         {
             tile.newTile = false;
+            if (tile.type == TileType.Bomb)
+                ActivateBomb(tile.position);
         }
 
         var transientTiles = new List<Tile>();
