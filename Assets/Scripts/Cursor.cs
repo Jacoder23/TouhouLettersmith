@@ -107,12 +107,47 @@ public class Cursor : MonoBehaviour
     // todo: if its the same length as the goal word then try to manually calc if its possible, get the difference between the two strings and if the only difference is the ? then its a match
     string SearchForValidWord(string originalWord, out List<int> wildcardValues, char[] candidateWord = null)
     {
-        if(candidateWord == null)
+        bool skipIncrement = false;
+        wildcardValues = new List<int>();
+
+        if (originalWord.Length == letterVerification.nextWord.Length)
         {
-            candidateWord = originalWord.Replace('?', 'A').ToCharArray();
+            bool canMatchGoalWord = true;
+            for (int i = 0; i < originalWord.Length; i++)
+            {
+                if (originalWord[i] == letterVerification.nextWord[i])
+                {
+                    continue;
+                }
+                else
+                {
+                    if (originalWord[i] == '?')
+                    {
+                        wildcardValues.Add(Extensions.alphabet.IndexOf(letterVerification.nextWord[i]));
+                        continue;
+                    }
+                    else
+                    {
+                        canMatchGoalWord = false;
+                        break;
+                    }
+                }
+            }
+            if (canMatchGoalWord)
+            {
+                return letterVerification.nextWord;
+            }
+            else
+            {
+                wildcardValues = new List<int>();
+            }
         }
 
-        wildcardValues = new List<int>();
+        if(candidateWord == null)
+        {
+            skipIncrement = true;
+            candidateWord = originalWord.Replace('?', 'A').ToCharArray();
+        }
 
         for (int i = 0; i < originalWord.Length; i++)
         {
@@ -122,21 +157,24 @@ public class Cursor : MonoBehaviour
 
         // increment, carry if over 26
 
-        wildcardValues[0]++;
-
-        for (int i = 0; i < wildcardValues.Count; i++)
+        if (!skipIncrement)
         {
-            // means we tried everything and got nothing
-            if (wildcardValues.Last() > 25)
-            {
-                wildcardValues[wildcardValues.Count - 1] = 25;
-                return null;
-            }
+            wildcardValues[0]++;
 
-            if (wildcardValues[i] > 25)
+            for (int i = 0; i < wildcardValues.Count; i++)
             {
-                wildcardValues[i] = 0;
-                wildcardValues[i + 1]++;
+                // means we tried everything and got nothing
+                if (wildcardValues.Last() > 25)
+                {
+                    wildcardValues[wildcardValues.Count - 1] = 25;
+                    return null;
+                }
+
+                if (wildcardValues[i] > 25)
+                {
+                    wildcardValues[i] = 0;
+                    wildcardValues[i + 1]++;
+                }
             }
         }
 

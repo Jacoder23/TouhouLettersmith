@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using Sirenix.OdinInspector;
 using System;
 
+// make a struct for storing special tile data like turns left for the bomb
 public enum TileType
 {
     Normal,
@@ -13,8 +14,7 @@ public enum TileType
     Fire,
     Bomb,
     Stone,
-    Drunken,
-    SnowballRainbow // temporary for a turn
+    Drunken
 }
 
 [Serializable]
@@ -72,6 +72,10 @@ public class Tile : MonoBehaviour
 
     void Update()
     {
+        if (type == TileType.Normal)
+        {
+            animator.Play("Normal"); // shouldn't be needed but changetiletype acts weird sometimes?
+        }
         //tile value is the same but displayed differently
         if (type == TileType.Rainbow)
             textMeshPro.text = "?";
@@ -87,6 +91,8 @@ public class Tile : MonoBehaviour
     [Button]
     public void ChangeTileType(TileType newType)
     {
+        if (type == TileType.Rainbow && newType == TileType.Normal)
+            Debug.Log("rainbow to normal");
         type = newType;
         switch (type)
         {
@@ -107,9 +113,6 @@ public class Tile : MonoBehaviour
                 break;
             case TileType.Drunken:
                 animator.Play("Drunken");
-                break;
-            case TileType.SnowballRainbow:
-                animator.Play("Rainbow");
                 break;
         }
     }

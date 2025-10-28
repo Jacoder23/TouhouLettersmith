@@ -308,6 +308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMeshPro: {fileID: 8510024524478409237}
   image: {fileID: 8510024524625065056}
+  normalTileSprite: {fileID: 21300000, guid: 0e49b3ae94b20d449ac571a52c79b8ac, type: 3}
   tileManager: {fileID: 0}
   cursor: {fileID: 0}
   animator: {fileID: 414311079748241330}

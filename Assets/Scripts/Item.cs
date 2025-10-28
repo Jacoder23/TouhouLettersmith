@@ -11,12 +11,12 @@ public class Item : MonoBehaviour
 
     public void Snowball()
     {
-        // Cirno's snowball: Turn all the fire tiles on the board into rainbow tiles. After a turn, they thaw into normal tiles.
+        // Cirno's snowball: Turn all the fire tiles on the board into normal tiles
         foreach(var tile in tileManager.instantiatedTiles)
         {
             if(tile.type == TileType.Fire)
             {
-                tile.ChangeTileType(TileType.SnowballRainbow);
+                tile.ChangeTileType(TileType.Normal);
             }
             // used up
             itemCanvas.alpha = 0f;

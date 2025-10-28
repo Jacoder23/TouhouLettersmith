@@ -107,7 +107,7 @@ public class TileManager : MonoBehaviour
                 tile.position.y = i;
                 tile.RandomizeTileValue();
                 // todo: logic for tile type selection
-                tile.type = TileType.Normal;
+                tile.ChangeTileType(TileType.Normal);
                 instantiatedTiles.Add(tile);
             }
         }
@@ -142,6 +142,7 @@ public class TileManager : MonoBehaviour
         }
     }
 
+    // dont need to scramble the tile types
     public void ScrambleAllTiles()
     {
         foreach (var tile in instantiatedTiles)
@@ -168,6 +169,8 @@ public class TileManager : MonoBehaviour
                 case TileType.Normal:
                     break;
                 case TileType.Rainbow:
+                    // todo: add back in after finishing shifting test
+                    //tile.ChangeTileType(TileType.Normal);
                     break;
                 case TileType.Fire:
                     break;
@@ -176,9 +179,6 @@ public class TileManager : MonoBehaviour
                 case TileType.Stone:
                     break;
                 case TileType.Drunken:
-                    break;
-                case TileType.SnowballRainbow:
-                    tile.ChangeTileType(TileType.Normal);
                     break;
             }
         }
@@ -215,8 +215,6 @@ public class TileManager : MonoBehaviour
         {
             if (instantiatedTiles[i].selected)
             {
-                // todo: remove their special typing
-                instantiatedTiles[i].type = TileType.Normal;
                 transientTiles.Add(instantiatedTiles[i]);
                 transientTileIndexes.Add(i);
                 instantiatedTiles[i].Fall(instantiatedTiles[i].transform.localPosition);
@@ -233,14 +231,15 @@ public class TileManager : MonoBehaviour
         var updatedBoardState = GetBoardStateFromTiles();
 
         var timesColumnsHaveBeenShifted = new int[gridSize];
-
         foreach (var tile in transientTiles)
         {
             // todo: i don't think tile positions includes the position of the original selected tile
             List<TilePosition> tilePositions = new List<TilePosition>(); // no need to record origin and destination, we only work one tile at a time so the origin is always one row above (unless its at the top so we use the other fall)
             updatedBoardState = ShiftColumnAndReinsertTile(instantiatedTiles.IndexOf(tile), updatedBoardState, out tilePositions);
+            tile.selected = false; //IMPORTANT
+
             // if this particular column has been shifted 0 times before this shift then only label y 0 as new, shifted 1 before then up to y 1, etc.
-            foreach(var movedTile in tilePositions)
+            foreach (var movedTile in tilePositions)
             {
                 //Debug.Log(movedTile.x + ", " + movedTile.y);
                 var instance = GetTileInstanceFromPosition(movedTile);
@@ -254,20 +253,12 @@ public class TileManager : MonoBehaviour
                 {
                     instance.transform.localPosition = TilePositionToLocalPosition(ShiftTilePositionDown(movedTile, -1), gridSize);
                 }
+                SetTilesToBoardState(updatedBoardState);
             }
             timesColumnsHaveBeenShifted[tile.position.x] += 1; // order is important, dont put before the check
         }
 
-        // solution creates a different worse error by turning a visual bug into a gameplay bug AND a different visual bug
-        //foreach(var tile in transientTiles)
-        //{
-        //    tile.Fall(TilePositionToLocalPosition(tile.position, gridSize));
-        //    tile.transform.localPosition = TilePositionToLocalPosition(ShiftTilePositionDown(tile.position, -1), gridSize);
-        //}
-
-        // todo: add back in randomization
-
-        SetTilesToBoardState(updatedBoardState);
+        //SetTilesToBoardState(updatedBoardState);
 
         DeselectAllTiles();
 
@@ -298,23 +289,64 @@ public class TileManager : MonoBehaviour
 
         indexesToShift.Add((tilePosition.x, -1)); // add og to the top
 
+        bool tileTypeChanged = false;
+        
+        if (instantiatedTiles[tileIndex].selected && tileIndex >= gridSize && instantiatedTiles[tileIndex].type == TileType.Normal)
+        {
+            var above = instantiatedTiles[tileIndex - gridSize];
+            if (above.type != instantiatedTiles[tileIndex].type)
+                tileTypeChanged = true;
+        }
+
         foreach (var index in indexesToShift)
         {
+            // if the og tileIndex ever gets its tile type changed then we need to know so we don't reset it back to being normal tile value
+            // otherwise reset to use up the special tile
             TilePosition tempPos = new TilePosition();
             if (index.Item2 == -1)
             {
+                // todo: spawn in new special tiles here
+                //instantiatedTiles[Extensions.GetIndexFromTilePosition(index.Item1, 0, gridSize)].ChangeTileType(TileType.Normal);
                 boardState[0][index.Item1] = tileValue;
                 tempPos.x = index.Item1;
                 tempPos.y = 0;
             }
             else
             {
+                var currentTile = instantiatedTiles[Extensions.GetIndexFromTilePosition(index.Item1, index.Item2, gridSize)];
+                if (!currentTile.selected)
+                {
+                    if (currentTile.type != TileType.Normal)
+                    {
+                        instantiatedTiles[Extensions.GetIndexFromTilePosition(index.Item1, index.Item2 + 1, gridSize)].ChangeTileType(currentTile.type);
+                    }
+                    currentTile.ChangeTileType(instantiatedTiles[Extensions.GetIndexFromTilePosition(index.Item1, index.Item2 - 1, gridSize)].type);
+                }
+                else
+                { // here's the issue, the tile type is reset to normal but its actually a rainbow tile falling in
+                  // currently multiple in same column is fine only issue is back to the tile directly below
+                  // multi and directly: removes the above
+                  // multiple: fine
+                  // directly below: fine
+                  // selected special: fine
+                  //instantiatedTiles[Extensions.GetIndexFromTilePosition(index.Item1, index.Item2 + 1, gridSize)].ChangeTileType(currentTile.type);
+                  //this line is our culprit for the "multi directly below" issue
+                  // BECAUSE IT WAS SELECTED FUCK, it must be on the second go around
+                  // valdidated the second go around theory
+                  // we need to deselect tiles inbetween shifts
+                    currentTile.ChangeTileType(instantiatedTiles[Extensions.GetIndexFromTilePosition(index.Item1, index.Item2 - 1, gridSize)].type);
+                }
+
                 boardState[index.Item2 + 1][index.Item1] = boardState[index.Item2][index.Item1];
                 tempPos.x = index.Item1;
                 tempPos.y = index.Item2;
             }
             tilePositions.Add(tempPos);
         }
+        instantiatedTiles[Extensions.GetIndexFromTilePosition(tilePosition.x, 0, gridSize)].ChangeTileType(TileType.Normal); // done last
+
+        if (!tileTypeChanged)
+            instantiatedTiles[tileIndex].ChangeTileType(TileType.Normal);
 
         return boardState;
     }
