@@ -12,7 +12,10 @@
         Whoosh,
         Scramble,
         Paper,
-        PaperClose
+        PaperClose,
+        Burn,
+        Explosion,
+        RainbowShimmer
     }
     public enum LibraryMusic {
         KogasaTheme,

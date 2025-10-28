@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using Sirenix.OdinInspector;
 using System;
+using JSAM;
 
 // make a struct for storing special tile data like turns left for the bomb
 public enum TileType

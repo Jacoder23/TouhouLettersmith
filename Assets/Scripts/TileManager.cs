@@ -5,6 +5,8 @@ using System.Linq;
 using UnityEngine;
 using KaimiraGames;
 using jcdr;
+using JSAM;
+
 public class TileManager : MonoBehaviour
 {
     public Tile tilePrefab;
@@ -14,6 +16,7 @@ public class TileManager : MonoBehaviour
     public ToggleFont fontSettings;
     public LetterVerification letter;
     public LevelDatabase level;
+    public OnLoss loss;
 
     [Header("Settings")]
     public bool titleScreen = false;
@@ -107,11 +110,21 @@ public class TileManager : MonoBehaviour
 
         Extensions.DebugLog2DJaggedArray(currentBoardState);
     }
-
+    bool lost = false;
     void Update()
     {
         if (database == null)
             database = FindFirstObjectByType<WordDatabase>(); // strangely doesn't work in Start
+
+        if (instantiatedTiles.Count > 0)
+        {
+            if (instantiatedTiles.TrueForAll(x => x.type == TileType.Fire || x.type == TileType.Stone) && !lost)
+            {
+                // lose
+                loss.Lose();
+                lost = true;
+            }
+        }
     }
 
     Vector2 TilePositionToLocalPosition(TilePosition pos, int gridSize)
@@ -217,6 +230,7 @@ public class TileManager : MonoBehaviour
 
         foreach(var tile in newFireTiles)
         {
+            AudioManager.PlaySound(LibrarySounds.Burn);
             tile.ChangeTileType(TileType.Fire); // a delay would help w the effect here
         }
     }
@@ -246,6 +260,7 @@ public class TileManager : MonoBehaviour
     void ActivateBomb(TilePosition origin)
     {
         // play bomb sound
+        AudioManager.PlaySound(LibrarySounds.Explosion);
         var tilesToBurn = FirePattern(origin);
         instantiatedTiles[Extensions.GetIndexFromTilePosition(origin.x, origin.y, gridSize)].ChangeTileType(TileType.Normal);
         if (tilesToBurn != null)
@@ -498,8 +513,11 @@ public class TileManager : MonoBehaviour
             }
         }
 
-        if(UnityEngine.Random.Range(0.0f,1.0f) < chanceOfFireTile && level.GetCurrentLevel().tileTypesAvailable.Contains(TileType.Fire))
+        if (UnityEngine.Random.Range(0.0f, 1.0f) < chanceOfFireTile && level.GetCurrentLevel().tileTypesAvailable.Contains(TileType.Fire))
+        {
+            AudioManager.PlaySound(LibrarySounds.Burn);
             return TileType.Fire;
+        }
 
         if (UnityEngine.Random.Range(0.0f, 1.0f) < chanceOfBombTile && level.GetCurrentLevel().tileTypesAvailable.Contains(TileType.Bomb))
             return TileType.Bomb;

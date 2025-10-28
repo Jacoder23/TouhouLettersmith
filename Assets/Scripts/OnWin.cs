@@ -16,6 +16,7 @@ public class OnWin : MonoBehaviour
 
     public void Win()
     {
+        Debug.Log("Win");
         AudioManager.StopAllMusic();
         Invoke("Victory", 3.0f); // unhardcode and match to if its a kogasa big win or not
     }
