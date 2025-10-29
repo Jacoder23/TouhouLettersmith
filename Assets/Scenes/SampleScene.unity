@@ -3378,6 +3378,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileManager: {fileID: 1406961825}
   itemCanvas: {fileID: 2522117086383713640}
+  levelData: {fileID: 6930149549917818450}
 --- !u!114 &5338180175384200291
 MonoBehaviour:
   m_ObjectHideFlags: 0
