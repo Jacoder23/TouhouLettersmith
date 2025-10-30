@@ -423,7 +423,7 @@ MonoBehaviour:
       Data: 10
     - Name: maxTurns
       Entry: 3
-      Data: 143
+      Data: 50
     - Name: tileTypesAvailable
       Entry: 7
       Data: 7|System.Collections.Generic.List`1[[TileType, Assembly-CSharp]], mscorlib
@@ -462,16 +462,16 @@ MonoBehaviour:
       Data: false
     - Name: chanceOfFireTile
       Entry: 4
-      Data: 0.03
+      Data: 0.032
     - Name: chanceOfBombTile
       Entry: 4
-      Data: 0.015
+      Data: 0.017
     - Name: chanceOfStoneTile
       Entry: 4
-      Data: 0.03
+      Data: 0.032
     - Name: chanceOfDrunkenTile
       Entry: 4
-      Data: 0.065
+      Data: 0.067
     - Name: snowball
       Entry: 5
       Data: true

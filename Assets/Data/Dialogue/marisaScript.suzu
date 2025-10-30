@@ -1,15 +1,342 @@
+<indicator hide>
+
+<indicator hide>
+
+<hide textbox>
+
+<hide all>
+
+<pause>1.5</pause>
+
+<show textbox>
+
+<show prop meiling>
+
+<show prop kogasa>
+
+<music>Dialogue Theme</music>
+
 // meiling result
+
+<indicator left>
+MEILING: Wow. You really live up to your title, huh? Look at that.
+
+<indicator right>
+KOGASA: I guess I do. I'm glad you like it!
+
+<indicator left>
+MEILING: Guess I'm prepared for our anniversary then.
+Wish me luck!
+
+<sound>Coins</sound>
+
+<indicator left>
+MEILING: Oh, and here's the payment.
+
+<indicator right>
+KOGASA: Thanks, and feel free to come by again for maintenance!
+
+<indicator hide>
+
+<hide textbox>
+
+<hide all>
+
+<music stop>
+
+<transition>
+
+<show textbox>
+
+<show prop meiling>
 
 // meiling can't catch sakuya the whole day because they're both busy
 
+<indicator left>
+MEILING: Alright, I'll give her the gift while it's bright and early!
+...
+...
+...is she not going to pass by the gate? I guess I better wait.
+
+<indicator hide>
+
+ : <i>Time passes.</i>
+
+<indicator left>
+MEILING: I wonder if I should say something.
+Like, maybe I should read her the poem?
+Gosh.
+
+<indicator hide>
+
+ : <i>Time passes. Again.</i>
+
+<indicator left>
+MEILING: I could give her a kiss before handing it over.
+Or maybe that's for after. Yeah.
+Is she going to pass by soon? I guess she's still busy with her own work.
+
+<indicator hide>
+
+ : <i>Time, unsurprisingly, passes. MEILING grows tired.</i>
+
 // but falls asleep (fade using hide prop meiling)
 
-// but sakuya finds her gift and is touched before bringing meiling inside to assetBundleName
+<indicator left>
+MEILING: I won't... fall...
+This is... our last... stand...
+Our... four month...
+
+<hide prop meiling>
+
+<indicator hide>
+
+ : Having put off her afternoon naps for too long, she falls asleep.
+
+<indicator hide>
+
+ : Meiling fell asleep.
+
+<show prop sakuya>
+
+<indicator right>
+SAKUYA: Finally done for preparations.
+Meiling?
+Oh, you're down there.
+Sleeping on the job again? Unbelievable.
+Hm, what's that?
+
+<sound>Paper</sound>
+
+<indicator hide>
+
+ : <i>For Sakuya</i>
+
+<pause>0.5</pause>
+
+<sound>Paper Close</sound>
+
+<indicator right>
+SAKUYA: She remembered.
+...
+I suppose I can let you rest a little while longer.
+You'll need the energy for our celebration.
+
+<indicator hide>
+
+ : <i>SAKUYA kisses MEILING on the cheek.</i>
+
+<indicator right>
+SAKUYA: I'll be looking forward to your present.
+
+<indicator hide>
+
+<hide textbox>
+
+<hide all>
+
+<transition>
+
+<show prop kogasa>
+<show textbox>
 
 // kogasa thinks about everything she's done so far and how her forge has been transformed
 
+<indicator right>
+KOGASA: I've never had this much business before.
+That new title sure did turn things around.
+I'm a LETTERSMITH now. Whatever that means.
+
 // she smiles thinking that she might've brought some couples more happiness
+
+<indicator hide>
+
+<hide textbox>
+
+<pause>0.5</pause>
+
+<show textbox>
+
+<indicator hide>
+
+ : <i>KOGASA smiles.</i>
+
+<indicator right>
+KOGASA: I'm glad I got to help some people.
+And gave new items new homes.
+I hope they'll take good care of them.
 
 // and wonders if she'll ever settle down
 
+
+<indicator right>
+KOGASA: All their talk about love this place feel a little less lonely, aye everyone?
+
+<indicator hide>
+
+ : <i>The objects of KOGASA's forge don't respond, as per usual.</i>
+
+<indicator right>
+KOGASA: Must be nice having someone who'll always be here to keep you all sharp.
+Maybe, I'll find someone like that someday.
+
 // marisa is there to pick up reimu's usual order but is also there asking about the LETTERSMITH title
+
+<show prop marisa>
+
+<music>Dialogue Theme</music>
+
+<indicator left>
+MARISA: That's probably not me, but hey-yo! Marisa here.
+
+<indicator right>
+KOGASA: Eek!
+
+<indicator left>
+MARISA: For a youkai, you sure scare easy.
+
+<indicator right>
+KOGASA: D-don't remind me! What do you want, Marisa?
+If it's an incident, I have nothing to do with it.
+All I've been doing is running my forge!
+
+<indicator left>
+MARISA: Yeah, don't get your 'brella in a twist.
+I'm just here to pick something up for Reimu.
+
+<indicator hide>
+
+ : <i>KOGASA remembers that she was a regular blacksmith up until a few days ago.</i>
+
+<indicator right>
+KOGASA: Oh, that's right. Her order of needles?
+
+<indicator left>
+MARISA: That's the one. The youkai-exterminating ones?
+
+<indicator right>
+KOGASA: They aren't until they do her part of the work on them, but I've got them over here.
+
+<indicator left>
+MARISA: Awesome! Hold on, I've got her money right over here.
+
+<indicator hide>
+
+ : <i>MARISA digs through her pockets, searching for REIMU's money.</i>
+ 
+ : <i>She doesn't find it. Not immediately.</i>
+
+<indicator left>
+MARISA: Uh, I swear it's on me.
+
+<indicator right>
+KOGASA: Take your time.
+...
+
+<indicator left>
+MARISA: ...
+
+<indicator right>
+KOGASA: ...
+
+<indicator left>
+MARISA: ...so, you're making gifts now? Engravings?
+That whole LETTERSMITH thing?
+
+<indicator right>
+KOGASA: That's right.
+
+<indicator left>
+MARISA: Cool.
+Uh, say, I know I'm going to be good for the needles but while I'm looking I did have an idea for a gift.
+
+<indicator right>
+KOGASA: Oh?
+
+<indicator left>
+MARISA: Yeah, something for Reimu.
+I figure if she trusts you, a youkai, to make her anti-youkai weapons...
+...then you've gotta be a pretty good blacksmith right?
+
+<indicator right>
+KOGASA: I'm not confident in much, but that I definitely am!
+
+<indicator left>
+MARISA: Good. Is it possible to engrave something on a needle?
+
+<indicator right>
+KOGASA: ...
+
+<indicator left>
+MARISA: ...
+
+<indicator right>
+KOGASA: No, no it's not.
+
+<indicator left>
+MARISA: Damnit. Alright, what about a set of needles?
+
+<indicator right>
+KOGASA: What do you mean?
+
+<indicator left>
+MARISA: Uh, y'know what? Here's what I want to get engraved.
+
+<sound>Paper</sound>
+
+<indicator hide>
+
+ : <i>Stay sharp and shining, Reimu! - Love, Marisa</i>
+
+<pause>0.5</pause>
+
+<sound>Paper Close</sound>
+
+<indicator left>
+MARISA: What if you just lined the needles up and engraved the words like the set of needles were one block?
+So that when you line them up in order, they show the words?
+
+<indicator right>
+KOGASA: That... could work. But how would you get them from being mixed up?
+
+<indicator left>
+MARISA: Ah, well. It's just for the show of it. She'd end up using those needles anyway so they wouldn't last.
+I just want to show her something a bit special. Give her something to remember.
+
+<indicator right>
+KOGASA: Something to remember... yeah, that sounds nice.
+Really nice.
+It'll still be really hard, even with the short message though.
+Needles are thin. They're not meant to have cuts made in them.
+
+<indicator left>
+MARISA: That's fine. So long as she sees it once.
+
+<indicator right>
+KOGASA: If that's fine then...
+I hope she'll be careful if she uses them on youkai.
+
+<indicator left>
+MARISA: Oh hoh? Worried about Reimu instead of your fellow youkai?
+
+<indicator right>
+KOGASA: Worried about the reprisal if one of the tools I made fails her.
+
+<indicator left>
+MARISA: Ah fair. Should I leave you too it?
+
+<indicator right>
+KOGASA: Watch if you want, you made me realize something.
+
+<indicator left>
+MARISA: That so? Don't mind if I do then! Show me your secrets.
+
+<music stop>
+
+<indicator hide>
+
+ : <i>This will be the last level. Good luck!</i>
+
+<level>level_five</level>
+
+END SCENE.

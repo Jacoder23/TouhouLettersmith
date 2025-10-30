@@ -55,6 +55,9 @@ public class TileManager : MonoBehaviour
         if (titleScreen)
             return;
 
+        AudioManager.StopAllMusic();
+        AudioManager.StopAllSounds();
+
         chanceOfFireTile = level.GetCurrentLevel().chanceOfFireTile;
         chanceOfBombTile = level.GetCurrentLevel().chanceOfBombTile;
         chanceOfStoneTile = level.GetCurrentLevel().chanceOfStoneTile;

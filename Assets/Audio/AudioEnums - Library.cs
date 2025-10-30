@@ -16,10 +16,12 @@
         Burn,
         Explosion,
         RainbowShimmer,
-        Coins
+        Coins,
+        FireAmbience
     }
     public enum LibraryMusic {
         KogasaTheme,
         TitleTheme,
-        DialogueTheme
+        DialogueTheme,
+        EndingTheme
     }

@@ -9,3 +9,290 @@
 // and that she loves all that she makes, and maybe that's enough
 
 // if she ever finds she wants more then she knows she can let them know how she feels, she's gotten a lot of experience with that by now
+
+// in the meantime, she wants to make something to remember
+
+<indicator hide>
+
+<indicator hide>
+
+<hide textbox>
+
+<hide all>
+
+<pause>1.5</pause>
+
+<show textbox>
+
+<show prop marisa>
+
+<show prop kogasa>
+
+<music>Dialogue Theme</music>
+
+<indicator left>
+MARISA: I think... it's perfect.
+
+<indicator right>
+KOGASA: I hope so! That wasn't easy to make.
+
+<indicator left>
+MARISA: Thanks a ton for the work, Kogasa. I owe you one.
+
+<indicator hide>
+
+ : <i>MARISA moves to leave.</i>
+
+<indicator right>
+KOGASA: I think you owe me money, not one.
+
+<indicator left>
+MARISA: Damn. Thought I got you there.
+Here. The money for the regular needles and the money for the ones I commissioned.
+
+<indicator right>
+KOGASA: Thank you.
+
+<indicator left>
+MARISA: Nah, thank you. Let's hope she appreciates the present yeah?
+
+<indicator right>
+KOGASA: Oh, right. Was this for some special day or something?
+Maybe a confession of some sort?
+
+<indicator left>
+MARISA: Nah. Probably not. Probably.
+
+<indicator right>
+KOGASA: You don't sound very sure.
+
+<indicator left>
+MARISA: Don't worry about that.
+I don't need a reason to want to give something to someone I care about.
+Wanting them to have something to remember from me is all the reason I need.
+
+<indicator right>
+KOGASA: You said that earlier.
+
+<indicator left>
+MARISA: I did? Well, guess the remembering is working!
+
+<stop music>
+
+<indicator left>
+MARISA: See ya around, Kogasa.
+
+<indicator right>
+KOGASA: Bye.
+...
+Hey, Marisa?
+
+<indicator left>
+MARISA: Yeah?
+
+<indicator right>
+KOGASA: If you're not sure about a reason to share a gift or your words or feelings with someone.
+Just go for it!
+
+<indicator left>
+MARISA: Huh? Go for what?
+
+<indicator right>
+KOGASA: What every person who's been walking in through my doors has been doing after leaving.
+Let 'em know what you mean.
+
+<indicator left>
+MARISA: Uh huh. I don't know what I'm <i>supposed</i> to mean, but thanks for the advice.
+What I mean...
+
+// kogasa ending
+
+<hide prop marisa>
+
+<indicator hide>
+
+ : <i>MARISA leaves, now deep in thought.</i>
+
+<music stop>
+
+<indicator right>
+KOGASA: ...
+Alone again.
+But... I guess we've made a few more memories together, right?
+Helped a lot of people with their relationships.
+And when they use the gift I made and read the letters the people they love poured their hearts out...
+I guess there's no better way to remember.
+I wonder why so many people feel like they have to put their love into words.
+Least I know if I ever feel like that, I'll have you all to help me turn that into a gift and letter too!
+
+<indicator hide>
+ : <i>She pauses, not expecting a response.</i>
+
+<sound>FireAmbience</sound>
+
+<indicator hide>
+ : <i>But the forge comes to life, despite its flame already being put out. Its ashes emit a soft, warm glow.</i>
+
+<indicator right>
+KOGASA: Huh. Did you just...?
+...no, it couldn't be.
+...
+Either way, I think it's time to close up.
+Good night everyone!
+
+<indicator hide>
+ : <i>She takes one last look at her forge.</i>
+ : <i>A slightly melted, but still intact, snowball lies on a shelf.</i>
+ : <i>She smiles.</i>
+
+<indicator right>
+KOGASA: Good night.
+
+// playing ending music then reimu stuff starts
+
+<indicator hide>
+
+<hide textbox>
+
+<hide all>
+
+<sound stop>
+
+<transition>
+
+<pause>1.5</pause>
+
+<show textbox>
+
+<show prop marisa>
+
+<show prop reimu>
+
+// then the real ending is reimu confessing to marisa interrupting her own gift
+
+<indicator left>
+MARISA: Reimu, I wanted to-
+
+<indicator right>
+REIMU: Marisa, there's something I need to-
+
+<indicator left>
+MARISA: Oh uh. You go ahead first.
+I've got something important to say, let's sort your stuff out first.
+
+<indicator right>
+REIMU: This is important too, but thank you.
+Marisa...
+
+<hide textbox>
+
+<pause>1.5</pause>
+
+<show textbox>
+
+<indicator right>
+REIMU: For the longest time, we've been side by side.
+Solving incidents, competing to protect the village.
+But also drinking tea together, starting parties, and ruckuses and schemes.
+I like being with you.
+That's why I wrote you a letter. Here.
+
+<sound>Paper</sound>
+
+<indicator hide>
+
+ : <i>MARISA reads the letter silently, her face growing redder by the second.</i>
+ : <i>A small gasp escapes her lips and she cups her hand over it.</i>
+ : <i>REIMU steps closer.</i>
+
+<pause>0.5</pause>
+
+<sound>Paper Close</sound>
+
+<indicator right>
+REIMU: You know how I feel now.
+Will you...
+
+<hide textbox>
+
+<pause>1.5</pause>
+
+<show textbox>
+
+<indicator left>
+MARISA: ...no fair.
+
+<indicator right>
+REIMU: Huh?
+
+<indicator left>
+MARISA: No fair!
+I was gonna confess first!
+
+<indicator right>
+REIMU: Oh my god.
+
+<indicator left>
+MARISA: I had this gift, and I wasn't planning to confess but Kogasa told me things, and the atmosphere was just right and-
+Ugh.
+
+<indicator right>
+REIMU: Oh <i>my</i> god.
+
+<indicator left>
+MARISA: You're gonna make this up to me with smooches, yeah?
+
+<indicator hide>
+
+ : <i>REIMU sighs.</i>
+
+<indicator right>
+REIMU: C'mere.
+
+<music>Ending Theme</music>
+
+<hide prop reimu>
+
+<hide prop marisa>
+
+<indicator hide>
+
+<hide textbox>
+
+<transition>
+
+<show textbox>
+
+<indicator hide>
+
+ : And thus ends this tale.
+
+ : Made by
+
+ : Jacoder23
+
+ : Pio
+
+ : and Mollyco
+ 
+ : For Touhou Game Jam 16
+
+ : Thanks to
+
+ : Text/Dialogue Bleeps Pack by dmochas
+
+ : The Wordnik wordlist
+
+ : Umbrella icon by Lorc
+
+ : See full credits and attribution on the itch.io page.
+
+ : Thank you for playing!
+ 
+<pause>0.5</pause>
+
+<music stop>
+
+<title screen>
+
+END SCENE.

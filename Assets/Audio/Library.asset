@@ -35,10 +35,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dfa0cb951f116294dbf034e3f8ddeceb, type: 2}
   - {fileID: 11400000, guid: c2a39a450c7e264488bcc6ffe00a261a, type: 2}
   - {fileID: 11400000, guid: 73a9c66757a3ad1478f3c2ee00e79bbe, type: 2}
+  - {fileID: 11400000, guid: b62f2c6a21ff3214baca4ea13e579cb1, type: 2}
   Music:
   - {fileID: 11400000, guid: 144a165ec25d3824c91f41a2d17f82e2, type: 2}
   - {fileID: 11400000, guid: d591a2e52bc252d4280ef9af8b5595d5, type: 2}
   - {fileID: 11400000, guid: a1bcfbcaaaabd3f4ea62555b445b6f68, type: 2}
+  - {fileID: 11400000, guid: 3134e46f7fc63b544bf8e03e597e7e89, type: 2}
   useCustomNames: 0
   generatedName: Library
   musicEnum: 
@@ -70,6 +72,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: dfa0cb951f116294dbf034e3f8ddeceb, type: 2}
     - {fileID: 11400000, guid: c2a39a450c7e264488bcc6ffe00a261a, type: 2}
     - {fileID: 11400000, guid: 73a9c66757a3ad1478f3c2ee00e79bbe, type: 2}
+    - {fileID: 11400000, guid: b62f2c6a21ff3214baca4ea13e579cb1, type: 2}
     foldout: 1
   musicCategoriesToList:
   - name: 
@@ -77,4 +80,5 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 144a165ec25d3824c91f41a2d17f82e2, type: 2}
     - {fileID: 11400000, guid: d591a2e52bc252d4280ef9af8b5595d5, type: 2}
     - {fileID: 11400000, guid: a1bcfbcaaaabd3f4ea62555b445b6f68, type: 2}
+    - {fileID: 11400000, guid: 3134e46f7fc63b544bf8e03e597e7e89, type: 2}
     foldout: 1

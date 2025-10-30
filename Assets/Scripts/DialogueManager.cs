@@ -38,6 +38,7 @@ public enum DialogueType
     DefinitionEnd,
     Macro,
     StopMusic,
+    StopSounds,
     ChangeSpeakerIndicator,
     HideTextbox,
     ShowTextbox,
@@ -46,7 +47,8 @@ public enum DialogueType
     HideAllProps,
     DisableSelf,
     DisableUntilNextTurn,
-    FakeSceneChange
+    FakeSceneChange,
+    TitleScreen
 }
 
 public struct BoolString
@@ -111,6 +113,7 @@ public class DialogueManager : SerializedMonoBehaviour
         {@"</define>", DialogueType.DefinitionEnd },
         {@"<run .+>", DialogueType.Macro },
         {@"<music stop>", DialogueType.StopMusic },
+        {@"<sound stop>", DialogueType.StopSounds },
         {@"<indicator .+>", DialogueType.ChangeSpeakerIndicator },
         {@"<hide textbox>", DialogueType.HideTextbox },
         {@"<show textbox>", DialogueType.ShowTextbox },
@@ -119,7 +122,8 @@ public class DialogueManager : SerializedMonoBehaviour
         {@"<hide all>", DialogueType.HideAllProps },
         {@"<disable self>", DialogueType.DisableSelf },
         {@"<disable until next turn>", DialogueType.DisableUntilNextTurn },
-        {@"<transition>", DialogueType.FakeSceneChange }
+        {@"<transition>", DialogueType.FakeSceneChange },
+        {@"<title screen>", DialogueType.TitleScreen }
 
     }; // i aint even gonna bother with puppets imma just made it toggle on or off preset parents with the chars in em since they dont need to move - 2025
 
@@ -569,6 +573,10 @@ public class DialogueManager : SerializedMonoBehaviour
                             JSAM.AudioManager.StopAllMusic();
                             if(!ignoreDelayedContinues) DelayedContinue(0);
                             break;
+                        case DialogueType.StopSounds:
+                            JSAM.AudioManager.StopAllSounds();
+                            if (!ignoreDelayedContinues) DelayedContinue(0);
+                            break;
                         case DialogueType.ChangeSpeakerIndicator:
                             ChangeSpeakerIndicator(lineData[i].value.Replace("<indicator", "").Replace(">", "").Trim());
                             if (!ignoreDelayedContinues) DelayedContinue(0);
@@ -608,6 +616,10 @@ public class DialogueManager : SerializedMonoBehaviour
                             dialoguePaused = true;
                             Invoke("ContinueDialogue", 3.5f); // unhardcode
                             if (!ignoreDelayedContinues) DelayedContinue(0);
+                            break;
+                        case DialogueType.TitleScreen:
+                            sceneTransition.SetNextScene("TitleScreen");
+                            sceneTransition.NextScene();
                             break;
                     }
                 }

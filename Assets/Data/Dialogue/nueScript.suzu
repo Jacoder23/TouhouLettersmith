@@ -42,7 +42,7 @@ REISEN: I'll trust you on that then. Thanks.
 
 <sound>Coins</sound>
 
-How much do I owe you?
+REISEN: How much do I owe you?
 
 <indicator hide>
 
@@ -87,7 +87,21 @@ REISEN: You like the sword?
 YOUMU: I have gardening shears already. It's you I like, idiot.
 
 <indicator left>
-REISEN: O-oh!
+REISEN: O-oh! What about that time you cut leaves using your swords?
+
+<indicator right>
+YOUMU: That's for training!
+I guess that makes this a training sword now. Happy accident.
+
+<indicator left>
+REISEN: Happy accident...
+
+<indicator right>
+YOUMU: Now come on. You bought me this, I may as well use it.
+Let's go enjoy some tea in the garden.
+
+<indicator left>
+REISEN: Sure! I'd like that.
 
 // kogasa pleased with herself
 
@@ -159,7 +173,8 @@ So, who's it for.
 NUE: Mamizou, the ol' coot. She needs a hairpin. I want it lookin' like my wings.
 
 <indicator right>
-KOGASA: Like a reminder of you she can carry around?
+KOGASA: Mamizou? I think we met once, almost got caught up in one of her parades.
+So your wings? It'd be like a reminder of you she can carry around?
 
 <indicator left>
 NUE: Sure, I guess. Didn't think about it that way.

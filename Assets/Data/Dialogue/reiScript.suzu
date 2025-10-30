@@ -179,10 +179,12 @@ But that's preferable than to them becoming like me.
  : <i>KOGASA is one.</i>
 
 <indicator right>
-KOGASA: Doesn't really make me feel better...
+KOGASA: So long as I'm here, they'll never have to be forgotten!
+...the thought doesn't really make me feel better.
 No, wait, I think I'm just hungry.
-Maybe, I could eat that snowball on my windowsill...
-Hold on, snow in the summer?
+Maybe, I could eat that snowball on my windowsill.
+...
+Hold on, a snowball in the summer?
 
 <indicator hide>
 
@@ -289,8 +291,8 @@ KOGASA: I think it's touching really. But what it is, is a bit long for an engra
 What did you want this on?
 
 <indicator left>
-REISEN: I wanted to get her a sword.
-She already has two but I figured she'd appreciate something specifically for her gardening.
+REISEN: I wanted to get her a sword. I remember seeing her use one to cut leaves once.
+I figured she'd appreciate something specifically for her gardening.
 
 <indicator right>
 KOGASA: A gardening sword... interesting!
@@ -313,7 +315,8 @@ REISEN: Figures. What if it were just this?
 REISEN: Meaning's a little different but I should've be more direct from the start.
 
 <indicator right>
-KOGASA: Yeah, this works great. I'm feeling the warmth that'll fuel my forge!
+KOGASA: It's a bit shorter. Short enough? Not sure but...
+I'm feeling the warmth from this that'll fuel my forge!
 Y'know what? I'm doing this now, watch if you want!
 
 <indicator left>
