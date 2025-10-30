@@ -1,6 +1,3 @@
-// first the daiyousei result and cirno part
-// DAIYOUSEI AND KOGASA
-
 <indicator hide>
 
 <indicator hide>
@@ -13,51 +10,86 @@
 
 <show textbox>
 
-<show prop daiyousei>
+<show prop reisen>
 
 <show prop kogasa>
 
+<music>Dialogue Theme</music>
+
+// reisen kogasa result
+
 <indicator right>
-KOGASA: That should be it!
-Isn't she a beaut?
+KOGASA: Hooh. That's a sword alright.
+She's one of my better works.
+Want to give her a try? She'll get cranky if you don't use her.
+
+<indicator left>
+REISEN: Thanks but no thanks. I'd like it if Youmu got the first swing in.
+
+<indicator right>
+KOGASA: Suit yourself. Not like there's a need for a test cut.
+I can already tell she's as sharp as she'll need to be.
+There's plenty of hatred of shrubbery instilled in her too.
+
+<indicator left>
+REISEN: Is... that a good thing?
+
+<indicator right>
+KOGASA: For a gardening sword? Absolutely.
+
+<indicator left>
+REISEN: I'll trust you on that then. Thanks.
+
+<sound>Coins</sound>
+
+How much do I owe you?
 
 <indicator hide>
 
- : <i>KOGASA pulls out completed metal ice cube, the size of a fist.</i>
+<hide textbox>
 
- : <i>It shines. Engraved in it is DAIYOUSEI's letter.</i>
+<hide all>
 
-<indicator left>
-DAIYOUSEI: Wow, it looks beautiful...
-W-wait, do I have enough to pay for this?
+<music stop>
 
-<indicator right>
-KOGASA: Pay? No, no! Don't worry about that.
-You just gave me an idea for a new service.
-Take your gift. She's on the house.
+<transition>
 
-<indicator left>
-DAIYOUSEI: Are you sure? I thought you needed special tiles.
+<show textbox>
 
-<indicator right>
-KOGASA: And food, water, and fear to live.
-But I'll manage. Just make sure your friend takes good care of her, yeah?
-It was tough work with all those words, after all!
+<show prop reisen>
+
+<show prop youmu>
+
+// reisen and youmu
 
 <indicator left>
-DAIYOUSEI: Hehe, you're right.
-I'll find some way to repay you, I promise!
+REISEN: You're so sincere it makes me feel guilty.
+So earnest it makes me want to be more like you.
+And that's why I want to give you this.
 
-<hide prop daiyousei>
-
-<indicator hide>
-
- : <i>DAIYOUSEI leaves with the cube.</i>
- 
 <indicator right>
-KOGASA: Guess I'm not eating out for a few days.
-Hopefully Daiyousei's friend cheers up.
-Time to close up shop!
+YOUMU: A sword?
+
+<indicator left>
+REISEN: For your gardening.
+I thought you might like having one specifically for plants.
+
+<indicator right>
+YOUMU: Engravings...
+...
+I see.
+You've made me so happy.
+
+<indicator left>
+REISEN: You like the sword?
+
+<indicator right>
+YOUMU: I have gardening shears already. It's you I like, idiot.
+
+<indicator left>
+REISEN: O-oh!
+
+// kogasa pleased with herself
 
 <indicator hide>
 
@@ -69,54 +101,133 @@ Time to close up shop!
 
 <show textbox>
 
- : <i>The next day...</i>
-
-<show prop daiyousei>
-
-<show prop cirno>
-
-// DAIYOUSEI AND CIRNO
-
-DAIYOUSEI: Cirno, how are you feeling?
-
-CIRNO: Hooooot...
-
-CIRNO: I suck... everything sucks...
-
-DAIYOUSEI: W-well, I don't know about that.
-// the metal's cool to the touch since dai kept it in a cool place that they turn into a hangout spot
-
-<transition>
-<pause>3</pause>
-
 <show prop kogasa>
 
-<pause>2</pause>
+<indicator right>
+KOGASA: Y'know I wonder if I should've told her I've met Youmu before.
+But given that encounter ended her beating me up I guess it'd have complicated things.
+Especially payment.
+Man, it's nice to open up shop on a full stomach and wallet.
+Paying customers are the best!
 
-KOGASA: Good morning everyone!
-
-<indicator hide>
-
- : <i>KOGASA announces to the room.</i>
- : <i>Only her tools and creations are there to hear it.</i>
-
-KOGASA: Still giving me the silent treatment, aw.
-...it is a bit lonely.
-But that's preferable than to them becoming like me.
-
-<indicator hide>
-
- : <i>Tsukomogami are youkai, monsters, created from tools, clothes, and objects.</i>
-
- : <i>They usually form out of a sense of vengeance after being neglected by humans.</i>
-
-KOGASA: Doesn't really make me feel better...
-No, wait, I think I'm just hungry.
-Maybe, I could eat that snowball on my windowsill...
-Hold on,
-
-// KOGASA
-// discovers cirno's Present
-
-// NUE AND KOGASA
 // nue comes by and asks about a hairpin to make up for some long old favor she needs to pay mamizou back for, debts they lost track of
+
+<music>Dialogue Theme</music>
+
+<show prop nue>
+
+<indicator left>
+NUE: Getting excited before I've even shown the money?
+I can't tell if that's greed or just good business sense.
+
+<indicator right>
+KOGASA: Ack, Nue! How long have you been standing there?
+
+<indicator left>
+NUE: I was the hat rack by the entrance. Been here for about 10 minutes.
+
+<indicator right>
+KOGASA: I knew we didn't have a rack... not like anyone takes off their hats in Gensokyo.
+
+<indicator left>
+NUE: I would've reckoned a tsukomogami like you'd appreciate people using what they own.
+
+<indicator right>
+KOGASA: Of course I do! But maintenance and moderation's also important.
+People who get so attached that they forget to examine the conditions of their belongings...
+...they're their own kind of problem.
+
+<indicator left>
+NUE: Preaching to the choir. It's like knowing someone too long.
+All those little grudges and debts build up like wear and tear.
+
+<indicator right>
+KOGASA: I wouldn't call it the exact same thing. Oh, did you have a request?
+Maybe for Miss Hijiri? I know you also stay at the temple sometimes.
+
+<indicator left>
+NUE: It ain't for 'er but yeah I've seen you around, Miss LETTERSMITH.
+Guess we haven't talked that much till know, huh?
+
+<indicator right>
+KOGASA: Seems like it! And that term sure seems to be getting popular.
+So, who's it for.
+
+<indicator left>
+NUE: Mamizou, the ol' coot. She needs a hairpin. I want it lookin' like my wings.
+
+<indicator right>
+KOGASA: Like a reminder of you she can carry around?
+
+<indicator left>
+NUE: Sure, I guess. Didn't think about it that way.
+
+<indicator right>
+KOGASA: Well that sounds like a very nice idea!
+
+<indicator left>
+NUE: Mhm.
+
+<indicator right>
+KOGASA: ...
+
+<indicator left>
+NUE: ...
+
+<indicator right>
+KOGASA: Do you, uh, want something engraved on it?
+
+<indicator left>
+NUE: Ah right. Here.
+
+<sound>Paper</sound>
+
+<indicator hide>
+
+ : <i>Paying it forward to a needy racoon dog with bad breath.</i>
+
+<pause>0.5</pause>
+
+<sound>Paper Close</sound>
+
+<indicator right>
+KOGASA: This is, uh. This is something alright.
+
+<indicator left>
+NUE: Y'like it?
+
+<indicator right>
+KOGASA: Well, it's very-
+
+<indicator left>
+NUE: Nah, don't kid yourself. It's part of an inside joke. Her breath's fine.
+
+<indicator right>
+KOGASA: Okay. I guess. And what about the paying it forward?
+
+<indicator left>
+NUE: Oh that? Well y'see I owe her one. But I ain't just gonna give her what she wants.
+She can pry that out of my cold dead hands.
+
+<indicator right>
+KOGASA: So this is just-
+
+<indicator left>
+NUE: I'm settling a debt to her.
+That's all. She's been bothering me about a bet I lost a couple decades back.
+
+<indicator right>
+KOGASA: Uh huh. Well, I guess I can work with that...
+
+<indicator left>
+NUE: Yeah, you mind if I kick up a chair while you do?
+Gotta make sure you don't accidentally add somethin' sappy into the mix.
+
+<indicator right>
+KOGASA: Right, geez. Just don't sit too close.
+
+<music stop>
+
+<level>level_three</level>
+
+END SCENE.

@@ -21,7 +21,7 @@ public struct LevelData
     public float chanceOfStoneTile;
     public float chanceOfDrunkenTile;
     [Header("Items")]
-    public bool snowball;
+    public bool snowball; // todo: turn into an enum of items
     //public bool spawnSpecialTilesOnFirstScreen; // todo: bring this back, but JSAM gets weird and glitches out so turn off sounds there
 }
 public class LevelDatabase : SerializedMonoBehaviour

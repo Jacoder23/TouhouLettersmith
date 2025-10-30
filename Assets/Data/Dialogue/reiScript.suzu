@@ -1,0 +1,327 @@
+// first the daiyousei result and cirno part
+// DAIYOUSEI AND KOGASA
+
+<indicator hide>
+
+<indicator hide>
+
+<hide textbox>
+
+<hide all>
+
+<pause>1.5</pause>
+
+<show textbox>
+
+<show prop daiyousei>
+
+<show prop kogasa>
+
+<music>Dialogue Theme</music>
+
+<indicator right>
+KOGASA: That should be it!
+Isn't she a beaut?
+
+<indicator hide>
+
+ : <i>KOGASA pulls out completed metal ice cube, the size of a fist.</i>
+
+ : <i>It shines. Engraved in it is DAIYOUSEI's letter.</i>
+
+<indicator left>
+DAIYOUSEI: Wow, it looks beautiful...
+W-wait, do I have enough to pay for this?
+
+<indicator right>
+KOGASA: Pay? No, no! Don't worry about that.
+You just gave me an idea for a new service.
+Take your gift. She's on the house.
+
+<indicator left>
+DAIYOUSEI: Are you sure? I thought you needed special tiles.
+
+<indicator right>
+KOGASA: And food, water, and fear to live.
+But I'll manage. Just make sure your friend takes good care of her, yeah?
+It was tough work with all those words, after all!
+
+<indicator left>
+DAIYOUSEI: Hehe, you're right.
+I'll find some way to repay you, I promise!
+
+<hide prop daiyousei>
+
+<indicator hide>
+
+ : <i>DAIYOUSEI leaves with the cube.</i>
+ 
+<indicator right>
+KOGASA: Guess I'm not eating out for a few days.
+Hopefully Daiyousei's friend cheers up.
+Time to close up shop!
+
+<indicator hide>
+
+<hide textbox>
+
+<hide all>
+
+<music stop>
+
+<transition>
+
+<show textbox>
+
+ : <i>The next day...</i>
+
+<show prop daiyousei>
+
+<show prop cirno>
+
+// DAIYOUSEI AND CIRNO
+
+<indicator left>
+DAIYOUSEI: Cirno, how are you feeling?
+
+<indicator right>
+CIRNO: Hooooot...
+
+<indicator right>
+CIRNO: I suck... everything sucks...
+
+<indicator left>
+DAIYOUSEI: W-well, I don't know about that.
+What about this? I think it's pretty cool.
+I hope...
+
+<indicator right>
+CIRNO: What is-?
+Woah!
+
+// the metal's cool to the touch since dai kept it in a cool place that they turn into a hangout spot
+
+<indicator hide>
+ : <i>DAIYOUSEI holds her gift out, pressing it against CIRNO's cheek.</i>
+
+<indicator right>
+CIRNO: That's cold! You got an ice cube?
+
+<indicator left>
+DAIYOUSEI: Yep and it's for you! Read what's on it.
+
+<indicator right>
+CIRNO: ...
+Ooh! Wait, who's YOU and ME?
+
+<indicator left>
+DAIYOUSEI: It's us, silly!
+
+<indicator right>
+CIRNO: Oh, you're right.
+We are the strongest!
+
+<indicator left>
+DAIYOUSEI: Feeling better now?
+
+<indicator right>
+CIRNO: Now that we're together, how couldn't I? Thanks!
+You made something really nice.
+
+<indicator left>
+DAIYOUSEI: Well, I wrote the text but I didn't make it.
+There's this blacksmith who helped me write out my letter and made the gift.
+
+<indicator right>
+CIRNO: A LETTERSMITH you say?
+
+<indicator left>
+DAIYOUSEI: Uh, sure.
+
+<indicator right>
+CIRNO: We better pay her back then!
+Fairy style!
+
+<indicator left>
+DAIYOUEI: F-fairy style!
+
+<indicator hide>
+
+<hide textbox>
+
+<hide all>
+
+<transition>
+
+<show prop kogasa>
+
+<show textbox>
+
+<indicator right>
+KOGASA: Good morning everyone!
+
+<indicator hide>
+
+ : <i>KOGASA announces to the room.</i>
+ : <i>Only her tools and creations are there to hear it.</i>
+
+<indicator right>
+KOGASA: Still giving me the silent treatment, aw.
+...it is a bit lonely.
+But that's preferable than to them becoming like me.
+
+<indicator hide>
+
+ : <i>Tsukomogami are youkai, monsters, created from tools, clothes, and objects.</i>
+
+ : <i>They usually form out of a sense of vengeance after being neglected by humans.</i>
+
+ : <i>KOGASA is one.</i>
+
+<indicator right>
+KOGASA: Doesn't really make me feel better...
+No, wait, I think I'm just hungry.
+Maybe, I could eat that snowball on my windowsill...
+Hold on, snow in the summer?
+
+<indicator hide>
+
+ : <i>KOGASA opens her window, taking the ball of snow.</i>
+
+ : <i>It feels unnaturally cool to the touch. A slip of paper lies next to it.</i>
+
+<sound>Paper</sound>
+
+<indicator right>
+KOGASA: ...
+Oh it's from them! Cirno huh?
+Well, I'm glad Daiyousei was successful then.
+Snow huh... well I don't know how long I can keep this around.
+Maybe I can use it to cool down the forge?
+
+<sound>Paper Close</sound>
+
+<indicator hide>
+
+ : <i>Obtained CIRNO'S SNOWBALL. Use it to put out all the FIRE TILES on the board.</i>
+
+ : <i>It will appear in your item slot in the coming levels.</i>
+
+// REISEN AND KOGASA
+// reisen appears asking about helping confess to 
+
+<show reisen>
+
+<music>Dialogue Theme</music>
+
+<indicator right>
+KOGASA: Oh, welcome to my forge! I'm Kogasa.
+
+<indicator left>
+REISEN: Hi there, I'm Reisen. Why are you holding that snowball?
+
+<indicator right>
+KOGASA: Smithing reasons.
+
+<indicator left>
+REISEN: Right, right.
+That makes you the smith around here?
+The LETTERSMITH?
+
+<indicator right>
+KOGASA: LETTERSMITH?
+I'm a blacksmith, sure, but LETTERSMITH is a new one.
+
+<indicator left>
+REISEN: It's just what I overheard some fairies say while making my rounds for work.
+You make gifts?
+
+<indicator right>
+KOGASA: That's right!
+Tools, items, etcetera. As long as you promise to take care of them I can make them!
+
+// i would like to have used a comma above as punctuation, alas post jam functionality
+
+<indicator left>
+REISEN: Them?
+
+<indicator right>
+KOGASA: The tools. Or gifts. I guess it's the receiver who has to take care of 'em but still.
+I won't make them if I don't know they're going to an owner who'll love them.
+
+<indicator left>
+REISEN: That...
+...seems reasonable, actually. I don't think you'll have to worry about that then.
+She's pretty darn diligent. I think she might've worked herself half-dead until she literally was.
+
+<indicator right>
+KOGASA: Who's she?
+
+<indicator left>
+REISEN: Youmu. I've been meaning to tell her something for a while now.
+I figured bringing a gift with me would make the confession more special.
+
+<indicator right>
+KOGASA: Oh my.
+
+<indicator left>
+REISEN: You do engravings on your gifts too, right? The whole LETTERSMITH business?
+I've got a few words of my own to share.
+
+<sound>Paper</sound>
+
+<indicator hide>
+
+ : <i>You are so earnest, it makes me want to be a better person. Is this love?</i>
+
+<pause>0.5</pause>
+
+<sound>Paper Close</sound>
+
+<indicator right>
+KOGASA: Oh my!
+
+<indicator left>
+REISEN: Yeah, it's a bit much isn't it?
+
+<indicator right>
+KOGASA: I think it's touching really. But what it is, is a bit long for an engraving though.
+What did you want this on?
+
+<indicator left>
+REISEN: I wanted to get her a sword.
+She already has two but I figured she'd appreciate something specifically for her gardening.
+
+<indicator right>
+KOGASA: A gardening sword... interesting!
+But, even then, this is  probably too long.
+
+<indicator left>
+REISEN: Figures. What if it were just this?
+
+<sound>Paper</sound>
+
+<indicator hide>
+
+ : <i>I love you and I love that you make me want to be a better person.</i>
+
+<pause>0.5</pause>
+
+<sound>Paper Close</sound>
+
+<indicator left>
+REISEN: Meaning's a little different but I should've be more direct from the start.
+
+<indicator right>
+KOGASA: Yeah, this works great. I'm feeling the warmth that'll fuel my forge!
+Y'know what? I'm doing this now, watch if you want!
+
+<indicator left>
+REISEN: You sure are fired up.
+Guess we're doing a payment after delivery kind of system.
+
+<music stop>
+
+<level>level_two</level>
+
+END SCENE.

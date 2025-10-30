@@ -1,0 +1,210 @@
+<indicator hide>
+
+<indicator hide>
+
+<hide textbox>
+
+<hide all>
+
+<pause>1.5</pause>
+
+<show textbox>
+
+<show prop nue>
+
+<show prop kogasa>
+
+<music>Dialogue Theme</music>
+
+// nue and kogasa result
+
+<indicator left>
+NUE: Not bad, not bad at all.
+Better than the Outside World stuff, that's for sure.
+
+<sound>Coins</sound>
+
+<indicator left>
+NUE: Will this much settle it?
+
+<indicator right>
+KOGASA: Wow, yeah of course.
+
+<indicator left>
+NUE: Great. Be seein' ya then.
+
+<indicator right>
+KOGASA: Hold on!
+Don't you think you should be treating your gift a little more carefully?
+She's one of a kind after all.
+
+<indicator left>
+NUE: Yeah, yeah. Don't worry too much about it.
+I'll treat 'er nice. She's gotta be able to annoy Mamizou after all.
+
+<indicator right>
+KOGASA: Alright...
+And, are you really sure about giving it?
+I know I already made her but I'd feel bad if it cause a rift in your relationship.
+
+<indicator left>
+NUE: Nah, don't worry too much 'bout us, yeah?
+This is just how us ol' folk have a little fun.
+If you take 'urselves too seriously, you'll get hung up on every lil' annoyance.
+Sometimes, ya gotta poke some fun.
+
+<indicator right>
+KOGASA: At other people? Seems mean.
+
+<indicator left>
+NUE: With other people. There's a difference.
+Mamizou knows what I'm 'bout by now.
+If we end up talking more, maybe you will too.
+
+<indicator hide>
+
+<hide textbox>
+
+<hide all>
+
+<music stop>
+
+<transition>
+
+<show textbox>
+
+// mamizou getting the gift, nue isnt there
+
+<indicator right>
+MAMIZOU: A lot of craftsmanship just to remind me about that skunk mix-up?
+It's been thirty years, ya elephant!
+
+<indicator left>
+NUE: Y'know what they say 'bout elephants and forgetting.
+
+<indicator right>
+MAMIZOU: You're hopeless, y'know that? Geez.
+Needy racoon dog, my ass.
+
+<indicator left>
+NUE: But you're still gonna use it?
+
+<indicator right>
+MAMIZOU: 'course I am. I'm not letting your idea of paying me back with a joke ruin someone's hard work.
+
+<indicator left>
+NUE: Not to mention my coin.
+
+<indicator right>
+MAMIZOU: Not to mention it.
+And hey, don't you still owe me 5000 yen for the last trip we took to the outside?
+
+<indicator left>
+NUE: Hey, hey! I just paid you back, don't squeeze the golden goose!
+
+<indicator right>
+MAMIZOU: Only thing getting squeezed is my patience.
+One day, I'll be rid of you ya' damn nuisance!
+
+<indicator left>
+NUE: Right back, at ya' you bother!
+Oh say, you wanna go to Miyoi's after this? You've been bragging 'bout her for a while.
+
+<indicator right>
+MAMIZOU: 'course! Just don't mooch off of me.
+
+<indicator hide>
+
+<hide textbox>
+
+<hide all>
+
+<music stop>
+
+<transition>
+
+<show textbox>
+
+// kogasa  already midtalk with meiling looking for an anniversary gift
+
+<music>Dialogue Theme</music>
+
+<show prop meiling>
+
+<show prop kogasa>
+
+<indicator left>
+MEILING: That's why I need this by tonight.
+I didn't think we'd be celebrating our fourth month anniversary.
+
+<indicator right>
+KOGASA: That does seem like a bit of a weird time to have it.
+Did you have ones for the previous months.
+
+<indicator left>
+MEILING: No! That's why it took me by surprise.
+Anyways, do you think you could engrave this on the kitchen knife?
+I know Sakuya'll say it degrades the longevity or whatever but she's just got no appreciation for the arts.
+
+<indicator right>
+KOGASA: Mhm, well she's not entirely wrong.
+A bad engraving will make a tool more fragile.
+But I think I should be able to handle it. What did you want written?
+
+<indicator left>
+MEILING: Here ya' go.
+
+<sound>Paper</sound>
+
+<indicator hide>
+
+ : <i>When sand, sun, grass comes</i>
+
+<pause>0.5</pause>
+
+ : <i>I wait for night to see you</i>
+
+<pause>0.5</pause>
+
+ : <i>In the snow, moon, flowers.</i>
+
+<pause>0.5</pause>
+
+<sound>Paper Close</sound>
+
+<indicator right>
+KOGASA: This is beautiful.
+
+<indicator left>
+MEILING: Thanks, I've been trying my hand at poetry.
+
+<indicator right>
+KOGASA: There's no way this fits on a knife though.
+It'll damage it.
+
+<indicator left>
+MEILING: Oh come on! Please?
+What if you engrave it on both sides?
+
+<indicator right>
+KOGASA: Then how do we split it up? It's three lines.
+
+<indicator left>
+MEILING: Hnng. But I wanted to make this a special gift.
+
+<indicator right>
+KOGASA: Maybe it doesn't need to be the knife that's engraved?
+I could make a sheathe? Usually those are leather but I could line the inside to prevent dulling.
+Then the outside can get whatever you want written on it, and won't hurt the knife.
+
+<indicator left>
+MEILING: That's perfect!
+
+<indicator right>
+KOGASA: Alright, let's get to it then.
+
+<music stop>
+
+<level>level_four</level>
+
+END SCENE.

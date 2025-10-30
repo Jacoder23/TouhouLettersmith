@@ -15,7 +15,8 @@
         PaperClose,
         Burn,
         Explosion,
-        RainbowShimmer
+        RainbowShimmer,
+        Coins
     }
     public enum LibraryMusic {
         KogasaTheme,
