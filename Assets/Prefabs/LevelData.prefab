@@ -249,7 +249,7 @@ MonoBehaviour:
       Data: false
     - Name: chanceOfFireTile
       Entry: 4
-      Data: 0.06
+      Data: 0.1
     - Name: chanceOfBombTile
       Entry: 4
       Data: 0
@@ -321,10 +321,10 @@ MonoBehaviour:
       Data: 0
     - Name: chanceOfBombTile
       Entry: 4
-      Data: 0.025
+      Data: 0.035
     - Name: chanceOfStoneTile
       Entry: 4
-      Data: 0.05
+      Data: 0.055
     - Name: chanceOfDrunkenTile
       Entry: 4
       Data: 0
@@ -387,7 +387,7 @@ MonoBehaviour:
       Data: false
     - Name: chanceOfFireTile
       Entry: 4
-      Data: 0.025
+      Data: 0.11
     - Name: chanceOfBombTile
       Entry: 4
       Data: 0
@@ -462,16 +462,16 @@ MonoBehaviour:
       Data: false
     - Name: chanceOfFireTile
       Entry: 4
-      Data: 0.04
+      Data: 0.1
     - Name: chanceOfBombTile
       Entry: 4
-      Data: 0.025
+      Data: 0.03
     - Name: chanceOfStoneTile
       Entry: 4
-      Data: 0.04
+      Data: 0.07
     - Name: chanceOfDrunkenTile
       Entry: 4
-      Data: 0.1
+      Data: 0.15
     - Name: snowball
       Entry: 5
       Data: true
