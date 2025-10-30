@@ -51,6 +51,15 @@ MonoBehaviour:
     ReferencedUnityObjects:
     - {fileID: 4900000, guid: de9a42f62435def4bb70c84e651d980f, type: 3}
     - {fileID: 4900000, guid: 8b3d28c5c6366454995957a1f3e8731b, type: 3}
+    - {fileID: 2811297602134710623, guid: 2c1b0bdf9a39de34e8d356b7f5f0af16, type: 3}
+    - {fileID: 4900000, guid: 57cd54cb84edbbf43a74c0a79169768b, type: 3}
+    - {fileID: 2811297602134710623, guid: 6d5cc3aba9e4cfa42b6916dbb1c7d11e, type: 3}
+    - {fileID: 4900000, guid: 0dea61f668c94944a892945fe930282c, type: 3}
+    - {fileID: 2811297602134710623, guid: 34ed91b36a013e8428498f9cdf0dc430, type: 3}
+    - {fileID: 4900000, guid: 04e93d11702f6a04395f301e9ff3215e, type: 3}
+    - {fileID: 2811297602134710623, guid: 415a061d9a6c41d48b626e47ad12dea1, type: 3}
+    - {fileID: 4900000, guid: c23b84b74a3c4fd46abde194d88ce326, type: 3}
+    - {fileID: 2811297602134710623, guid: 41f34429255cb4541964d0ac77de3f2e, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -69,7 +78,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 6
     - Name: 
       Entry: 7
       Data: 
@@ -121,6 +130,9 @@ MonoBehaviour:
     - Name: chanceOfDrunkenTile
       Entry: 4
       Data: 0
+    - Name: snowball
+      Entry: 5
+      Data: false
     - Name: 
       Entry: 8
       Data: 
@@ -140,8 +152,8 @@ MonoBehaviour:
       Entry: 10
       Data: 1
     - Name: winDialogue
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 2
     - Name: maxTurns
       Entry: 3
       Data: 100
@@ -181,6 +193,288 @@ MonoBehaviour:
     - Name: chanceOfDrunkenTile
       Entry: 4
       Data: 0
+    - Name: snowball
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: level_two
+    - Name: $v
+      Entry: 7
+      Data: LevelData, Assembly-CSharp
+    - Name: letterFile
+      Entry: 10
+      Data: 3
+    - Name: winDialogue
+      Entry: 10
+      Data: 4
+    - Name: maxTurns
+      Entry: 3
+      Data: 100
+    - Name: tileTypesAvailable
+      Entry: 7
+      Data: 4|System.Collections.Generic.List`1[[TileType, Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: playTutorial
+      Entry: 5
+      Data: false
+    - Name: notALevel
+      Entry: 5
+      Data: false
+    - Name: chanceOfFireTile
+      Entry: 4
+      Data: 0.06
+    - Name: chanceOfBombTile
+      Entry: 4
+      Data: 0
+    - Name: chanceOfStoneTile
+      Entry: 4
+      Data: 0
+    - Name: chanceOfDrunkenTile
+      Entry: 4
+      Data: 0
+    - Name: snowball
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: level_three
+    - Name: $v
+      Entry: 7
+      Data: LevelData, Assembly-CSharp
+    - Name: letterFile
+      Entry: 10
+      Data: 5
+    - Name: winDialogue
+      Entry: 10
+      Data: 6
+    - Name: maxTurns
+      Entry: 3
+      Data: 100
+    - Name: tileTypesAvailable
+      Entry: 7
+      Data: 5|System.Collections.Generic.List`1[[TileType, Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: playTutorial
+      Entry: 5
+      Data: false
+    - Name: notALevel
+      Entry: 5
+      Data: false
+    - Name: chanceOfFireTile
+      Entry: 4
+      Data: 0
+    - Name: chanceOfBombTile
+      Entry: 4
+      Data: 0.025
+    - Name: chanceOfStoneTile
+      Entry: 4
+      Data: 0.05
+    - Name: chanceOfDrunkenTile
+      Entry: 4
+      Data: 0
+    - Name: snowball
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: level_four
+    - Name: $v
+      Entry: 7
+      Data: LevelData, Assembly-CSharp
+    - Name: letterFile
+      Entry: 10
+      Data: 7
+    - Name: winDialogue
+      Entry: 10
+      Data: 8
+    - Name: maxTurns
+      Entry: 3
+      Data: 100
+    - Name: tileTypesAvailable
+      Entry: 7
+      Data: 6|System.Collections.Generic.List`1[[TileType, Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: playTutorial
+      Entry: 5
+      Data: false
+    - Name: notALevel
+      Entry: 5
+      Data: false
+    - Name: chanceOfFireTile
+      Entry: 4
+      Data: 0.025
+    - Name: chanceOfBombTile
+      Entry: 4
+      Data: 0
+    - Name: chanceOfStoneTile
+      Entry: 4
+      Data: 0
+    - Name: chanceOfDrunkenTile
+      Entry: 4
+      Data: 0.08
+    - Name: snowball
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: level_five
+    - Name: $v
+      Entry: 7
+      Data: LevelData, Assembly-CSharp
+    - Name: letterFile
+      Entry: 10
+      Data: 9
+    - Name: winDialogue
+      Entry: 10
+      Data: 10
+    - Name: maxTurns
+      Entry: 3
+      Data: 143
+    - Name: tileTypesAvailable
+      Entry: 7
+      Data: 7|System.Collections.Generic.List`1[[TileType, Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 6
+    - Name: 
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: playTutorial
+      Entry: 5
+      Data: false
+    - Name: notALevel
+      Entry: 5
+      Data: false
+    - Name: chanceOfFireTile
+      Entry: 4
+      Data: 0.03
+    - Name: chanceOfBombTile
+      Entry: 4
+      Data: 0.015
+    - Name: chanceOfStoneTile
+      Entry: 4
+      Data: 0.03
+    - Name: chanceOfDrunkenTile
+      Entry: 4
+      Data: 0.065
+    - Name: snowball
+      Entry: 5
+      Data: true
     - Name: 
       Entry: 8
       Data: 
@@ -204,6 +498,7 @@ MonoBehaviour:
     chanceOfBombTile: 0
     chanceOfStoneTile: 0
     chanceOfDrunkenTile: 0
+    snowball: 0
 --- !u!114 &6930149549296912210
 MonoBehaviour:
   m_ObjectHideFlags: 0

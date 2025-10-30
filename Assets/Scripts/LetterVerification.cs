@@ -43,7 +43,6 @@ public class LetterVerification : MonoBehaviour
         else
         {
             win.Win();
-            PlayerPrefs.SetString("NextScene", "VNScene");
 
             return true;
         }

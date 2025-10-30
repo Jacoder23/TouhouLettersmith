@@ -78,7 +78,7 @@ I thought you might like having one specifically for plants.
 YOUMU: Engravings...
 ...
 I see.
-You've made me so happy.
+You're making me blush.
 
 <indicator left>
 REISEN: You like the sword?
@@ -100,6 +100,8 @@ REISEN: O-oh!
 <transition>
 
 <show textbox>
+
+ : <i>The next day...</i>
 
 <show prop kogasa>
 
@@ -231,3 +233,5 @@ KOGASA: Right, geez. Just don't sit too close.
 <level>level_three</level>
 
 END SCENE.
+
+// todo: acknowledge mamizou and kogasa meeting before for a tanuki parade

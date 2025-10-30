@@ -73,6 +73,10 @@ If we end up talking more, maybe you will too.
 
 <show textbox>
 
+<show prop mamizou>
+
+<show prop nue>
+
 // mamizou getting the gift, nue isnt there
 
 <indicator right>
@@ -124,6 +128,8 @@ MAMIZOU: 'course! Just don't mooch off of me.
 <transition>
 
 <show textbox>
+
+ : <i>In the middle of a conversation with a new customer...</i>
 
 // kogasa  already midtalk with meiling looking for an anniversary gift
 

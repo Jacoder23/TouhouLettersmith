@@ -879,46 +879,132 @@ PrefabInstance:
     - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.size
-      value: 4
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[0]
-      value: '"path":"nameToLevelData.{\"level_one\"}","value":{"$id":0,"$type":"LevelData,
-        Assembly-CSharp","letterFile":$eref:0,"winDialogue":null,"maxTurns":20,"tileTypesAvailable":{"$id":1,"$type":"System.Collections.Generic.List`1[[TileType,
-        Assembly-CSharp]], mscorlib","$rlength":2,"$rcontent":[0,1]},"playTutorial":true,"chanceOfFireTile":0,"chanceOfBombTile":0,"chanceOfStoneTile":0,"chanceOfDrunkenTile":0}'
+      value: '"path":"nameToLevelData.{\"level_five\"}","value":{"$id":0,"$type":"LevelData,
+        Assembly-CSharp","letterFile":$eref:0,"winDialogue":$eref:1,"maxTurns":143,"tileTypesAvailable":{"$id":1,"$type":"System.Collections.Generic.List`1[[TileType,
+        Assembly-CSharp]], mscorlib","$rlength":6,"$rcontent":[0,1,2,3,4,5]},"playTutorial":false,"notALevel":false,"chanceOfFireTile":0.03,"chanceOfBombTile":0.015,"chanceOfStoneTile":0.03,"chanceOfDrunkenTile":0.065,"snowball":true}'
       objectReference: {fileID: 0}
     - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[1]
+      value: '"path":"nameToLevelData.{\"level_four\"}","value":{"$id":0,"$type":"LevelData,
+        Assembly-CSharp","letterFile":$eref:2,"winDialogue":$eref:3,"maxTurns":100,"tileTypesAvailable":{"$id":1,"$type":"System.Collections.Generic.List`1[[TileType,
+        Assembly-CSharp]], mscorlib","$rlength":4,"$rcontent":[0,1,2,5]},"playTutorial":false,"notALevel":false,"chanceOfFireTile":0.025,"chanceOfBombTile":0,"chanceOfStoneTile":0,"chanceOfDrunkenTile":0.08,"snowball":true}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[2]
+      value: '"path":"nameToLevelData.{\"level_one\"}","value":{"$id":0,"$type":"LevelData,
+        Assembly-CSharp","letterFile":$eref:4,"winDialogue":null,"maxTurns":20,"tileTypesAvailable":{"$id":1,"$type":"System.Collections.Generic.List`1[[TileType,
+        Assembly-CSharp]], mscorlib","$rlength":2,"$rcontent":[0,1]},"playTutorial":true,"notALevel":false,"chanceOfFireTile":0,"chanceOfBombTile":0,"chanceOfStoneTile":0,"chanceOfDrunkenTile":0,"snowball":false}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[3]
       value: '"path":"nameToLevelData.{\"level_one\"}.maxTurns","value":{"$id":0,"$type":"System.Int32,
         mscorlib",100}'
       objectReference: {fileID: 0}
     - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[2]
-      value: '"path":"nameToLevelData.{\"level_one\"}.winDialogue","value":$eref:1'
+      propertyPath: serializationData.PrefabModifications.Array.data[4]
+      value: '"path":"nameToLevelData.{\"level_one\"}.winDialogue","value":$eref:5'
       objectReference: {fileID: 0}
     - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[3]
+      propertyPath: serializationData.PrefabModifications.Array.data[5]
+      value: '"path":"nameToLevelData.{\"level_three\"}","value":{"$id":0,"$type":"LevelData,
+        Assembly-CSharp","letterFile":$eref:6,"winDialogue":$eref:7,"maxTurns":100,"tileTypesAvailable":{"$id":1,"$type":"System.Collections.Generic.List`1[[TileType,
+        Assembly-CSharp]], mscorlib","$rlength":4,"$rcontent":[0,1,3,4]},"playTutorial":false,"notALevel":false,"chanceOfFireTile":0,"chanceOfBombTile":0.025,"chanceOfStoneTile":0.05,"chanceOfDrunkenTile":0,"snowball":true}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[6]
+      value: '"path":"nameToLevelData.{\"level_two\"}","value":{"$id":0,"$type":"LevelData,
+        Assembly-CSharp","letterFile":$eref:8,"winDialogue":$eref:9,"maxTurns":0,"tileTypesAvailable":{"$id":1,"$type":"System.Collections.Generic.List`1[[TileType,
+        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[0]},"playTutorial":false,"notALevel":false,"chanceOfFireTile":0,"chanceOfBombTile":0,"chanceOfStoneTile":0,"chanceOfDrunkenTile":0,"snowball":false}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[7]
+      value: '"path":"nameToLevelData.{\"level_two\"}.chanceOfFireTile","value":{"$id":0,"$type":"System.Single,
+        mscorlib",0.06}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[8]
+      value: '"path":"nameToLevelData.{\"level_two\"}.maxTurns","value":{"$id":0,"$type":"System.Int32,
+        mscorlib",100}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[9]
+      value: '"path":"nameToLevelData.{\"level_two\"}.snowball","value":{"$id":0,"$type":"System.Boolean,
+        mscorlib",true}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[10]
+      value: '"path":"nameToLevelData.{\"level_two\"}.tileTypesAvailable","value":{"$id":0,"$type":"System.Collections.Generic.List`1[[TileType,
+        Assembly-CSharp]], mscorlib","$rlength":3,"$rcontent":[0,1,2]}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[11]
+      value: '"path":"nameToLevelData.{\"level_two\"}.tileTypesAvailable.[1]","value":{"$id":0,"$type":"TileType,
+        Assembly-CSharp",1}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[12]
+      value: '"path":"nameToLevelData.{\"level_two\"}.tileTypesAvailable.[2]","value":{"$id":0,"$type":"TileType,
+        Assembly-CSharp",2}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[13]
       value: '"path":"nameToLevelData.{\"test\"}","value":{"$id":0,"$type":"LevelData,
-        Assembly-CSharp","letterFile":$eref:2,"winDialogue":null,"maxTurns":999,"tileTypesAvailable":{"$id":1,"$type":"System.Collections.Generic.List`1[[TileType,
-        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[0]},"playTutorial":false,"chanceOfFireTile":0,"chanceOfBombTile":0,"chanceOfStoneTile":0,"chanceOfDrunkenTile":0}'
+        Assembly-CSharp","letterFile":$eref:10,"winDialogue":null,"maxTurns":999,"tileTypesAvailable":{"$id":1,"$type":"System.Collections.Generic.List`1[[TileType,
+        Assembly-CSharp]], mscorlib","$rlength":1,"$rcontent":[0]},"playTutorial":false,"notALevel":false,"chanceOfFireTile":0,"chanceOfBombTile":0,"chanceOfStoneTile":0,"chanceOfDrunkenTile":0,"snowball":false}'
       objectReference: {fileID: 0}
     - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
-      value: 3
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[0]
       value: 
-      objectReference: {fileID: 4900000, guid: 8b3d28c5c6366454995957a1f3e8731b, type: 3}
+      objectReference: {fileID: 4900000, guid: c23b84b74a3c4fd46abde194d88ce326, type: 3}
     - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[1]
       value: 
-      objectReference: {fileID: 2811297602134710623, guid: 6d5cc3aba9e4cfa42b6916dbb1c7d11e, type: 3}
+      objectReference: {fileID: 2811297602134710623, guid: 41f34429255cb4541964d0ac77de3f2e, type: 3}
     - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 4900000, guid: 04e93d11702f6a04395f301e9ff3215e, type: 3}
+    - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[3]
+      value: 
+      objectReference: {fileID: 2811297602134710623, guid: 415a061d9a6c41d48b626e47ad12dea1, type: 3}
+    - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[4]
+      value: 
+      objectReference: {fileID: 4900000, guid: 8b3d28c5c6366454995957a1f3e8731b, type: 3}
+    - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[5]
+      value: 
+      objectReference: {fileID: 2811297602134710623, guid: 2c1b0bdf9a39de34e8d356b7f5f0af16, type: 3}
+    - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[6]
+      value: 
+      objectReference: {fileID: 4900000, guid: 0dea61f668c94944a892945fe930282c, type: 3}
+    - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[7]
+      value: 
+      objectReference: {fileID: 2811297602134710623, guid: 34ed91b36a013e8428498f9cdf0dc430, type: 3}
+    - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[8]
+      value: 
+      objectReference: {fileID: 4900000, guid: 57cd54cb84edbbf43a74c0a79169768b, type: 3}
+    - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[9]
+      value: 
+      objectReference: {fileID: 2811297602134710623, guid: 6d5cc3aba9e4cfa42b6916dbb1c7d11e, type: 3}
+    - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[10]
       value: 
       objectReference: {fileID: 4900000, guid: de9a42f62435def4bb70c84e651d980f, type: 3}
     - target: {fileID: 6930149549296912213, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}

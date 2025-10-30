@@ -5,6 +5,7 @@ using TMPro;
 using System.Linq;
 using System;
 using JSAM;
+using Sirenix.OdinInspector;
 
 public class OnWin : MonoBehaviour
 {
@@ -14,8 +15,10 @@ public class OnWin : MonoBehaviour
     public Cursor cursor;
     public TurnCounter turnCounter;
 
+    [Button]
     public void Win()
     {
+        PlayerPrefs.SetString("NextScene", "VNScene");
         Debug.Log("Win");
         AudioManager.StopAllMusic();
         Invoke("Victory", 3.0f); // unhardcode and match to if its a kogasa big win or not

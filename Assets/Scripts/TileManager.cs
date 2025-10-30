@@ -501,13 +501,17 @@ public class TileManager : MonoBehaviour
             }
         }
 
-        if (UnityEngine.Random.Range(0.0f, 1.0f) < chanceOfFireTile && level.GetCurrentLevel().tileTypesAvailable.Contains(TileType.Fire))
+        bool onlySpawnIfNoFireOnBoard =  instantiatedTiles.Count(x => x.type == TileType.Fire) == 0;
+
+        if (UnityEngine.Random.Range(0.0f, 1.0f) < chanceOfFireTile && level.GetCurrentLevel().tileTypesAvailable.Contains(TileType.Fire) && onlySpawnIfNoFireOnBoard)
         {
             AudioManager.PlaySound(LibrarySounds.Burn);
             return TileType.Fire;
         }
 
-        if (UnityEngine.Random.Range(0.0f, 1.0f) < chanceOfBombTile && level.GetCurrentLevel().tileTypesAvailable.Contains(TileType.Bomb))
+        bool onlySpawnIfLittleFireOnBoard = instantiatedTiles.Count(x => x.type == TileType.Fire) < 3; // unhardcode this
+
+        if (UnityEngine.Random.Range(0.0f, 1.0f) < chanceOfBombTile && level.GetCurrentLevel().tileTypesAvailable.Contains(TileType.Bomb) && onlySpawnIfLittleFireOnBoard)
             return TileType.Bomb;
 
         if (UnityEngine.Random.Range(0.0f, 1.0f) < chanceOfStoneTile && level.GetCurrentLevel().tileTypesAvailable.Contains(TileType.Stone))

@@ -210,7 +210,7 @@ Maybe I can use it to cool down the forge?
 // REISEN AND KOGASA
 // reisen appears asking about helping confess to 
 
-<show reisen>
+<show prop reisen>
 
 <music>Dialogue Theme</music>
 
