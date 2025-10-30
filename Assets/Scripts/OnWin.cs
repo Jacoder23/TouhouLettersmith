@@ -14,6 +14,7 @@ public class OnWin : MonoBehaviour
     public TextMeshProUGUI pointsText;
     public Cursor cursor;
     public TurnCounter turnCounter;
+    public AudioSource music;
 
     [Button]
     public void Win()
@@ -21,6 +22,8 @@ public class OnWin : MonoBehaviour
         PlayerPrefs.SetString("NextScene", "VNScene");
         Debug.Log("Win");
         AudioManager.StopAllMusic();
+        // need to manually stop the game music now since its not jsam
+        music.Stop();
         Invoke("Victory", 3.0f); // unhardcode and match to if its a kogasa big win or not
     }
 

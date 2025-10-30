@@ -538,6 +538,7 @@ GameObject:
   - component: {fileID: 7039251558923822640}
   - component: {fileID: 5392551618675988541}
   - component: {fileID: 2247477800424851930}
+  - component: {fileID: 6127114235065500081}
   m_Layer: 5
   m_Name: WinLossScreen
   m_TagString: Untagged
@@ -671,6 +672,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parentCanvas: {fileID: 7039251558923822640}
   showOnLoss: {fileID: 7039251557738888442}
+--- !u!114 &6127114235065500081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7039251558923822651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36da5100f63181149b78e9df4ecf8b42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  win: {fileID: 5392551618675988541}
 --- !u!1 &7039251559260423689
 GameObject:
   m_ObjectHideFlags: 0

@@ -32,9 +32,9 @@ MonoBehaviour:
   maxPlayingInstances: 10
   channelOverride: 0
   mixerGroupOverride: {fileID: 0}
-  fadeInOut: 0
+  fadeInOut: 1
   fadeInDuration: 0
-  fadeOutDuration: 0
+  fadeOutDuration: 0.05
   bypassEffects: 0
   bypassListenerEffects: 0
   bypassReverbZones: 0
@@ -61,7 +61,7 @@ MonoBehaviour:
     cutoffFrequency: 8749
     lowpassResonanceQ: 1
   highPassFilter:
-    enabled: 1
+    enabled: 0
     cutoffFrequency: 2000
     highpassResonanceQ: 1
   reverbFilter:

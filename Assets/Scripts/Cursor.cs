@@ -261,7 +261,7 @@ public class Cursor : MonoBehaviour
                 kogasaAnimation.Play("KogasaHit");
                 Invoke("ClearBoard", 1.5f); // todo: unhardcode this? idk how useful itd be to expose to editor since the animation isnt gonna get longer or shorter
                 if (wordInProgress.Any(x => x.type == TileType.Drunken))
-                    scrambleTiles.DelayedScrambleAllTiles(1.5f + 0.05f);
+                    scrambleTiles.DrunkenScrambleAllTiles(1.5f + 0.05f);
             }
             else if (validity == WordValidity.Bonus)
             {
@@ -269,7 +269,7 @@ public class Cursor : MonoBehaviour
                 kogasaAnimation.Play("KogasaSpecialHit");
                 Invoke("ClearBoard", 3f);
                 if (wordInProgress.Any(x => x.type == TileType.Drunken))
-                    scrambleTiles.DelayedScrambleAllTiles(3f + 0.05f);
+                    scrambleTiles.DrunkenScrambleAllTiles(3f + 0.05f);
             }
             playingSubmitAnimation = true;
 
@@ -297,6 +297,15 @@ public class Cursor : MonoBehaviour
         canScramble = true;
         if (!win)
             turnCounter.Turn();
+        wordInProgress.Clear();
+        tileManager.RemoveSelectedTiles();
+        UpdateCursorPosition();
+        UpdateLineRenderer();
+        playingSubmitAnimation = false;
+    }
+    public void ClearBoardWithoutTurnAdvance()
+    {
+        canScramble = true;
         wordInProgress.Clear();
         tileManager.RemoveSelectedTiles();
         UpdateCursorPosition();

@@ -58,6 +58,8 @@ public class TileManager : MonoBehaviour
         AudioManager.StopAllMusic();
         AudioManager.StopAllSounds();
 
+        //AudioManager.PlayMusic(LibraryMusic.KogasaTheme);
+
         chanceOfFireTile = level.GetCurrentLevel().chanceOfFireTile;
         chanceOfBombTile = level.GetCurrentLevel().chanceOfBombTile;
         chanceOfStoneTile = level.GetCurrentLevel().chanceOfStoneTile;
@@ -224,6 +226,7 @@ public class TileManager : MonoBehaviour
             tile.ChangeTileType(TileType.Fire); // a delay would help w the effect here
         }
     }
+    // currently unused
     public void UpdateSpecialTiles()
     {
         foreach(var tile in instantiatedTiles)
@@ -233,7 +236,6 @@ public class TileManager : MonoBehaviour
                 case TileType.Normal:
                     break;
                 case TileType.Rainbow:
-                    tile.ChangeTileType(TileType.Normal);
                     break;
                 case TileType.Fire:
                     break;
@@ -381,7 +383,8 @@ public class TileManager : MonoBehaviour
 
         DeselectAllTiles();
 
-        UpdateSpecialTiles();
+        // todo: add this back later if needed
+        //UpdateSpecialTiles();
 
         Invoke("UpdateFireTiles", 1.5f); // unhardcode this
 

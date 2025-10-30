@@ -50,10 +50,10 @@ MonoBehaviour:
   loopStart: 0
   loopEnd: 0
   bpm: 120
-  relativeVolume: 1
+  relativeVolume: 0.076
   spatialize: 0
   maxDistance: 0
-  priority: 255
+  priority: 128
   startingPitch: 1.55
   pitchShift: 0.15
   loopMode: 0
@@ -62,9 +62,9 @@ MonoBehaviour:
   maxPlayingInstances: 10
   channelOverride: 0
   mixerGroupOverride: {fileID: 0}
-  fadeInOut: 0
+  fadeInOut: 1
   fadeInDuration: 0
-  fadeOutDuration: 0
+  fadeOutDuration: 0.2
   bypassEffects: 0
   bypassListenerEffects: 0
   bypassReverbZones: 0

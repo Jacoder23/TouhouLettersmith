@@ -20,7 +20,7 @@ MonoBehaviour:
   loopStart: 0
   loopEnd: 0
   bpm: 120
-  relativeVolume: 0.6
+  relativeVolume: 0.782
   spatialize: 0
   maxDistance: 0
   priority: 128
@@ -32,9 +32,9 @@ MonoBehaviour:
   maxPlayingInstances: 10
   channelOverride: 0
   mixerGroupOverride: {fileID: 0}
-  fadeInOut: 0
+  fadeInOut: 1
   fadeInDuration: 0
-  fadeOutDuration: 0
+  fadeOutDuration: 0.05
   bypassEffects: 0
   bypassListenerEffects: 0
   bypassReverbZones: 0
@@ -57,7 +57,7 @@ MonoBehaviour:
     wetMix: 0
     dryMix: 0
   lowPassFilter:
-    enabled: 1
+    enabled: 0
     cutoffFrequency: 6500
     lowpassResonanceQ: 1
   highPassFilter:
