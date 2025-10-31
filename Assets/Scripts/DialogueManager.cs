@@ -16,6 +16,7 @@ using Animator = UnityEngine.Animator;
 using Image = UnityEngine.UI.Image;
 using UnityEngine.Pool;
 using jcdr;
+using System.Globalization;
 
 // Took straight from Occult a la Carte
 // Even with edits, it may be quite jank
@@ -508,7 +509,7 @@ public class DialogueManager : SerializedMonoBehaviour
                             UpdateStage(character);
                             break;
                         case DialogueType.Pause:
-                            float pauseLength = float.Parse(lineData[0].value.Replace("<pause>", "").Replace("</pause>", "").Trim());
+                            float pauseLength = float.Parse(lineData[0].value.Replace("<pause>", "").Replace("</pause>", "").Trim(), CultureInfo.InvariantCulture);
                             if(!ignoreDelayedContinues) DelayedContinue(pauseLength);
                             break;
                         case DialogueType.DefinitionStart:
@@ -749,7 +750,7 @@ public class DialogueManager : SerializedMonoBehaviour
             //Debug.Log(puppet.currentLocation);
 
             if (data.Length > 3)
-                puppet.UpdateSprite(float.Parse(data[3]));
+                puppet.UpdateSprite(float.Parse(data[3], CultureInfo.InvariantCulture));
             else
                 puppet.UpdateSprite(0);
 
@@ -767,7 +768,7 @@ public class DialogueManager : SerializedMonoBehaviour
             puppet.currentLocation = ToVector2(data[1].Replace("x", puppet.currentLocation.x.ToString()).Replace("y", puppet.currentLocation.y.ToString()));
 
             if (data.Length > 2)
-                puppet.UpdateSprite(float.Parse(data[2]));
+                puppet.UpdateSprite(float.Parse(data[2], CultureInfo.InvariantCulture));
             else
                 puppet.UpdateSprite(0);
         }
