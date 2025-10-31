@@ -354,6 +354,7 @@ MonoBehaviour:
   database: {fileID: 0}
   tutorialScript: {fileID: 2811297602134710623, guid: a68b0e7e825c3914b9ed41774bd0b427, type: 3}
   dialogueCanvasGroup: {fileID: 3556799755286550970}
+  level: {fileID: 0}
   skipLimit: 100
   holdSkipText: {fileID: 861513942387176895}
   holdSkipCanvasGroup: {fileID: 4987886603621174840}
@@ -452,8 +453,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Hold CTRL to skip
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: eb48d788cf3893d4e8e6a67ac9e9ebfa, type: 2}
-  m_sharedMaterial: {fileID: 672892139684345833, guid: eb48d788cf3893d4e8e6a67ac9e9ebfa, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fbbd81e28e3509943a37f14381391ebc, type: 2}
+  m_sharedMaterial: {fileID: -5678400082517543872, guid: fbbd81e28e3509943a37f14381391ebc, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2409,24 +2410,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7334401908005743948, guid: 5caae6b4baefd6c4d978cfba632be52b, type: 3}
       propertyPath: m_fontSize
-      value: 39.45
+      value: 54.25
       objectReference: {fileID: 0}
     - target: {fileID: 7334401908005743948, guid: 5caae6b4baefd6c4d978cfba632be52b, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: fbbd81e28e3509943a37f14381391ebc, type: 2}
     - target: {fileID: 7334401908005743948, guid: 5caae6b4baefd6c4d978cfba632be52b, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: -5678400082517543872, guid: fbbd81e28e3509943a37f14381391ebc, type: 2}
+    - target: {fileID: 7334401908549065174, guid: 5caae6b4baefd6c4d978cfba632be52b, type: 3}
+      propertyPath: m_fontSize
+      value: 71.35
+      objectReference: {fileID: 0}
     - target: {fileID: 7334401908549065174, guid: 5caae6b4baefd6c4d978cfba632be52b, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: fbbd81e28e3509943a37f14381391ebc, type: 2}
     - target: {fileID: 7334401908549065174, guid: 5caae6b4baefd6c4d978cfba632be52b, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: -5678400082517543872, guid: fbbd81e28e3509943a37f14381391ebc, type: 2}
     - target: {fileID: 7334401909426626592, guid: 5caae6b4baefd6c4d978cfba632be52b, type: 3}
       propertyPath: m_Name
       value: TextBox

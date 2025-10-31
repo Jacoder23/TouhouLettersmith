@@ -69,8 +69,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 5 TURNS LEFT
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: eb48d788cf3893d4e8e6a67ac9e9ebfa, type: 2}
-  m_sharedMaterial: {fileID: 672892139684345833, guid: eb48d788cf3893d4e8e6a67ac9e9ebfa, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fbbd81e28e3509943a37f14381391ebc, type: 2}
+  m_sharedMaterial: {fileID: -5678400082517543872, guid: fbbd81e28e3509943a37f14381391ebc, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -223,3 +223,6 @@ MonoBehaviour:
   maxTurns: 999
   turns: 1
   indicator: {fileID: 1890484182539814350}
+  dialogueManager: {fileID: 0}
+  tutorial: 0
+  loss: {fileID: 0}

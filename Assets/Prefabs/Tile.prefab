@@ -70,8 +70,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: L
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: eb48d788cf3893d4e8e6a67ac9e9ebfa, type: 2}
-  m_sharedMaterial: {fileID: 672892139684345833, guid: eb48d788cf3893d4e8e6a67ac9e9ebfa, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fbbd81e28e3509943a37f14381391ebc, type: 2}
+  m_sharedMaterial: {fileID: -5678400082517543872, guid: fbbd81e28e3509943a37f14381391ebc, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -308,7 +308,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMeshPro: {fileID: 8510024524478409237}
   image: {fileID: 8510024524625065056}
-  normalTileSprite: {fileID: 21300000, guid: 0e49b3ae94b20d449ac571a52c79b8ac, type: 3}
   tileManager: {fileID: 0}
   cursor: {fileID: 0}
   animator: {fileID: 414311079748241330}
