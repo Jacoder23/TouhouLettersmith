@@ -1,0 +1,140 @@
+body { 
+    padding: 0; 
+    margin: 0; 
+    overflow: hidden;
+}
+
+#unity-container {
+    position: absolute;
+    overflow: hidden;
+	border-style: solid;
+	border-color: #546bb8;
+	border-radius: 5px;
+	padding-top: 40px;
+	display: flex;
+    flex-direction: column;
+}
+
+#unity-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: url('grid.png');
+    background-repeat: repeat; 
+    animation: scrollBackground 10s linear infinite;
+    transform: rotate(45deg);
+    background-size: 106px;
+}
+
+#unity-container.unity-desktop { 
+    left: 50%; 
+    top: 50%; 
+    transform: translate(-50%, -50%); 
+}
+
+#unity-container.unity-mobile { 
+    width: 100%; 
+    height: 100%; 
+}
+
+#unity-canvas { 
+    background: transparent;
+    position: relative;
+}
+
+@keyframes scrollBackground {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 212px 0;
+    }
+}
+
+.unity-mobile #unity-canvas { 
+    width: 100%; 
+    height: 100%; 
+}
+
+#unity-loading-bar { 
+    position: absolute; 
+    left: 50%; 
+    top: 58%; 
+    transform: translate(-50%, -50%); 
+    display: none; 
+}
+
+#unity-logo { 
+    width: 347px; 
+    height: 300px; 
+    background: url('game-logo.png') no-repeat center; 
+}
+
+#unity-progress-bar-empty { 
+    width: 300px; 
+    height: 40px; 
+    margin-top: 25px; 
+    margin-left: auto; 
+    margin-right: auto; 
+    background: url('progress-bar-empty-light.png') no-repeat center; 
+}
+
+#unity-progress-bar-full { 
+    width: 0%; 
+    height: 40px; 
+    margin-top: 10px; 
+    background: url('progress-bar-full-light.png') no-repeat center; 
+}
+
+#unity-footer { 
+    position: absolute;
+    top: 0px;
+	left: 0;
+    right: 0;
+    background-color: #546bb8;
+    padding: 2px 0px;
+    min-height: 38px;
+    align-items: center;
+    gap: 10px;
+}
+
+.unity-mobile #unity-footer { 
+    display: none; 
+}
+
+#unity-webgl-logo { 
+    width: 38px; 
+    height: 38px; 
+    background: url('webgl-logo.png') no-repeat center; 
+    order: 1;
+	float: left;
+}
+
+#unity-build-title { 
+    margin-right: 10px;
+    line-height: 38px; 
+    font-family: arial; 
+    font-size: 40px; 
+    color: white;
+	float: right;
+}
+
+#unity-fullscreen-button { 
+    width: 38px; 
+    height: 38px; 
+    background: url('fullscreen-button.png') no-repeat center; 
+	float: right;
+}
+
+#unity-warning { 
+    position: absolute; 
+    left: 50%; 
+    top: 5%; 
+    transform: translate(-50%); 
+    background: white; 
+    padding: 10px; 
+    display: none; 
+}
