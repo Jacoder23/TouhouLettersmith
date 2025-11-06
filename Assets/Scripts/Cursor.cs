@@ -307,7 +307,6 @@ public class Cursor : MonoBehaviour
     {
         canScramble = true;
         wordInProgress.Clear();
-        tileManager.RemoveSelectedTiles();
         UpdateCursorPosition();
         UpdateLineRenderer();
         playingSubmitAnimation = false;
