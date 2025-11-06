@@ -21,6 +21,7 @@ using System.Globalization;
 // Took straight from Occult a la Carte
 // Even with edits, it may be quite jank
 // edit: its 2025 now, ive taken this straight from the game that i put it into from occult a la carte lmao
+// todo: 2025, fix this up massively
 
 public enum DialogueType
 {
@@ -49,7 +50,8 @@ public enum DialogueType
     DisableSelf,
     DisableUntilNextTurn,
     FakeSceneChange,
-    TitleScreen
+    TitleScreen,
+    MoveTextbox
 }
 
 public struct BoolString
@@ -124,7 +126,8 @@ public class DialogueManager : SerializedMonoBehaviour
         {@"<disable self>", DialogueType.DisableSelf },
         {@"<disable until next turn>", DialogueType.DisableUntilNextTurn },
         {@"<transition>", DialogueType.FakeSceneChange },
-        {@"<title screen>", DialogueType.TitleScreen }
+        {@"<title screen>", DialogueType.TitleScreen },
+        {@"<move textbox>.+</move textbox>", DialogueType.MoveTextbox }
 
     }; // i aint even gonna bother with puppets imma just made it toggle on or off preset parents with the chars in em since they dont need to move - 2025
 
@@ -146,29 +149,30 @@ public class DialogueManager : SerializedMonoBehaviour
     public List<IsTouchingMouse> blockers;
 
     public bool inGameplayScene = false;
-    public LevelDatabase database;
-    public TextAsset tutorialScript;
     public CanvasGroup dialogueCanvasGroup;
 
     public LevelDatabase level;
+    public RectTransform textboxContainer;
 
     void Start()
     {
         if (level == null) // what the fuck is going on edit: oh singletons fuck
             level = FindObjectOfType<LevelDatabase>();
 
-        if(!level.GetCurrentLevel().notALevel)
-            mainStory = level.GetCurrentLevel().winDialogue;
+        LevelData currentLevel = level.GetCurrentLevel();
+
+        if (!currentLevel.notALevel)
+            mainStory = currentLevel.winDialogue;
 
         if (inGameplayScene)
         {
-            if (!database.GetCurrentLevel().playTutorial)
+            if (!currentLevel.playLevelDialogue)
             {
                 Destroy(gameObject);
                 return;
             }
 
-            mainStory = tutorialScript;
+            mainStory = currentLevel.levelDialogue;
 
             Debug.Log(mainStory.text); // one of those "i swear to god it doesnt work without this" sigh, idk anymore
         }
@@ -176,8 +180,6 @@ public class DialogueManager : SerializedMonoBehaviour
         textBoxAnimator = textBox.GetComponent<TextAnimator_TMP>();
 
         sceneTransition = transition.GetComponent<SceneTransition>();
-
-        //levels = GameObject.Find("LevelDatabase").GetComponent<LevelDatabase>();
 
         textBox.text = "";
         nameBox.text = "";
@@ -390,7 +392,6 @@ public class DialogueManager : SerializedMonoBehaviour
     public Animator transition;
     SceneTransition sceneTransition;
     bool transitioned = false;
-    public LevelDatabase levels;
 
     [ReadOnly]
     public List<Tuple<string, List<DialogueToken>>> definitions = new List<Tuple<string, List<DialogueToken>>>();
@@ -486,10 +487,6 @@ public class DialogueManager : SerializedMonoBehaviour
                             }
                             break;
                         case DialogueType.Level:
-                            // todo: read level data
-
-                            //PlayerPrefs.SetString("levelScene", level); // for the UI
-                            //PlayerPrefs.SetString("LevelData", LevelData.ToString());
                             PlayerPrefs.SetString("CurrentLevel", lineData[0].value.Replace("<level>", "").Replace("</level>", "").Trim());
                             StartLevel();
                             break;
@@ -621,6 +618,11 @@ public class DialogueManager : SerializedMonoBehaviour
                         case DialogueType.TitleScreen:
                             sceneTransition.SetNextScene("TitleScreen");
                             sceneTransition.NextScene();
+                            break;
+                        case DialogueType.MoveTextbox:
+                            string[] textboxPosition = lineData[0].value.Replace("<move textbox>", "").Replace("</move textbox>", "").Split(',');
+                            textboxContainer.anchoredPosition = new Vector2(float.Parse(textboxPosition[0].Trim(), CultureInfo.InvariantCulture), float.Parse(textboxPosition[1].Trim(), CultureInfo.InvariantCulture));
+                            if (!ignoreDelayedContinues) DelayedContinue(0);
                             break;
                     }
                 }

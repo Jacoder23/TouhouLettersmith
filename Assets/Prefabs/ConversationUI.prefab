@@ -351,10 +351,9 @@ MonoBehaviour:
   dialogueClick: {fileID: 7004169841172091665}
   blockers: []
   inGameplayScene: 0
-  database: {fileID: 0}
-  tutorialScript: {fileID: 2811297602134710623, guid: a68b0e7e825c3914b9ed41774bd0b427, type: 3}
   dialogueCanvasGroup: {fileID: 3556799755286550970}
   level: {fileID: 0}
+  textboxContainer: {fileID: 766926760997087128}
   skipLimit: 100
   holdSkipText: {fileID: 861513942387176895}
   holdSkipCanvasGroup: {fileID: 4987886603621174840}

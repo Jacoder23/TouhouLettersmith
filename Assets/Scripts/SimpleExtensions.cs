@@ -12,16 +12,18 @@ namespace jcdr
     public static class SimpleExtensions
     {
         // https://stackoverflow.com/a/110570
-        public static void Shuffle<T>(this Random rng, T[] array)
+        // not working
+        public static T[] Shuffle<T>(T[] array)
         {
             int n = array.Length;
             while (n > 1)
             {
-                int k = rng.Next(n--);
+                int k = UnityEngine.Random.Range(0,n--);
                 T temp = array[n];
                 array[n] = array[k];
                 array[k] = temp;
             }
+            return array;
         }
 
         // https://stackoverflow.com/questions/11743160/how-do-i-encode-and-decode-a-base64-string

@@ -13,7 +13,9 @@ public struct LevelData
     public TextAsset winDialogue;
     public int maxTurns;
     public List<TileType> tileTypesAvailable;
-    public bool playTutorial;
+    public bool playLevelDialogue;
+    [ShowIf("playLevelDialogue")]
+    public TextAsset levelDialogue;
     public bool notALevel; // equiv to null
     [Header("Spawn Rates")]
     public float chanceOfFireTile;
@@ -26,6 +28,7 @@ public struct LevelData
 }
 public class LevelDatabase : SerializedMonoBehaviour
 {
+
     public Dictionary<string, LevelData> nameToLevelData;
     public LevelData defaultLevel;
 
@@ -43,5 +46,11 @@ public class LevelDatabase : SerializedMonoBehaviour
         {
             return nameToLevelData[PlayerPrefs.GetString("CurrentLevel")];
         }
+    }
+
+    [Button]
+    public void SetCurrentLevel(string level) // just for the editor
+    {
+        PlayerPrefs.SetString("CurrentLevel", level);
     }
 }

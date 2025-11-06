@@ -232,7 +232,7 @@ public class Cursor : MonoBehaviour
         if (wordInProgress.Count > 0)
             cursorPosition = wordInProgress.LastOrDefault().position;
         else
-            cursorPosition = new TilePosition();
+            cursorPosition = new TilePosition(-1,-1);
 
         //Debug.Log(cursorPosition.x + ", " + cursorPosition.y);
     }

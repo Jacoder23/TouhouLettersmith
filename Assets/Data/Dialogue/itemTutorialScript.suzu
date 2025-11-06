@@ -1,0 +1,27 @@
+// pretty sure the first line is always ignored unless its like a pause or dialogue
+// something to fix sometime
+// using tab before a line does not work
+
+<indicator hide>
+
+<indicator hide>
+
+<hide textbox>
+
+<hide all>
+
+<move textbox>0, 890</move textbox>
+
+<pause>1.5</pause>
+
+<show textbox>
+
+ : <i>Under your tiles is the ITEM BOX.</i>
+ 
+ : <i>Currently, CIRNO'S SNOWBALL is in it.</i>
+
+ : <i>If there are too many FIRE TILES, click on it to put them out.</i>
+
+<disable self>
+
+END SCENE.

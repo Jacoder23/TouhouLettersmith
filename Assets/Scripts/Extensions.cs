@@ -12,7 +12,7 @@ public static class Extensions
     }
     public static TilePosition GetTilePositionFromIndex(int index, int gridSize)
     {
-        var tilePosition = new TilePosition();
+        var tilePosition = new TilePosition(0,0);
 
         tilePosition.y = Mathf.FloorToInt((float)index / (float)gridSize);
         tilePosition.x = index - tilePosition.y * gridSize;
@@ -101,6 +101,7 @@ public static class Extensions
         return destination;
     }
 
+    // todo: convert to pre calc lookup
     public static bool ValidTileDestination(TilePosition origin, TilePosition destination, int gridSize)
     {
         // TODO: allow for yukari umbrella and okina door upgrades

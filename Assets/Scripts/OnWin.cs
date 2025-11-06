@@ -20,6 +20,7 @@ public class OnWin : MonoBehaviour
     public void Win()
     {
         PlayerPrefs.SetString("NextScene", "VNScene");
+        PlayerPrefs.SetString("AtLeastOneLevelCompleted", "true");
         Debug.Log("Win");
         AudioManager.StopAllMusic();
         // need to manually stop the game music now since its not jsam

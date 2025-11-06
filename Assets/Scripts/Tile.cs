@@ -26,6 +26,12 @@ public class TilePosition
     [ShowInInspector]
     public int y = -1; // when negative you can start anywhere
 
+    public TilePosition(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+    }
+
     // i know this is stupid
     public override bool Equals(object obj)
     {
@@ -36,6 +42,11 @@ public class TilePosition
     public override int GetHashCode()
     {
         return HashCode.Combine(x, y);
+    }
+
+    public override string ToString()
+    {
+        return "(" + x.ToString() + ", " + y.ToString() + ")";
     }
 }
 public class Tile : MonoBehaviour

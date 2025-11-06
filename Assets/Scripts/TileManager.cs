@@ -23,12 +23,22 @@ public class TileManager : MonoBehaviour
     public int gridSize;
     public float spaceBetweenTiles;
     public int randomLetterQueueMinLength = 20;
+    public int maxRainbowTiles = 2;
+
+    [Header("Word Spawn Rates")]
     public float chanceOfAnyGoalWord = 0.2f;
     public float chanceOfBonusWords = 0.1f;
     public float chanceOfCurrentGoalWord = 0.5f;
     public float chanceOfNextGoalWord = 0.5f;
     public float chanceOfActualRandomLetter = 0.5f;
-    public int maxRainbowTiles = 2;
+    // otherwise random word
+
+    [Header("Word Spawn Rates (SCRAMBLE)")]
+    public float chanceOfAnyGoalWordScramble = 0.2f;
+    public float chanceOfBonusWordsScramble = 0.1f;
+    public float chanceOfCurrentGoalWordScramble = 0.5f;
+    public float chanceOfNextGoalWordScramble = 0.5f;
+    public float chanceOfActualRandomLetterScramble = 0.5f;
 
     [Header("Tile Spawn Rates")] // changes per level
     public float chanceOfFireTile = 0.03f;
@@ -49,7 +59,6 @@ public class TileManager : MonoBehaviour
 
     Vector2 offset;
     bool nextTileRainbow;
-    System.Random rnd;
     void Start()
     {
         if (titleScreen)
@@ -64,8 +73,6 @@ public class TileManager : MonoBehaviour
         chanceOfBombTile = level.GetCurrentLevel().chanceOfBombTile;
         chanceOfStoneTile = level.GetCurrentLevel().chanceOfStoneTile;
         chanceOfDrunkenTile = level.GetCurrentLevel().chanceOfDrunkenTile;
-
-        rnd = new System.Random();
 
         offset = new Vector2((gridSize - 1) * spaceBetweenTiles / 2f, (gridSize + 1) * spaceBetweenTiles / 2f);
 
@@ -124,6 +131,11 @@ public class TileManager : MonoBehaviour
         return new Vector2(pos.x * spaceBetweenTiles, (float)(gridSize - pos.y) * spaceBetweenTiles) - offset;
     }
 
+    // todo: post-jam v1.1.0
+    // scramble using random path
+    // slower fire spread
+    // fix beer activating fire
+    // item tutorial
     void PopulateTileGrid()
     {
         for (int i = 0; i < gridSize; i++)
@@ -134,19 +146,18 @@ public class TileManager : MonoBehaviour
                 tile.tileManager = this;
                 tile.cursor = cursor;
                 tile.transform.parent = grid;
-                var tilePosition = new TilePosition();
-                tilePosition.x = j;
-                tilePosition.y = i;
+                var tilePosition = new TilePosition(j,i);
                 tile.transform.localPosition = TilePositionToLocalPosition(tilePosition, gridSize);
-                tile.position = new TilePosition();
-                tile.position.x = j;
-                tile.position.y = i;
-                tile.RandomizeTileValue();
+                tile.position = new TilePosition(j,i);
+                tile.SetTileValue(".");
                 // todo: logic for tile type selection
                 tile.ChangeTileType(TileType.Normal);
                 instantiatedTiles.Add(tile);
             }
         }
+
+        ScrambleAllTiles();
+
         fontSettings.UpdateFonts();
     }
 
@@ -178,13 +189,67 @@ public class TileManager : MonoBehaviour
         }
     }
 
-    // dont need to scramble the tile types
+    // todo: convert to a pre calc lookup table
+
+    public List<TilePosition> GetAllValidTiles(TilePosition origin)
+    {
+        List<TilePosition> validTiles = new List<TilePosition>();
+        //Debug.Log("Origin: " + origin);
+        for(int i = 0; i < gridSize; i++)
+        {
+            for (int j = 0; j < gridSize; j++)
+            {
+                if (new TilePosition(j, i).Equals(origin))
+                    continue;
+
+                if(Extensions.ValidTileDestination(origin, new TilePosition(j,i), gridSize))
+                {
+                    validTiles.Add(new TilePosition(j,i));
+                    //Debug.Log(new TilePosition(j, i));
+                }
+            }
+        }
+        return validTiles;
+    }
+
     public void ScrambleAllTiles()
     {
         foreach (var tile in instantiatedTiles)
+            tile.SetTileValue(".");
+
+        // random walk
+        var scrambledTiles = new List<Tile>();
+
+        Tile origin = instantiatedTiles[UnityEngine.Random.Range(0, instantiatedTiles.Count - 1)];
+        origin.SetTileValue(QueuedRandomLetterOfTheAlphabet(true));
+        scrambledTiles.Add(origin);
+        //Debug.Log("Origin: " + origin.position + " (" + origin.value + ")");
+
+        for (int i = 0; i < instantiatedTiles.Count - 1; i++)
         {
-            tile.RandomizeTileValue();
+            var validTiles = GetAllValidTiles(origin.position);
+            var nonScrambledTiles = instantiatedTiles.Except(scrambledTiles).Select(x => x.position).ToList();
+            validTiles = validTiles.Intersect(nonScrambledTiles).ToList();
+            if (validTiles.Count > 0)
+            {
+                // select random tile
+                TilePosition originTilePosition = validTiles[UnityEngine.Random.Range(0, validTiles.Count - 1)];
+                origin = instantiatedTiles[Extensions.GetIndexFromTilePosition(originTilePosition.x, originTilePosition.y, gridSize)];
+                origin.SetTileValue(QueuedRandomLetterOfTheAlphabet(true));
+                scrambledTiles.Add(origin);
+                //Debug.Log("Destination: " + origin.position + " (" + origin.value + ")");
+            }
+            else
+            {
+                //Debug.Log("No non-scrambled valid tiles");
+                TilePosition originTilePosition = nonScrambledTiles[UnityEngine.Random.Range(0, nonScrambledTiles.Count() - 1)]; // get a random tile that has yet to be scrambled
+                origin = instantiatedTiles[Extensions.GetIndexFromTilePosition(originTilePosition.x, originTilePosition.y, gridSize)];
+                origin.SetTileValue(QueuedRandomLetterOfTheAlphabet(true));
+                scrambledTiles.Add(origin);
+                //Debug.Log("Origin: " + origin.position + " (" + origin.value + ")");
+            }
         }
+
         DeselectAllTiles();
     }
 
@@ -207,8 +272,22 @@ public class TileManager : MonoBehaviour
                 var tilesToBurn = FirePattern(tile.position);
                 if (tilesToBurn != null)
                 {
-                    foreach (var t in tilesToBurn)
+                    var tileOrder = new int[tilesToBurn.Count()];
+
+                    for (int i = 0; i < tilesToBurn.Count(); i++)
                     {
+                        tileOrder[i] = i;
+                    }
+
+                    SimpleExtensions.Shuffle(tileOrder);
+
+                    // burn up to two random tiles
+                    for (int i = 0; i < tilesToBurn.Count; i++)
+                    {
+                        if (i == 2) // 2 already burnt
+                            break;
+
+                        TilePosition t = tilesToBurn[tileOrder[i]];
                         var tileToBurn = instantiatedTiles[Extensions.GetIndexFromTilePosition(t.x, t.y, gridSize)];
 
                         if (tileToBurn.type == TileType.Bomb)
@@ -251,7 +330,6 @@ public class TileManager : MonoBehaviour
 
     void ActivateBomb(TilePosition origin)
     {
-        Debug.Log("BOOM");
         // play bomb sound
         AudioManager.PlaySound(LibrarySounds.Explosion);
         var tilesToBurn = FirePattern(origin);
@@ -290,9 +368,7 @@ public class TileManager : MonoBehaviour
         {
             for (int j = 0; j < gridSize; j++)
             {
-                var destination = new TilePosition();
-                destination.y = j;
-                destination.x = i;
+                var destination = new TilePosition(j,i);
                 bool withinRangeX = Mathf.Abs(destination.x - origin.x) < 2;
                 bool withinRangeY = Mathf.Abs(destination.y - origin.y) < 2;
                 bool diagonal = (destination.x + 1 == origin.x && destination.y + 1 == origin.y) || (destination.x - 1 == origin.x && destination.y + 1 == origin.y) || (destination.x + 1 == origin.x && destination.y - 1 == origin.y) || (destination.x - 1 == origin.x && destination.y - 1 == origin.y);
@@ -346,7 +422,7 @@ public class TileManager : MonoBehaviour
         // randomize BEFORE the shift (and saving of the board state) because the tile location doesnt actually physically change to keep the list in order
         foreach (var tile in transientTiles)
         {
-            tile.RandomizeTileValue();
+            tile.RandomizeTileValue(); // doesn't use the scramble weights and so is better
         }
 
         var updatedBoardState = GetBoardStateFromTiles();
@@ -391,12 +467,12 @@ public class TileManager : MonoBehaviour
         var newTiles = instantiatedTiles.Where(x => x.newTile).ToList();
         var tileOrder = new int[newTiles.Count()];
 
-        rnd.Shuffle(tileOrder);
-
         for (int i = 0; i < newTiles.Count(); i++)
         {
             tileOrder[i] = i;
         }
+
+        SimpleExtensions.Shuffle(tileOrder);
 
         for (int i = 0; i < newTiles.Count(); i++)
         {
@@ -447,7 +523,7 @@ public class TileManager : MonoBehaviour
         {
             // if the og tileIndex ever gets its tile type changed then we need to know so we don't reset it back to being normal tile value
             // otherwise reset to use up the special tile
-            TilePosition tempPos = new TilePosition();
+            TilePosition tempPos = new TilePosition(0,0);
             if (index.Item2 == -1)
             {
                 boardState[0][index.Item1] = tileValue;
@@ -515,7 +591,7 @@ public class TileManager : MonoBehaviour
             return TileType.Fire;
         }
 
-        bool onlySpawnIfLittleFireOnBoard = instantiatedTiles.Count(x => x.type == TileType.Fire) < 3; // unhardcode this
+        bool onlySpawnIfLittleFireOnBoard = instantiatedTiles.Count(x => x.type == TileType.Fire) < 5; // unhardcode this
 
         if (UnityEngine.Random.Range(0.0f, 1.0f) < chanceOfBombTile && level.GetCurrentLevel().tileTypesAvailable.Contains(TileType.Bomb) && onlySpawnIfLittleFireOnBoard)
             return TileType.Bomb;
@@ -530,27 +606,43 @@ public class TileManager : MonoBehaviour
     }
 
     // todo: this would be much improved if we could evaluate from a board if a word is possible to form but that'd require a lot of work
-    string GetRandomWord()
+    string GetRandomWord(bool scramble)
     {
-        if (UnityEngine.Random.Range(0f, 1f) < chanceOfAnyGoalWord * (1f - (letter.nextWord.Length * 3f) / 100f)) // reduced by N*3 % where N is the length of the current goal word because ts gets impossible at long goal words
-            return letter.letter[UnityEngine.Random.Range(0,letter.letter.Count)];
-        else if(UnityEngine.Random.Range(0f, 1f) < chanceOfBonusWords * (1f - (letter.nextWord.Length) * 4f / 100f)) // reduced by N*4 % where N is the length of the current goal word because ts gets impossible at long goal words
-            return database.GetRandomBonusWord();
-        else if(UnityEngine.Random.Range(0f, 1f) < chanceOfCurrentGoalWord * (1f + (letter.nextWord.Length * 10f) / 100f)) // increased by N*10 % where N is the length of the current goal word because ts gets impossible at long goal words
-            return letter.nextWord;
-        else if (UnityEngine.Random.Range(0f, 1f) < chanceOfNextGoalWord * (1f + (letter.nextWord.Length * 4f) / 100f)) // increased by N*4 % where N is the length of the current goal word because ts gets impossible at long goal words
-            return letter.GetNextGoalWord();
+        if (scramble)
+        {
+            if (UnityEngine.Random.Range(0f, 1f) < chanceOfAnyGoalWordScramble * (1f - (letter.nextWord.Length * 2f) / 100f)) // reduced by N*2 % where N is the length of the current goal word because ts gets impossible at long goal words
+                return letter.letter[UnityEngine.Random.Range(0, letter.letter.Count)];
+            else if (UnityEngine.Random.Range(0f, 1f) < chanceOfBonusWordsScramble * (1f - (letter.nextWord.Length) * 3f / 100f)) // reduced by N*3 % where N is the length of the current goal word because ts gets impossible at long goal words
+                return database.GetRandomBonusWord();
+            else if (UnityEngine.Random.Range(0f, 1f) < chanceOfCurrentGoalWordScramble * (1f + (letter.nextWord.Length * 7f) / 100f)) // increased by N*7 % where N is the length of the current goal word because ts gets impossible at long goal words
+                return letter.nextWord;
+            else if (UnityEngine.Random.Range(0f, 1f) < chanceOfNextGoalWordScramble * (1f + (letter.nextWord.Length * 3f) / 100f)) // increased by N*3 % where N is the length of the current goal word because ts gets impossible at long goal words
+                return letter.GetNextGoalWord();
+            else
+                return database.GetRandomValidWord();
+        }
         else
-            return database.GetRandomValidWord();
+        {
+            if (UnityEngine.Random.Range(0f, 1f) < chanceOfAnyGoalWord * (1f - (letter.nextWord.Length * 2f) / 100f)) // reduced by N*2 % where N is the length of the current goal word because ts gets impossible at long goal words
+                return letter.letter[UnityEngine.Random.Range(0, letter.letter.Count)];
+            else if (UnityEngine.Random.Range(0f, 1f) < chanceOfBonusWords * (1f - (letter.nextWord.Length) * 3f / 100f)) // reduced by N*3 % where N is the length of the current goal word because ts gets impossible at long goal words
+                return database.GetRandomBonusWord();
+            else if (UnityEngine.Random.Range(0f, 1f) < chanceOfCurrentGoalWord * (1f + (letter.nextWord.Length * 7f) / 100f)) // increased by N*7 % where N is the length of the current goal word because ts gets impossible at long goal words
+                return letter.nextWord;
+            else if (UnityEngine.Random.Range(0f, 1f) < chanceOfNextGoalWord * (1f + (letter.nextWord.Length * 3f) / 100f)) // increased by N*3 % where N is the length of the current goal word because ts gets impossible at long goal words
+                return letter.GetNextGoalWord();
+            else
+                return database.GetRandomValidWord();
+        }
     }
-    public string QueuedRandomLetterOfTheAlphabet() // not all that random
+    public string QueuedRandomLetterOfTheAlphabet(bool scramble = false) // not all that random
     {
         while (randomLetterQueue.Length < randomLetterQueueMinLength)
         {
-            randomLetterQueue += GetRandomWord();
+            randomLetterQueue += GetRandomWord(scramble);
         }
 
-        if (UnityEngine.Random.Range(0f, 1f) < chanceOfActualRandomLetter * (1f - (letter.nextWord.Length * 12f)/100f)) // reduced by N*12% where N is the length of the current goal word because ts gets impossible at long goal words
+        if (UnityEngine.Random.Range(0f, 1f) < chanceOfActualRandomLetter * (1f - (letter.nextWord.Length * 15f)/100f)) // reduced by N*15% where N is the length of the current goal word because ts gets impossible at long goal words
             return WeightedRandomLetterOfTheAlphabet(); // moved here so it can show up inside of words instead of just inbetween them
 
         string randomLetter = randomLetterQueue.Substring(0,1);

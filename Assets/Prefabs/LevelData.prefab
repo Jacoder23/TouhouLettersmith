@@ -52,8 +52,10 @@ MonoBehaviour:
     - {fileID: 4900000, guid: de9a42f62435def4bb70c84e651d980f, type: 3}
     - {fileID: 4900000, guid: 8b3d28c5c6366454995957a1f3e8731b, type: 3}
     - {fileID: 2811297602134710623, guid: 2c1b0bdf9a39de34e8d356b7f5f0af16, type: 3}
+    - {fileID: 2811297602134710623, guid: a68b0e7e825c3914b9ed41774bd0b427, type: 3}
     - {fileID: 4900000, guid: 57cd54cb84edbbf43a74c0a79169768b, type: 3}
     - {fileID: 2811297602134710623, guid: 6d5cc3aba9e4cfa42b6916dbb1c7d11e, type: 3}
+    - {fileID: 2811297602134710623, guid: de902360ff322dc48a3de2fd63b91861, type: 3}
     - {fileID: 4900000, guid: 0dea61f668c94944a892945fe930282c, type: 3}
     - {fileID: 2811297602134710623, guid: 34ed91b36a013e8428498f9cdf0dc430, type: 3}
     - {fileID: 4900000, guid: 04e93d11702f6a04395f301e9ff3215e, type: 3}
@@ -112,9 +114,12 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: playTutorial
+    - Name: playLevelDialogue
       Entry: 5
       Data: false
+    - Name: levelDialogue
+      Entry: 6
+      Data: 
     - Name: notALevel
       Entry: 5
       Data: false
@@ -175,9 +180,12 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: playTutorial
+    - Name: playLevelDialogue
       Entry: 5
       Data: true
+    - Name: levelDialogue
+      Entry: 10
+      Data: 3
     - Name: notALevel
       Entry: 5
       Data: false
@@ -213,10 +221,10 @@ MonoBehaviour:
       Data: LevelData, Assembly-CSharp
     - Name: letterFile
       Entry: 10
-      Data: 3
+      Data: 4
     - Name: winDialogue
       Entry: 10
-      Data: 4
+      Data: 5
     - Name: maxTurns
       Entry: 3
       Data: 100
@@ -241,9 +249,12 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: playTutorial
+    - Name: playLevelDialogue
       Entry: 5
-      Data: false
+      Data: true
+    - Name: levelDialogue
+      Entry: 10
+      Data: 6
     - Name: notALevel
       Entry: 5
       Data: false
@@ -279,10 +290,10 @@ MonoBehaviour:
       Data: LevelData, Assembly-CSharp
     - Name: letterFile
       Entry: 10
-      Data: 5
+      Data: 7
     - Name: winDialogue
       Entry: 10
-      Data: 6
+      Data: 8
     - Name: maxTurns
       Entry: 3
       Data: 100
@@ -310,9 +321,12 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: playTutorial
+    - Name: playLevelDialogue
       Entry: 5
       Data: false
+    - Name: levelDialogue
+      Entry: 6
+      Data: 
     - Name: notALevel
       Entry: 5
       Data: false
@@ -321,10 +335,10 @@ MonoBehaviour:
       Data: 0
     - Name: chanceOfBombTile
       Entry: 4
-      Data: 0.035
+      Data: 0.055
     - Name: chanceOfStoneTile
       Entry: 4
-      Data: 0.055
+      Data: 0.075
     - Name: chanceOfDrunkenTile
       Entry: 4
       Data: 0
@@ -348,10 +362,10 @@ MonoBehaviour:
       Data: LevelData, Assembly-CSharp
     - Name: letterFile
       Entry: 10
-      Data: 7
+      Data: 9
     - Name: winDialogue
       Entry: 10
-      Data: 8
+      Data: 10
     - Name: maxTurns
       Entry: 3
       Data: 90
@@ -379,9 +393,12 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: playTutorial
+    - Name: playLevelDialogue
       Entry: 5
       Data: false
+    - Name: levelDialogue
+      Entry: 6
+      Data: 
     - Name: notALevel
       Entry: 5
       Data: false
@@ -417,10 +434,10 @@ MonoBehaviour:
       Data: LevelData, Assembly-CSharp
     - Name: letterFile
       Entry: 10
-      Data: 9
+      Data: 11
     - Name: winDialogue
       Entry: 10
-      Data: 10
+      Data: 12
     - Name: maxTurns
       Entry: 3
       Data: 65
@@ -454,9 +471,12 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: playTutorial
+    - Name: playLevelDialogue
       Entry: 5
       Data: false
+    - Name: levelDialogue
+      Entry: 6
+      Data: 
     - Name: notALevel
       Entry: 5
       Data: false
@@ -465,13 +485,13 @@ MonoBehaviour:
       Data: 0.1
     - Name: chanceOfBombTile
       Entry: 4
-      Data: 0.03
+      Data: 0.05
     - Name: chanceOfStoneTile
       Entry: 4
-      Data: 0.07
+      Data: 0.09
     - Name: chanceOfDrunkenTile
       Entry: 4
-      Data: 0.15
+      Data: 0.17
     - Name: snowball
       Entry: 5
       Data: true
@@ -492,7 +512,8 @@ MonoBehaviour:
     winDialogue: {fileID: 2811297602134710623, guid: bbe8e9652ec8f5f47b2f5d3dc2401f25, type: 3}
     maxTurns: 1111
     tileTypesAvailable: 0000000001000000
-    playTutorial: 0
+    playLevelDialogue: 0
+    levelDialogue: {fileID: 0}
     notALevel: 1
     chanceOfFireTile: 0
     chanceOfBombTile: 0

@@ -25,6 +25,12 @@ public class SceneTransition : MonoBehaviour
         PlayerPrefs.SetString("NextScene", sceneName);
     }
 
+    [Button]
+    public void SetLevel(string level)
+    {
+        PlayerPrefs.SetString("CurrentLevel", level);
+    }
+
     public void Start()
     {
         transition.Play("ScreenTransitionEnter");
