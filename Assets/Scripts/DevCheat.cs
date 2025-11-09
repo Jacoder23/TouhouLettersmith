@@ -33,6 +33,7 @@ public class DevCheat : MonoBehaviour
             if(string.Join(string.Empty, keys) == "LOVE143")
             {
                 win.Win();
+                keys.Add("DO NOT TRIGGER THIS AGAIN");
             }
         }
     }
