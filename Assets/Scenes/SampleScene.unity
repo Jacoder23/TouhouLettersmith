@@ -3615,7 +3615,7 @@ PrefabInstance:
     - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.size
       value: 7
@@ -3648,12 +3648,12 @@ PrefabInstance:
       propertyPath: serializationData.PrefabModifications.Array.data[4]
       value: '"path":"nameToLevelData.{\"level_two\"}","value":{"$id":0,"$type":"LevelData,
         Assembly-CSharp","letterFile":$eref:9,"winDialogue":$eref:10,"maxTurns":100,"tileTypesAvailable":{"$id":1,"$type":"System.Collections.Generic.List`1[[TileType,
-        Assembly-CSharp]], mscorlib","$rlength":3,"$rcontent":[0,1,2]},"playLevelDialogue":true,"levelDialogue":$eref:11,"notALevel":false,"chanceOfFireTile":0.1,"chanceOfBombTile":0,"chanceOfStoneTile":0,"chanceOfDrunkenTile":0,"snowball":true}'
+        Assembly-CSharp]], mscorlib","$rlength":3,"$rcontent":[0,1,2]},"playLevelDialogue":true,"levelDialogue":$eref:11,"notALevel":false,"chanceOfFireTile":0.6,"chanceOfBombTile":0,"chanceOfStoneTile":0,"chanceOfDrunkenTile":0,"snowball":true}'
       objectReference: {fileID: 0}
     - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[5]
       value: '"path":"nameToLevelData.{\"level_two\"}.chanceOfFireTile","value":{"$id":0,"$type":"System.Single,
-        mscorlib",0.6}'
+        mscorlib",0.1}'
       objectReference: {fileID: 0}
     - target: {fileID: 6930149549296912212, guid: d1b460124045d4841862aa6e0d1566ef, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[6]
