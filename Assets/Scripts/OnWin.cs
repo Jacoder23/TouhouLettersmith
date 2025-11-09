@@ -50,6 +50,29 @@ public class OnWin : MonoBehaviour
         if (turnsLeft == 0)
             turnsLeft = 1;
 
+        // todo: add highscores over a run
+        if(PlayerPrefs.HasKey("WordsSmithed"))
+            PlayerPrefs.SetInt("WordsSmithed", PlayerPrefs.GetInt("WordsSmithed") + wordsSmithed);
+        else
+            PlayerPrefs.SetInt("WordsSmithed", wordsSmithed);
+
+        if (PlayerPrefs.HasKey("TilesUsed"))
+            PlayerPrefs.SetInt("TilesUsed", PlayerPrefs.GetInt("TilesUsed") + tilesUsed);
+        else
+            PlayerPrefs.SetInt("TilesUsed", tilesUsed);
+
+        if (PlayerPrefs.HasKey("LongestWord"))
+            if(PlayerPrefs.GetString("LongestWord").Length <= longestWord.Length)
+                PlayerPrefs.SetString("LongestWord", longestWord);
+        else
+            PlayerPrefs.SetString("LongestWord", longestWord);
+
+        if (PlayerPrefs.HasKey("LeastTurnsUsed"))
+            if (PlayerPrefs.GetInt("LeastTurnsUsed") > turnsLeft)
+                PlayerPrefs.SetInt("LeastTurnsUsed", turnsLeft);
+            else
+                PlayerPrefs.SetInt("LeastTurnsUsed", turnsLeft);
+
         int score = (wordsSmithed + tilesUsed + longestWordScore + shortestWordScore) * turnsLeft;
 
         // hell
