@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Sirenix.OdinInspector;
 public enum WordValidity
 {
     Invalid,
@@ -24,5 +25,14 @@ public class WordVerification : MonoBehaviour
             return WordValidity.Valid;
         else
             return WordValidity.Invalid;
+    }
+
+    // just for curiosity's sake
+    [Button]
+    public string LongestWord()
+    {
+        string longestWord = database.CombinedList().OrderByDescending(s => s.Length).First();
+        Debug.Log(longestWord);
+        return longestWord;
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Sirenix.OdinInspector;
 public class WordDatabase : MonoBehaviour
 {
     public TextAsset wordList;
@@ -33,6 +34,7 @@ public class WordDatabase : MonoBehaviour
         return validWords.Concat(bonusWords).ToList();
     }
 
+    [Button]
     void InitializeWordList()
     {
         validWords = wordList.text.ToUpper().Split(',').ToList();
