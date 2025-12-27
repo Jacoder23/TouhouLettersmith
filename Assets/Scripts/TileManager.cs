@@ -97,7 +97,8 @@ public class TileManager : MonoBehaviour
     void InitialBoardState()
     {
         // idk whats going on here, this was never an issue before
-        if(database.validWords.Count == 0)
+
+        if (database.validWordsByLength == null || database.validWordsByLength.Count == 0)
         {
             Invoke("InitialBoardState", 0.1f);
             return;

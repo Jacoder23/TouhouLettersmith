@@ -60,56 +60,60 @@ public class Cursor : MonoBehaviour
 
     WordValidity ValidateWord()
     {
-        // todo: rainbow
-        // just loop for each rainbow, go through 26 letters and nest/recurse to try every combination
-        // this may wreck computers with enough rainbow tiles
-        if (wordInProgress == null)
+        if (wordInProgress == null || wordInProgress.Count == 0)
             return WordValidity.Invalid;
 
-        if (wordInProgress.Count == 0)
-            return WordValidity.Invalid;
+        //Build the string pattern
+        char[] charBuilder = new char[wordInProgress.Count];
+        bool hasRainbow = false;
 
-        if (wordInProgress.Any(x => x.type == TileType.Rainbow))
+        for (int i = 0; i < wordInProgress.Count; i++)
         {
-            var word = new List<string>();
-            int numOfWildcards = 0;
-            foreach (var tile in wordInProgress)
+            if (wordInProgress[i].type == TileType.Rainbow)
             {
-                if (tile.type == TileType.Rainbow)
-                {
-                    word.Add("?");
-                    numOfWildcards++;
-                }
-                else
-                {
-                    word.Add(tile.value);
-                }
+                charBuilder[i] = '?';
+                hasRainbow = true;
             }
-
-            var wildcards = new List<int>();
-            var validity = verifier.ValidWord(SearchForWord(string.Join(string.Empty, word), out wildcards, searchType: WordValidity.Bonus));
-
-            if (validity == WordValidity.Invalid) // didnt find any bonus words specifically
-                validity = verifier.ValidWord(SearchForWord(string.Join(string.Empty, word), out wildcards, searchType: WordValidity.Valid));
-
-            int i = 0;
-
-            foreach (var tile in wordInProgress)
+            else
             {
-                if (tile.type == TileType.Rainbow)
-                {
-                    tile.SetTileValue(Extensions.alphabet[wildcards[i]].ToString());
-                    i++;
-                }
+                charBuilder[i] = wordInProgress[i].value[0];
             }
-            return validity;
+        }
+        string pattern = new string(charBuilder);
+
+        if (hasRainbow)
+        {
+            //Look for the best matching word
+            string matchedWord = verifier.GetBestMatch(pattern, letterVerification.nextWord);
+
+            if (matchedWord != null)
+            {
+                ApplyMatchToTiles(matchedWord);
+
+                return verifier.ValidWord(matchedWord);
+            }
+            else
+            {
+                return WordValidity.Invalid;
+            }
         }
         else
         {
-            return verifier.ValidWord(string.Join("", wordInProgress.Select(x => x.value).ToArray()));
+            //Normal words
+            return verifier.ValidWord(pattern);
         }
     }
-
+    void ApplyMatchToTiles(string matchedWord)
+    {
+        for (int i = 0; i < wordInProgress.Count; i++)
+        {
+            if (wordInProgress[i].type == TileType.Rainbow)
+            {
+                // Update the tile to show the letter it matched
+                wordInProgress[i].SetTileValue(matchedWord[i].ToString());
+            }
+        }
+    }
     string SearchForWord(string originalWord, out List<int> wildcardValues, char[] candidateWord = null, WordValidity searchType = WordValidity.Valid)
     {
         bool skipIncrement = false;
@@ -215,15 +219,7 @@ public class Cursor : MonoBehaviour
 
     string CurrentWord()
     {
-        // display with ?
-        if (wordInProgress.Any(x => x.type == TileType.Rainbow))
-        {
-            return string.Join("", wordInProgress.Select(x => x.value).ToArray());
-        }
-        else
-        {
-            return string.Join("", wordInProgress.Select(x => x.value).ToArray());
-        }
+        return string.Join("", wordInProgress.Select(x => x.value).ToArray());
     }
 
     void LateUpdate()

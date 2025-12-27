@@ -7,8 +7,13 @@ public class WordDatabase : MonoBehaviour
 {
     public TextAsset wordList;
     public TextAsset bonusWordList;
-    public Dictionary<string, string[]> validWords; // (e.g. key is A or first letter of word search is A then get list of words starting with A)
-    public Dictionary<string, string[]> bonusWords;
+    //Store the valid words in hash sets grouped by their length to speed up lookups
+    public Dictionary<int, HashSet<string>> validWordsByLength;
+    public Dictionary<int, HashSet<string>> bonusWordsByLength;
+
+    //Duplicate dictionaries to avoid flattening the hashsets every time
+    private List<string> _allValidWords;
+    private List<string> _allBonusWords;
 
     public static WordDatabase instance;
 
@@ -31,45 +36,48 @@ public class WordDatabase : MonoBehaviour
 
     public List<string> CombinedList()
     {
-        return validWords["default"].Concat(bonusWords["default"]).ToList();
+        return _allValidWords.Concat(_allBonusWords).ToList();
     }
+
 
     [Button]
     void InitializeWordList()
     {
-        validWords = new Dictionary<string, string[]>();
-        bonusWords = new Dictionary<string, string[]>();
+        validWordsByLength = new Dictionary<int, HashSet<string>>();
+        bonusWordsByLength = new Dictionary<int, HashSet<string>>();
 
-        validWords.Add("default", wordList.text.ToUpper().Split(',').Where(x => x.Length > 0).ToArray());
-        bonusWords.Add("default", bonusWordList.text.ToUpper().Split(',').Where(x => x.Length > 0).ToArray());
-
-        foreach(char letter in Extensions.alphabet)
+        //Valid words
+        _allValidWords = wordList.text.ToUpper().Split(new[] { ',' }, System.StringSplitOptions.RemoveEmptyEntries).ToList();
+        foreach (string word in _allValidWords)
         {
-            validWords.Add(letter.ToString(), validWords["default"].Where(x => x[0] == letter).ToArray());
-            bonusWords.Add(letter.ToString(), bonusWords["default"].Where(x => x[0] == letter).ToArray());
+            if (!validWordsByLength.ContainsKey(word.Length))
+                validWordsByLength[word.Length] = new HashSet<string>();
 
-            foreach (char letter2 in Extensions.alphabet)
-            {
-                validWords.Add(letter.ToString() + letter2.ToString(), validWords["default"].Where(x => x.Length > 1 && x[0] == letter && x[1] == letter2).ToArray());
-                bonusWords.Add(letter.ToString() + letter2.ToString(), bonusWords["default"].Where(x => x.Length > 1 && x[0] == letter && x[1] == letter2).ToArray());
-                
-                foreach (char letter3 in Extensions.alphabet)
-                {
-                    validWords.Add(letter.ToString() + letter2.ToString() + letter3.ToString(), validWords["default"].Where(x => x.Length > 2 && x[0] == letter && x[1] == letter2 && x[2] == letter3).ToArray());
-                    bonusWords.Add(letter.ToString() + letter2.ToString() + letter3.ToString(), bonusWords["default"].Where(x => x.Length > 2 && x[0] == letter && x[1] == letter2 && x[2] == letter3).ToArray());
-                }
-            }
+            validWordsByLength[word.Length].Add(word);
         }
+
+        //Bonus words
+        _allBonusWords = bonusWordList.text.ToUpper().Split(new[] { ',' }, System.StringSplitOptions.RemoveEmptyEntries).ToList();
+        foreach (string word in _allBonusWords)
+        {
+            if (!bonusWordsByLength.ContainsKey(word.Length))
+                bonusWordsByLength[word.Length] = new HashSet<string>();
+
+            bonusWordsByLength[word.Length].Add(word);
+        }
+
     }
 
     public string GetRandomValidWord()
     {
-        return validWords["default"][Random.Range(0, validWords.Count - 1)];
+        if (_allValidWords == null || _allValidWords.Count == 0) return "ERROR";
+        return _allValidWords[Random.Range(0, _allValidWords.Count)];
     }
-    // todo: was breaking with the change to two letter key sublists for word search? except stopped breaking without me changing anything so idk
+    //Should work now
     public string GetRandomBonusWord()
     {
-        return bonusWords["default"][Random.Range(0, bonusWords.Count - 1)];
+        if (_allBonusWords == null || _allBonusWords.Count == 0) return "ERROR";
+        return _allBonusWords[Random.Range(0, _allBonusWords.Count)];
     }
 
 }
