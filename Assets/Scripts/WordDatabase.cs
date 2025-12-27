@@ -47,6 +47,18 @@ public class WordDatabase : MonoBehaviour
         {
             validWords.Add(letter.ToString(), validWords["default"].Where(x => x[0] == letter).ToArray());
             bonusWords.Add(letter.ToString(), bonusWords["default"].Where(x => x[0] == letter).ToArray());
+
+            foreach (char letter2 in Extensions.alphabet)
+            {
+                validWords.Add(letter.ToString() + letter2.ToString(), validWords["default"].Where(x => x.Length > 1 && x[0] == letter && x[1] == letter2).ToArray());
+                bonusWords.Add(letter.ToString() + letter2.ToString(), bonusWords["default"].Where(x => x.Length > 1 && x[0] == letter && x[1] == letter2).ToArray());
+                
+                foreach (char letter3 in Extensions.alphabet)
+                {
+                    validWords.Add(letter.ToString() + letter2.ToString() + letter3.ToString(), validWords["default"].Where(x => x.Length > 2 && x[0] == letter && x[1] == letter2 && x[2] == letter3).ToArray());
+                    bonusWords.Add(letter.ToString() + letter2.ToString() + letter3.ToString(), bonusWords["default"].Where(x => x.Length > 2 && x[0] == letter && x[1] == letter2 && x[2] == letter3).ToArray());
+                }
+            }
         }
     }
 
@@ -54,6 +66,7 @@ public class WordDatabase : MonoBehaviour
     {
         return validWords["default"][Random.Range(0, validWords.Count - 1)];
     }
+    // todo: was breaking with the change to two letter key sublists for word search? except stopped breaking without me changing anything so idk
     public string GetRandomBonusWord()
     {
         return bonusWords["default"][Random.Range(0, bonusWords.Count - 1)];

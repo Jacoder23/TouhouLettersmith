@@ -22,9 +22,10 @@ public class WordVerification : MonoBehaviour
             return WordValidity.Invalid;
 
         //Debug.Log("Validating " + word + " with sublist of key " + word[0].ToString());
-        if (database.bonusWords[word[0].ToString()].Contains(word))
+
+        if (database.bonusWords[word.Substring(0,Math.Min(word.Length, 3))].Contains(word))
             return WordValidity.Bonus;
-        else if (database.validWords[word[0].ToString()].Contains(word))
+        else if (database.validWords[word.Substring(0, Math.Min(word.Length, 3))].Contains(word))
             return WordValidity.Valid;
         else
             return WordValidity.Invalid;
