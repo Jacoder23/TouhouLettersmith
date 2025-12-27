@@ -7,8 +7,8 @@ public class WordDatabase : MonoBehaviour
 {
     public TextAsset wordList;
     public TextAsset bonusWordList;
-    public Dictionary<string, List<string>> validWords; // (e.g. key is A or first letter of word search is A then get list of words starting with A)
-    public Dictionary<string, List<string>> bonusWords;
+    public Dictionary<string, string[]> validWords; // (e.g. key is A or first letter of word search is A then get list of words starting with A)
+    public Dictionary<string, string[]> bonusWords;
 
     public static WordDatabase instance;
 
@@ -37,16 +37,16 @@ public class WordDatabase : MonoBehaviour
     [Button]
     void InitializeWordList()
     {
-        validWords = new Dictionary<string, List<string>>();
-        bonusWords = new Dictionary<string, List<string>>();
+        validWords = new Dictionary<string, string[]>();
+        bonusWords = new Dictionary<string, string[]>();
 
-        validWords.Add("default", wordList.text.ToUpper().Split(',').Where(x => x.Length > 0).ToList());
-        bonusWords.Add("default", bonusWordList.text.ToUpper().Split(',').Where(x => x.Length > 0).ToList());
+        validWords.Add("default", wordList.text.ToUpper().Split(',').Where(x => x.Length > 0).ToArray());
+        bonusWords.Add("default", bonusWordList.text.ToUpper().Split(',').Where(x => x.Length > 0).ToArray());
 
         foreach(char letter in Extensions.alphabet)
         {
-            validWords.Add(letter.ToString(), validWords["default"].Where(x => x[0] == letter).ToList());
-            bonusWords.Add(letter.ToString(), bonusWords["default"].Where(x => x[0] == letter).ToList());
+            validWords.Add(letter.ToString(), validWords["default"].Where(x => x[0] == letter).ToArray());
+            bonusWords.Add(letter.ToString(), bonusWords["default"].Where(x => x[0] == letter).ToArray());
         }
     }
 

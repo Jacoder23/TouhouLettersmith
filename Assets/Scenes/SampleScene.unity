@@ -2270,7 +2270,7 @@ MonoBehaviour:
   gridSize: 7
   spaceBetweenTiles: 110
   randomLetterQueueMinLength: 20
-  maxRainbowTiles: 999
+  maxRainbowTiles: 3
   chanceOfAnyGoalWord: 0.07
   chanceOfBonusWords: 0.12
   chanceOfCurrentGoalWord: 0.4

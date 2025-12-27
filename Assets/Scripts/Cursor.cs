@@ -87,10 +87,10 @@ public class Cursor : MonoBehaviour
             }
 
             var wildcards = new List<int>();
-            var validity = verifier.ValidWord(SearchForBonusWord(string.Join(string.Empty, word), out wildcards));
+            var validity = verifier.ValidWord(SearchForWord(string.Join(string.Empty, word), out wildcards, searchType: WordValidity.Bonus));
 
             if (validity == WordValidity.Invalid) // didnt find any bonus words specifically
-                validity = verifier.ValidWord(SearchForValidWord(string.Join(string.Empty, word), out wildcards));
+                validity = verifier.ValidWord(SearchForWord(string.Join(string.Empty, word), out wildcards, searchType: WordValidity.Valid));
 
             int i = 0;
 
@@ -110,12 +110,11 @@ public class Cursor : MonoBehaviour
         }
     }
 
-    string SearchForBonusWord(string originalWord, out List<int> wildcardValues, char[] candidateWord = null)
+    string SearchForWord(string originalWord, out List<int> wildcardValues, char[] candidateWord = null, WordValidity searchType = WordValidity.Valid)
     {
         bool skipIncrement = false;
         wildcardValues = new List<int>();
 
-        // todo: take this out of both search for bonus word and valid word and make it its own method
         if (originalWord.Length == letterVerification.nextWord.Length)
         {
             bool canMatchGoalWord = true;
@@ -149,165 +148,69 @@ public class Cursor : MonoBehaviour
             }
         }
 
-        if (candidateWord == null)
+        candidateWord = originalWord.Replace('?', 'A').ToCharArray();
+
+        // loop begins here
+
+        while (true)
         {
-            skipIncrement = true;
-            candidateWord = originalWord.Replace('?', 'A').ToCharArray();
-        }
+            wildcardValues.Clear();
 
-        for (int i = 0; i < originalWord.Length; i++)
-        {
-            if (originalWord[i] == '?')
-                wildcardValues.Add(Extensions.alphabet.IndexOf(candidateWord[i]));
-        }
-
-        // increment, carry if over 26
-
-        if (!skipIncrement)
-        {
-            wildcardValues[0]++;
-
-            for (int i = 0; i < wildcardValues.Count; i++)
-            {
-                // means we tried everything and got nothing
-                if (wildcardValues.Last() > 25)
-                {
-                    wildcardValues[wildcardValues.Count - 1] = 25;
-                    return null;
-                }
-
-                if (wildcardValues[i] > 25)
-                {
-                    wildcardValues[i] = 0;
-                    wildcardValues[i + 1]++;
-                }
-            }
-        }
-
-        // convert back to string then call again if not valid
-
-        int j = 0;
-
-        for (int i = 0; i < originalWord.Length; i++)
-        {
-            if (originalWord[i] == '?')
-            {
-                candidateWord[i] = Extensions.alphabet[wildcardValues[j]];
-                j++;
-            }
-        }
-
-        if (verifier.ValidWord(Extensions.CharArrayToString(candidateWord)) == WordValidity.Bonus)
-        {
-            // edit the tile value
-            return Extensions.CharArrayToString(candidateWord);
-        }
-        else
-        {
-            return SearchForBonusWord(originalWord, out wildcardValues, candidateWord);
-        }
-    }
-
-    string SearchForValidWord(string originalWord, out List<int> wildcardValues, char[] candidateWord = null)
-    {
-        bool skipIncrement = false;
-        wildcardValues = new List<int>();
-
-        // todo: take this out of both search for bonus word and valid word and make it its own method
-        if (originalWord.Length == letterVerification.nextWord.Length)
-        {
-            bool canMatchGoalWord = true;
             for (int i = 0; i < originalWord.Length; i++)
             {
-                if (originalWord[i] == letterVerification.nextWord[i])
+                if (originalWord[i] == '?')
+                    wildcardValues.Add(Extensions.alphabet.IndexOf(candidateWord[i])); //
+            }
+
+            // increment, carry if over 26
+
+            if (!skipIncrement)
+            {
+                wildcardValues[0]++;
+
+                for (int i = 0; i < wildcardValues.Count; i++)
                 {
-                    continue;
-                }
-                else
-                {
-                    if (originalWord[i] == '?')
+                    // means we tried everything and got nothing
+                    if (wildcardValues.Last() > 25)
                     {
-                        wildcardValues.Add(Extensions.alphabet.IndexOf(letterVerification.nextWord[i]));
-                        continue;
+                        wildcardValues[wildcardValues.Count - 1] = 25;
+                        return null;
                     }
-                    else
+
+                    if (wildcardValues[i] > 25)
                     {
-                        canMatchGoalWord = false;
-                        break;
+                        wildcardValues[i] = 0;
+                        wildcardValues[i + 1]++;
                     }
                 }
             }
-            if (canMatchGoalWord)
+
+            // convert back to string then call again if not valid
+
+            int j = 0;
+
+            for (int i = 0; i < originalWord.Length; i++)
             {
-                return letterVerification.nextWord;
+                if (originalWord[i] == '?')
+                {
+                    candidateWord[i] = Extensions.alphabet[wildcardValues[j]];
+                    j++;
+                }
+            }
+
+            if (verifier.ValidWord(Extensions.CharArrayToString(candidateWord)) == searchType)
+            {
+                // edit the tile value
+                return Extensions.CharArrayToString(candidateWord);
             }
             else
             {
-                wildcardValues = new List<int>();
+                continue;
+                //// i think these are causing stack overflows, due to the recursive depth
+                //// todo: look into rewriting to be non recursive using a stack?
+                //return SearchForWord(originalWord, out wildcardValues, candidateWord, searchType);
             }
         }
-
-        if(candidateWord == null)
-        {
-            skipIncrement = true;
-            candidateWord = originalWord.Replace('?', 'A').ToCharArray();
-        }
-
-        for (int i = 0; i < originalWord.Length; i++)
-        {
-            if (originalWord[i] == '?')
-                wildcardValues.Add(Extensions.alphabet.IndexOf(candidateWord[i]));
-        }
-
-        // increment, carry if over 26
-
-        if (!skipIncrement)
-        {
-            wildcardValues[0]++;
-
-            for (int i = 0; i < wildcardValues.Count; i++)
-            {
-                // means we tried everything and got nothing
-                if (wildcardValues.Last() > 25)
-                {
-                    wildcardValues[wildcardValues.Count - 1] = 25;
-                    return null;
-                }
-
-                if (wildcardValues[i] > 25)
-                {
-                    wildcardValues[i] = 0;
-                    wildcardValues[i + 1]++;
-                }
-            }
-        }
-
-        // convert back to string then call again if not valid
-
-        int j = 0;
-
-        for (int i = 0; i < originalWord.Length; i++)
-        {
-            if (originalWord[i] == '?') {
-                candidateWord[i] = Extensions.alphabet[wildcardValues[j]];
-                j++;
-            }
-        }
-
-        if (verifier.ValidWord(Extensions.CharArrayToString(candidateWord)) != WordValidity.Invalid)
-        {
-            // edit the tile value
-            return Extensions.CharArrayToString(candidateWord);
-        }
-        else
-        {
-            return SearchForValidWord(originalWord, out wildcardValues, candidateWord);
-        }
-
-        // base 26 its a base 26 number
-        // an int[]
-        // if all the tiles are rainbow then just select one word of that length
-        // break upon finding one should cut down on that 8 trillion
     }
 
     string CurrentWord()
