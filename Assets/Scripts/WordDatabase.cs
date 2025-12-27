@@ -7,8 +7,8 @@ public class WordDatabase : MonoBehaviour
 {
     public TextAsset wordList;
     public TextAsset bonusWordList;
-    public List<string> validWords;
-    public List<string> bonusWords;
+    public Dictionary<string, List<string>> validWords; // (e.g. key is A or first letter of word search is A then get list of words starting with A)
+    public Dictionary<string, List<string>> bonusWords;
 
     public static WordDatabase instance;
 
@@ -31,24 +31,32 @@ public class WordDatabase : MonoBehaviour
 
     public List<string> CombinedList()
     {
-        return validWords.Concat(bonusWords).ToList();
+        return validWords["default"].Concat(bonusWords["default"]).ToList();
     }
 
     [Button]
     void InitializeWordList()
     {
-        validWords = wordList.text.ToUpper().Split(',').ToList();
-        bonusWords = bonusWordList.text.ToUpper().Split(',').ToList();
-    }
+        validWords = new Dictionary<string, List<string>>();
+        bonusWords = new Dictionary<string, List<string>>();
 
+        validWords.Add("default", wordList.text.ToUpper().Split(',').Where(x => x.Length > 0).ToList());
+        bonusWords.Add("default", bonusWordList.text.ToUpper().Split(',').Where(x => x.Length > 0).ToList());
+
+        foreach(char letter in Extensions.alphabet)
+        {
+            validWords.Add(letter.ToString(), validWords["default"].Where(x => x[0] == letter).ToList());
+            bonusWords.Add(letter.ToString(), bonusWords["default"].Where(x => x[0] == letter).ToList());
+        }
+    }
 
     public string GetRandomValidWord()
     {
-        return validWords[Random.Range(0, validWords.Count - 1)];
+        return validWords["default"][Random.Range(0, validWords.Count - 1)];
     }
     public string GetRandomBonusWord()
     {
-        return bonusWords[Random.Range(0, bonusWords.Count - 1)];
+        return bonusWords["default"][Random.Range(0, bonusWords.Count - 1)];
     }
 
 }

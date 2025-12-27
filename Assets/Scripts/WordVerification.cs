@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using Sirenix.OdinInspector;
+using System;
+
 public enum WordValidity
 {
     Invalid,
@@ -19,9 +21,10 @@ public class WordVerification : MonoBehaviour
         if(word == null)
             return WordValidity.Invalid;
 
-        if (database.bonusWords.Contains(word))
+        //Debug.Log("Validating " + word + " with sublist of key " + word[0].ToString());
+        if (database.bonusWords[word[0].ToString()].Contains(word))
             return WordValidity.Bonus;
-        else if (database.validWords.Contains(word))
+        else if (database.validWords[word[0].ToString()].Contains(word))
             return WordValidity.Valid;
         else
             return WordValidity.Invalid;
